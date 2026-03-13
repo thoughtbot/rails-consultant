@@ -1,0 +1,23 @@
+{
+  "skill_name": "audit",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "/audit app/services/charge_services/process_payment_method.rb",
+      "expected_output": "A structured audit report covering security (payment data handling, Stripe integration), concurrency (locking, race conditions), error handling (Stripe failures, broad rescues), performance, data integrity, and edge cases for a payment processing service.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "/audit app/controllers/change_requests_controller.rb",
+      "expected_output": "A structured audit report covering security (constantize usage, authorization gaps), parameter handling (strong params, polymorphic type validation), state transitions, error handling, and controller design patterns.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "/audit app/models/change_request.rb",
+      "expected_output": "A structured audit report covering data integrity (validations vs DB constraints, transactions), callbacks and side effects, state machine logic, dynamic method generation risks, edge cases in date validations, and testing coverage.",
+      "files": []
+    }
+  ]
+}
