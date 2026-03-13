@@ -39,11 +39,13 @@ Wait. This surfaces blockers and risks before they become surprises.
 Before writing the update, push on what they've said:
 
 **On completeness:**
+
 - "You mentioned [X] — is that done-done, or is there a loose end the client should know about?"
 - "Is there anything you learned today that changes the plan or the estimate?"
 - "Are you waiting on anything from the client's side? Now's the time to ask — don't let it sit."
 
 **On risks — push hard here:**
+
 - "Is there a risk here you're not mentioning because you think you can handle it? Those are the ones worth flagging early."
 - "If the client asked 'are we on track?' right now — what's your honest answer?"
 - "Are you going to hit the next deadline? If there's any doubt, say it now — not the day before."
@@ -56,6 +58,7 @@ Before writing the update, push on what they've said:
 Don't ask all of these — pick the 2–3 that are most relevant based on what they've said. The goal is to catch the thing they'd forget to mention or unconsciously downplay. Consultants instinctively soften risks in updates — push against that.
 
 **On team communication — push here before writing:**
+
 - "Is there something here you need to raise with your team before this goes to the client?"
 - "Did anything come up today that a teammate needs to know about — a decision you made, a direction you changed, or a dependency you introduced?"
 - "Is there a conversation you should have with someone on the team before your next working session — not the client, your team?"
@@ -71,15 +74,19 @@ Produce a clean, ready-to-send update. Keep it short — clients don't read long
 **Update: [Date]**
 
 **Done:**
+
 - [Completed items — written in terms of outcomes, not tasks. "Users can now reset their password" not "Implemented password reset controller"]
 
 **In progress:**
+
 - [What's actively being worked on, with brief status. "Billing integration — Stripe webhooks working, proration logic next"]
 
 **Up next:**
+
 - [What's planned for the next working session]
 
 **Heads up:**
+
 - [Risks, blockers, decisions needed, or anything the client should be aware of. Omit this section entirely if there's nothing — don't manufacture concern]
 
 ---

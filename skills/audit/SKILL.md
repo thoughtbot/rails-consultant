@@ -22,16 +22,19 @@ Perform a systematic audit of `$ARGUMENTS`. This is not a conversation — it is
 Analyse the code against every problem space below. Skip a section only if it genuinely does not apply to this code. Do not pad sections with speculative concerns — report only what you actually found.
 
 ### 1. Responsibility and Cohesion
+
 - Does this code have a single reason to change?
 - Are there multiple responsibilities tangled together?
 - Would renaming the class/method to describe exactly what it does require the word "and"?
 
 ### 2. Coupling and Dependencies
+
 - What does this code know about that it shouldn't?
 - What would break if a dependency changed?
 - Are dependencies injected or hardcoded?
 
 ### 3. Security
+
 - Input validation: are params sanitised, strong parameters used?
 - SQL injection: any raw SQL built from user input?
 - Authorization: is there authorization (not just authentication)? Can a user access another user's resources?
@@ -41,6 +44,7 @@ Analyse the code against every problem space below. Skip a section only if it ge
 - Rate limiting: is the action protected against abuse?
 
 ### 4. Data Integrity
+
 - Are uniqueness validations backed by database constraints?
 - Are related writes wrapped in transactions?
 - Do model validations match database constraints?
@@ -48,6 +52,7 @@ Analyse the code against every problem space below. Skip a section only if it ge
 - Are there race conditions between check and write?
 
 ### 5. Edge Cases
+
 - What happens with nil, empty, zero, blank string inputs?
 - What happens with empty collections?
 - Boundary conditions: first item, last item, exactly at limit
@@ -55,6 +60,7 @@ Analyse the code against every problem space below. Skip a section only if it ge
 - Concurrency: what happens under parallel requests?
 
 ### 6. Error Handling
+
 - What does the user see when this fails?
 - Are rescues too broad? (`rescue StandardError` catching unintended exceptions)
 - Are errors logged/reported or silently swallowed?
@@ -62,6 +68,7 @@ Analyse the code against every problem space below. Skip a section only if it ge
 - Does one failure cascade?
 
 ### 7. Performance
+
 - N+1 queries: are associations eager-loaded?
 - Loading full records when only a count or subset of columns is needed
 - Missing database indexes on filtered/sorted columns
@@ -70,6 +77,7 @@ Analyse the code against every problem space below. Skip a section only if it ge
 - Expensive computations that aren't memoized
 
 ### 8. Testing
+
 - Is the code tested? What's the coverage?
 - Are tests testing behaviour or implementation?
 - Are there brittle tests that would break on refactor?
@@ -78,12 +86,15 @@ Analyse the code against every problem space below. Skip a section only if it ge
 - Are edge cases from section 5 covered?
 
 ### 9. Design and Simplicity
+
 - Is this the simplest thing that could work?
 - Are there abstractions that aren't earning their existence?
 - Does the code follow the conventions of the rest of the codebase?
 
 ### 10. Duplication and Emerging Patterns
+
 Go beyond the target. Search the broader codebase for patterns related to the code under audit:
+
 - Is the same logic, query pattern, or method chain repeated elsewhere? Use grep and glob to find actual instances — don't guess.
 - Are there near-duplicates — code that does the same thing with slight variation? These are more dangerous than exact copies because they diverge silently.
 - Is there an emerging pattern that should be extracted? Look for: repeated query chains that should be scopes, repeated conditional logic that should be a service object, repeated view formatting that should be a helper or partial.
@@ -91,6 +102,7 @@ Go beyond the target. Search the broader codebase for patterns related to the co
 - If extraction is warranted, name the extraction precisely and where it should live, following the codebase's existing conventions.
 
 ### 11. Rails Patterns (if applicable)
+
 - Business logic in callbacks that should be explicit service calls
 - Code in the wrong layer (model vs service vs form vs query object)
 - Concerns hiding coupling vs genuinely grouping cohesive behaviour
@@ -103,6 +115,7 @@ For each problem space where you found issues, report:
 **[Problem Space Name]**
 
 For each finding:
+
 - **What**: describe the issue in plain English
 - **Where**: file path and line number(s)
 - **Why it matters**: the concrete risk — what could go wrong, not abstract principle

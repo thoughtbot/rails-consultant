@@ -66,6 +66,7 @@ Once the slices are identified, guide the sequencing:
 **"Now order them. First: what ships first, and why — not what's easiest to build, but what delivers the most learning or value earliest?"**
 
 Ask:
+
 - "Which slice would tell you the most about whether this epic is heading in the right direction?"
 - "Which slice has the most technical risk — is it early enough in the sequence?"
 - "If the client ran out of budget after two slices, which two would you want to have shipped?"

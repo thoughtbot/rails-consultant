@@ -71,6 +71,7 @@ This is the shared reference for principles, thinkers, and patterns used across 
 The canonical reference for identifying and fixing code quality problems in Rails applications.
 
 **Code smells to recognise:**
+
 - Long Method, Large Class, Long Parameter List — size smells that signal too many responsibilities
 - Feature Envy — a method that uses another object's data more than its own
 - Shotgun Surgery — a change that requires edits in many places
@@ -84,6 +85,7 @@ The canonical reference for identifying and fixing code quality problems in Rail
 - Comments — comments that exist because the code doesn't explain itself
 
 **Principles to apply:**
+
 - Single Responsibility Principle
 - Open/Closed Principle
 - Dependency Inversion Principle
@@ -93,6 +95,7 @@ The canonical reference for identifying and fixing code quality problems in Rail
 - DRY — but duplication is far cheaper than the wrong abstraction
 
 **Solutions (named refactoring moves for Rails):**
+
 - Extract Method, Extract Class, Extract Partial, Extract Validator, Extract Value Object, Extract Decorator
 - Introduce Form Object, Introduce Parameter Object, Introduce Explaining Variable
 - Move Method, Inline Class, Rename Method

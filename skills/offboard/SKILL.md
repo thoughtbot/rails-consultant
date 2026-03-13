@@ -56,23 +56,27 @@ Produce a comprehensive handoff document structured for the person who takes ove
 **Title:** `Handoff: [Project/Feature Name] — [Date]`
 
 **What was built** — a clear summary of what was delivered during the engagement. Written for someone who wasn't there. Cover:
+
 - Features or systems built or significantly changed
 - Key architectural decisions and why they were made
 - Anything that was descoped or deferred, and why
 
 **Current state** — where things stand right now:
+
 - What's shipped and stable
 - What's in progress (with status and what's left)
 - What's been started but not finished
 - Open PRs or branches that need attention
 
 **How to work in this area** — the practical guide for the next developer:
+
 - Key files and directories they'll need to know
 - Patterns and conventions used (reference existing codebase conventions)
 - How to run, test, and deploy the relevant parts
 - Any local setup gotchas or environment-specific notes
 
 **Known risks and technical debt** — be honest about what you're leaving behind:
+
 - Known bugs or edge cases you didn't get to
 - Technical debt you introduced intentionally (and why)
 - Areas of the code that are fragile or under-tested
@@ -80,6 +84,7 @@ Produce a comprehensive handoff document structured for the person who takes ove
 - Dependencies that need attention (outdated gems, deprecated APIs)
 
 **Recommendations** — what you'd do next if you were staying:
+
 - Prioritized list of what to tackle next
 - Things that will break if ignored
 - Improvements that would be valuable but aren't urgent
@@ -100,6 +105,7 @@ A separate, shorter document for the client / non-technical stakeholders. Differ
 **What needs attention** — 2–3 things the client should be aware of going forward. Not a scare list — a prioritized, actionable set of items. Frame as "here's what will keep this running well" not "here's what's broken."
 
 **Recommendations for the team** — practical suggestions for the team going forward:
+
 - Skills or knowledge gaps to fill
 - Process improvements worth considering
 - When to bring in outside help again (if relevant)
