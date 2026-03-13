@@ -58,31 +58,37 @@ If there are multiple moves, guide the sequencing: which move first, what depend
 Good questions to reach for when they naturally arise:
 
 **On responsibility and cohesion:**
+
 - "What are all the reasons this class might need to change?"
 - "If you had to rename this method to say exactly what it does, what would you call it?"
 - "Who owns this behaviour — does it belong here, or is it a guest?"
 
 **On coupling and dependency:**
+
 - "What does this code know about that it probably shouldn't?"
 - "If that thing changed, how many places would you have to update?"
 - "What would you have to mock to test this in isolation — and does that list surprise you?"
 
 **On clarity and intention:**
+
 - "If you read this six months from now with no context, would you know why it was written this way?"
 - "Is this code saying what it means, or are you translating?"
 - "What's the gap between what this code does and what it's called?"
 
 **On change and design:**
+
 - "How hard would it be to add a new type here without touching this class?"
 - "Where's the duplication — and is it duplication of code, or duplication of knowledge?"
 - "What does this code assume about the future that it probably shouldn't?"
 
 **On XP and simplicity:**
+
 - "Is this the simplest thing that could possibly work?"
 - "What would you delete from this without losing any behaviour?"
 - "Is this abstraction earning its existence, or is it speculative?"
 
 **On Rails layer and thoughtbot patterns:**
+
 - "Is there business logic hiding in a callback — something that should be an explicit service call instead?"
 - "Is this in the right layer — does it belong in the model, a service object, a form object, or a query object?"
 - "Could this be a plain Ruby object instead of reaching for a Rails abstraction?"
@@ -90,6 +96,7 @@ Good questions to reach for when they naturally arise:
 - "If you extracted this to a service object with a single `call` method, what would you name it — and does that name reveal whether it has one responsibility?"
 
 **On security (Rails-specific):**
+
 - "What happens if a user sends unexpected params here — are you protected by strong parameters, or is something slipping through?"
 - "Is this query built from user input? Could someone inject SQL through this?"
 - "Who can access this action — is there authorization, or just authentication? What happens if a user guesses someone else's ID?"
@@ -99,6 +106,7 @@ Good questions to reach for when they naturally arise:
 - "Is this action rate-limited or protected against abuse? What happens if someone hits it 10,000 times?"
 
 **On performance (Rails-specific):**
+
 - "How many queries does this action produce? Walk through it — is there an N+1 hiding in that loop?"
 - "Are you loading entire records when you only need a count or a subset of columns?"
 - "Is this query missing an index? What does the `WHERE` clause filter on, and is that column indexed?"
@@ -108,6 +116,7 @@ Good questions to reach for when they naturally arise:
 - "Are you memoizing something expensive, or recomputing it every time?"
 
 **On testing:**
+
 - "Is this tested? What's tested — the behaviour or the implementation?"
 - "If you refactored this, would the tests break even though the behaviour didn't change? That's a brittle test."
 - "What edge case would you be most nervous about if there were no tests?"
@@ -116,6 +125,7 @@ Good questions to reach for when they naturally arise:
 - "Is there an integration test that proves this feature works end-to-end, or just unit tests on individual pieces?"
 
 **On error handling:**
+
 - "What happens when this fails — does the user see a useful error, a 500, or nothing at all?"
 - "Are you rescuing too broadly? What does `rescue StandardError` actually catch that you didn't intend?"
 - "Is this error being logged or reported, or is it silently swallowed?"
@@ -123,6 +133,7 @@ Good questions to reach for when they naturally arise:
 - "Is there a graceful fallback, or does one failure cascade?"
 
 **On data integrity:**
+
 - "Is this uniqueness validation backed by a database constraint — or is there a race condition between the check and the insert?"
 - "Are these related writes wrapped in a transaction? What happens if the second one fails after the first succeeds?"
 - "Does the model validation match what the database enforces? If they disagree, the database wins — and you might not know until production."
@@ -130,6 +141,7 @@ Good questions to reach for when they naturally arise:
 - "Is there a foreign key constraint, or is referential integrity just a hope?"
 
 **On edge cases:**
+
 - "What happens if this is nil? Empty? Zero? A blank string?"
 - "What if the collection is empty — does the code handle that, or does it assume there's always at least one?"
 - "What happens at the boundaries — the first item, the last item, exactly at the limit?"
@@ -138,12 +150,14 @@ Good questions to reach for when they naturally arise:
 ### Question Bank — Refactoring
 
 **On naming the smell:**
+
 - "Can you name the smell — or describe what it feels like if you don't have the name?"
 - "What's the one reason this class exists? If there's more than one, that's your answer."
 - "Where does this code know things it probably shouldn't?"
 - "What would you have to change in multiple places if this requirement shifted?"
 
 **On the move:**
+
 - "What's the smallest change that would meaningfully improve this?"
 - "Are you treating the symptom or the cause?"
 - "What new problem does that refactoring create?"
@@ -154,11 +168,13 @@ Good questions to reach for when they naturally arise:
 - "Is this a service object, a form object, or a query object? Naming the type of extraction clarifies whether it has one job."
 
 **On test safety (XP discipline):**
+
 - "What tests would catch a mistake here?"
 - "Is there anything you'd want to pin down with a test before you move?"
 - "How will you know when you're done — what does passing look like?"
 
 **On simplicity (XP / Beck):**
+
 - "Is this the simplest thing that reveals the intention?"
 - "Are you adding this abstraction because it's needed now, or because it might be useful?"
 - "What could you delete without losing any behaviour or clarity?"

@@ -40,6 +40,7 @@ Report the findings in this order:
 **The pattern** — describe the primary approach in plain English. One paragraph. "This codebase handles X by doing Y." If there's a clear convention, name it. If there are multiple approaches, name each.
 
 **Where it lives** — list the key files and locations, grouped logically:
+
 - Configuration (initializers, middleware, config)
 - Base-level setup (ApplicationController, ApplicationRecord, etc.)
 - Implementation files (services, concerns, models, specific controllers)
@@ -48,6 +49,7 @@ Report the findings in this order:
 For each file, include the path and a one-line description of its role.
 
 **The conventions** — what rules does this codebase follow for this concern? Be specific:
+
 - Is there a consistent pattern, or multiple approaches?
 - Are there abstractions (base classes, modules, shared concerns) or is it ad-hoc?
 - What naming conventions are used?

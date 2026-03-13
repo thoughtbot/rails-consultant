@@ -63,6 +63,7 @@ VERB /path  →  Controller#action
 ```
 
 **Conventions:**
+
 - `├──` non-last sibling, `└──` last sibling, `│` continuation
 - `[success] →` and `[failure] →` for explicit branch points
 - `# comment` for brief annotations (callbacks, notable side effects)

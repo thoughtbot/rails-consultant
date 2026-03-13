@@ -28,10 +28,13 @@ Wait for their attempt. This is the most important step. An attempt — even a b
 Once you have their attempt, teach in this order:
 
 ### 1. Calibrate their attempt
+
 Be direct about what they got right, what they got partially right, and what's wrong — and why. Don't just say "close!" — say what the misunderstanding is and where it comes from. A wrong mental model corrected precisely is worth more than a vague correction.
 
 ### 2. Explain the concept
+
 Explain it clearly, anchored to what they already know. Use a Rails or Ruby analogy if there's a good one. Cover:
+
 - What it does
 - Why it works that way (the underlying mechanic, not just the API)
 - When to reach for it — and when not to
@@ -39,11 +42,13 @@ Explain it clearly, anchored to what they already know. Use a Rails or Ruby anal
 Keep it to what they need to understand this thing. Don't expand into adjacent concepts unless they're essential.
 
 ### 3. Show a worked example
+
 Write a complete, realistic example using their actual context where possible. Not a toy example — something that looks like real application code. Annotate any non-obvious lines.
 
 If the concept has common gotchas for Rails developers specifically, name them. One or two, not a list.
 
 ### 4. The rule of thumb
+
 End the teaching with one sentence they can carry forward — a heuristic for when to use this and how to think about it. Something short enough to remember without notes.
 
 ---

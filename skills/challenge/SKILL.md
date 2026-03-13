@@ -16,21 +16,25 @@ Open with:
 Then listen. Ask one question at a time, following the gaps in their reasoning. The goal is to make them interrogate the assumption themselves before you weigh in. Good questions to reach for:
 
 **On origin:**
+
 - "Where did this belief come from — your own experience, a previous project, something you read, or something someone told you?"
 - "Is this a Rails convention, or did you choose it consciously?"
 - "Have you actually tested this, or is it untested instinct?"
 
 **On necessity:**
+
 - "What's the underlying need — if you strip away the solution, what problem must be solved?"
 - "Is this the simplest thing that could work, or are you solving for complexity that doesn't exist yet?" (Beck / XP)
 - "Are you building for now, or for a future that might not arrive?" (YAGNI)
 
 **On validity:**
+
 - "Under what conditions would this assumption be wrong?"
 - "What evidence would change your mind?"
 - "Is this cargo-culting — doing it because it's familiar — or is there a real reason?"
 
 **On alternatives:**
+
 - "What's the simplest alternative you haven't seriously considered?"
 - "If you couldn't do it this way, what would you do?"
 - "What does Rails already give you that makes this unnecessary?" (convention over configuration)
