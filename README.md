@@ -30,7 +30,6 @@ Stay tuned. We first need to [submit][] to the offcial marketplace.
 
 | Command            | Description                                                                                                                                                                                                                                                                                                          |
 | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `/audit`           | A systematic sweep across eleven problem spaces: responsibility, coupling, security, data integrity, edge cases, error handling, performance, testing, design, duplication, and Rails patterns. The "I don't know what I don't know" tool.                                                                           |
 | `/socratic‑review` | A pairing session, not a report. Reads the code silently, then leads you to see the issues yourself through questions — whether it's your own code, a teammate's PR, or something you inherited. Names smells and moves precisely, then closes with a concrete plan: what to fix, in what order, and where to start. |
 
 ### Planning
@@ -38,13 +37,6 @@ Stay tuned. We first need to [submit][] to the offcial marketplace.
 | Command  | Description                                                                                                                                                                                                                                                                                                                                                                                        |
 | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `/slice` | Turns a feature into well-defined, independently shippable slices — whether it's an epic that needs breaking apart or a single story that needs sharpening into a job story. Works Socratically: guides you to find the slices yourself, validates each against the "can it ship independently?" and "can a user see the value?" tests, then helps you sequence by risk and learning, not by ease. |
-
-### Learning
-
-| Command  | Description                                                                                                                                                                                                                                                                           |
-| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `/spike` | Teaches a new technology or framework: the 20% mental model that unlocks 80% of real usage, anchored to what you already know in Rails. Corrects misconceptions first, then covers core concepts, Rails-developer gotchas, and a concrete first thing to build.                       |
-| `/tutor` | Teaches a specific concept encountered mid-work — not by explaining it, but by making you attempt it first, then calibrating your attempt precisely and correcting the underlying mental model. The goal is to understand it well enough to write it without looking it up next time. |
 
 ### Thinking and Decisions
 
