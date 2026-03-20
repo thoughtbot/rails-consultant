@@ -1,138 +1,98 @@
 ---
 name: offboard
-description: Wrap up a client engagement — produce handoff documents, stakeholder summary, and questions for the client. Leave the project in the best possible shape.
-argument-hint: "[optional engagement context]"
+description: Walk through the Designer/Developer wrap-up checklist for offboarding a client engagement — conversationally, one item at a time.
 disable-model-invocation: true
 ---
 
 ## Behavior
 
-This is a conversational planning session that produces concrete handoff documents. Start by understanding the engagement.
+Walk through each wrap-up item below as a conversation. Go one item at a time. For each item:
 
-Open with:
+1. Explain what needs to happen and why.
+2. If you can assist directly (scan code, check branches, grep for secrets), do it right then.
+3. Ask whether the item applies, whether it's done, or whether they need help.
+4. Move on when they confirm.
 
-**"Tell me about the engagement — what did you build or work on, and when are you rolling off?"**
-
-Wait for their answer. Then ask one at a time:
-
-**"What's still in flight — anything unfinished, in progress, or that you'd want another week to get right?"**
-
-Wait. Then:
-
-**"Who's going to own this after you leave — the client's team, another contractor, or nobody yet?"**
-
-Wait. Then:
-
-**"What's the thing you're most worried about happening after you're gone?"**
-
-Wait for their answer. Then push — don't take the first answer at face value:
-
-**"Is that really the biggest risk, or is that the one you're comfortable naming? What's the thing you'd be embarrassed for the next developer to find?"**
-
-Wait for their answer. This matters because consultants instinctively frame their exit charitably. The handoff documents are only as honest as the answers that feed them.
-
-Wait for all answers before producing anything. These shape everything — who the audience is, what needs emphasis, and what risks to surface.
+Skip items that clearly don't apply based on what you've already learned (e.g., skip Figma items if there's no design work). If you're unsure, ask.
 
 ---
 
-### Research Phase
+## Checklist
 
-Before writing the handoff documents, explore the codebase for context:
+### 1. Transfer codebase ownership to the client
 
-- `git log --oneline --since="3 months ago" --author=<user>` (or reasonable timeframe) — what did you actually touch?
-- `git log --oneline -30` — recent activity and state of the codebase
-- `git branch -a` — any open feature branches that need attention?
-- `git stash list` — anything stashed and forgotten?
-- Check for open TODOs or FIXMEs the user may have left
-- Check for any pending migrations not yet run in production
-- Check CI config if visible — is the pipeline green?
+Check who owns the repo. Ask whether the client has admin access and whether any transfer is needed.
 
----
+### 2. Upload files to client-accessible storage
 
-### Deliverable 1: Handoff Document
+Ask whether all project files (documents, assets, exports) have been uploaded to Basecamp, Drive, or whatever file storage the client uses.
 
-Produce a comprehensive handoff document structured for the person who takes over. Write it in markdown, ready to paste into a wiki, Notion, or repo README.
+### 3. Figma file transfer
 
-**Title:** `Handoff: [Project/Feature Name] — [Date]`
+Ask whether this engagement involved design work. If yes:
 
-**What was built** — a clear summary of what was delivered during the engagement. Written for someone who wasn't there. Cover:
+- Have Figma files been transferred to the client's organization, or exported as `.fig` files and sent?
+- Does your team have a copy of the files?
+- Have client members been removed as editors from your Figma team? (Viewers are fine — they don't count toward billing.)
 
-- Features or systems built or significantly changed
-- Key architectural decisions and why they were made
-- Anything that was descoped or deferred, and why
+If no design work, skip this entirely.
 
-**Current state** — where things stand right now:
+### 4. Archive Slack or other chat rooms
 
-- What's shipped and stable
-- What's in progress (with status and what's left)
-- What's been started but not finished
-- Open PRs or branches that need attention
+Ask which shared channels or chat rooms exist and whether they should be archived.
 
-**How to work in this area** — the practical guide for the next developer:
+### 5. Clean up project management tools
 
-- Key files and directories they'll need to know
-- Patterns and conventions used (reference existing codebase conventions)
-- How to run, test, and deploy the relevant parts
-- Any local setup gotchas or environment-specific notes
+Ask about Trello, Switchboard, or other project management tools. Should boards be archived or closed?
 
-**Known risks and technical debt** — be honest about what you're leaving behind:
+### 6. Transfer password manager entries
 
-- Known bugs or edge cases you didn't get to
-- Technical debt you introduced intentionally (and why)
-- Areas of the code that are fragile or under-tested
-- Performance concerns at scale
-- Dependencies that need attention (outdated gems, deprecated APIs)
+Ask whether any credentials are stored in your team's password manager that need to be transferred to the client's vault.
 
-**Recommendations** — what you'd do next if you were staying:
+### 7. Delete sensitive user data from machines
 
-- Prioritized list of what to tackle next
-- Things that will break if ignored
-- Improvements that would be valuable but aren't urgent
-- Anything you'd refactor given more time
+Scan the local project directory for potential sensitive data:
 
----
+- Grep for common patterns: API keys, tokens, passwords, `.env` files, credential files, database dumps, SSH keys.
+- Check for `.env`, `.env.local`, `.env.production`, or similar files.
+- Check for any database dumps or seed files with real user data.
 
-### Deliverable 2: Stakeholder Summary
+Report what you find. Ask whether there's anything else on their machine that needs to be cleaned up.
 
-A separate, shorter document for the client / non-technical stakeholders. Different audience, different tone — no code, no jargon.
+### 8. Remove remote RSA keys on machines
 
-**Title:** `Engagement Summary: [Project/Feature Name] — [Date]`
+Ask whether they added any SSH keys to client servers or services that should be removed.
 
-**What was accomplished** — plain-language summary of what was delivered and the value it provides. Frame in terms of what users can now do, not what code was written.
+### 9. Return client equipment
 
-**What's in progress** — anything still in flight, with clear status and expected next steps. No surprises.
+Ask whether they have any client equipment (laptops, hardware) to return.
 
-**What needs attention** — 2–3 things the client should be aware of going forward. Not a scare list — a prioritized, actionable set of items. Frame as "here's what will keep this running well" not "here's what's broken."
+### 10. Archive the retrospective
 
-**Recommendations for the team** — practical suggestions for the team going forward:
+Ask whether the project retrospective has been documented and stored somewhere the team can reference it.
 
-- Skills or knowledge gaps to fill
-- Process improvements worth considering
-- When to bring in outside help again (if relevant)
+### 11. Archive design artifacts
 
-**It was a pleasure** — close warmly. Acknowledge the team, the collaboration, and what you learned. This isn't filler — it's how you end on a high note and get called back. Be specific about what worked well in the partnership.
+Ask whether screenshots and other design artifacts have been saved somewhere accessible to the team. Skip if no design work.
+
+### 12. Remind client to rotate credentials
+
+This is important — any credentials or API keys the client shared should be rotated after offboarding.
+
+Ask whether they've reminded the client to change credentials and API keys that were shared during the engagement.
+
+### 13. Tidy up Google Docs
+
+Ask whether project-related Google Docs have been organized into a folder and made accessible at the organization level.
+
+### 14. Book knowledge transfer session
+
+Ask whether a knowledge transfer session has been scheduled to walk the client through all resources, the codebase, and anything they'll need to maintain going forward.
+
+If the codebase is in the current working directory, offer to help prepare — check the README, look at open branches, scan for TODOs, and identify areas that might need a walkthrough.
 
 ---
-
-### Deliverable 3: Questions for the Client
-
-Before rolling off, surface 3–5 questions worth discussing with the client in a final meeting:
-
-- "Are there any areas where you feel uncertain about what happens after I leave?"
-- "Is there anything I built that your team needs a walkthrough on?"
-- "What worked well in how we collaborated — and what would you change next time?"
-- "Is there anything in the recommendations that you'd want me to prioritize before my last day?"
-
-Tailor these to the specific engagement — if there's a risky area, ask about it directly. If handoff to a specific person is happening, ask what would make that transition smoothest.
-
----
-
-After producing all three deliverables, close with:
-
-**"Read through the stakeholder summary — does it accurately represent what was accomplished? The client will remember this document more than the code."**
-
-Wait for their answer. Respond with one short paragraph: whether the summary lands as a confident, honest account of the work, or whether it undersells or oversells — and what to adjust.
 
 ## Tone
 
-Professional and warm. This is the last impression you leave. Be thorough but not exhaustive — the handoff should feel organised and confident, not anxious. Honesty about risks builds more trust than pretending everything is perfect. End on a note that makes the client glad they hired you and open to working together again.
+Calm, professional, thorough. You're a colleague helping them make sure nothing falls through the cracks. Don't rush — each item matters. But don't over-explain items they've already handled.
