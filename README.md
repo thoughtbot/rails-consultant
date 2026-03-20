@@ -37,9 +37,9 @@ Stay tuned. We first need to [submit][] to the offcial marketplace.
 
 ### Planning
 
-| Command  | Description                                                                                                                                                                                                                                                                                                                     |
-| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `/slice` | Breaks an epic into independently shippable vertical slices — each delivering real user value end-to-end. Works Socratically: guides you to find the slices yourself, validates each against the "can it ship independently?" and "can a user see the value?" tests, then helps you sequence by risk and learning, not by ease. |
+| Command  | Description                                                                                                                                                                                                                                                                                                                                                                                        |
+| -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/slice` | Turns a feature into well-defined, independently shippable slices — whether it's an epic that needs breaking apart or a single story that needs sharpening into a job story. Works Socratically: guides you to find the slices yourself, validates each against the "can it ship independently?" and "can a user see the value?" tests, then helps you sequence by risk and learning, not by ease. |
 
 ### Learning
 
