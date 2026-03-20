@@ -1,43 +1,62 @@
 ---
 name: slice
-description: Break an epic into vertical slices — independently shippable pieces of work that each deliver real user value end-to-end
-argument-hint: "[epic description]"
+description: Turn a feature into well-defined, independently shippable slices — whether it's an epic that needs breaking apart or a single story that needs sharpening into a job story
+argument-hint: "[feature description]"
 disable-model-invocation: true
 ---
 
-## Phase 1: Understand the Epic
+## Phase 1: Understand the Work
 
-If no epic is specified, open with:
+If no feature is specified, open with:
 
-**"What's the epic? Describe the feature or capability you want to break into slices."**
+**"What are you building? Describe the feature or capability — big or small."**
 
 Wait for their answer before proceeding.
 
-Once the epic is known, ask three things — conversationally, not as a form:
+Once the feature is known, ask three things — conversationally, not as a form:
 
-**"Before we break this down, I need to understand it. Three things:**
+**"Before we slice this, I need to understand it. Three things:**
 
-**Who is this for — specifically? Not 'users', but which user, in which moment, with which need.**
+**Who is this for — specifically? Not 'users', but which person, in which moment, with which need.**
 
-**What does the finished epic look like? If it shipped completely, what can that user do that they can't do today?**
+**What does done look like? When this ships, what can that person do that they can't do today?**
 
 **What's the part you're least sure about — technically, or in terms of what the user actually needs?"**
 
-Wait for their answers. Listen for: vagueness about the user (a sign the scope isn't understood), vagueness about done (a sign it will expand), and what they flag as uncertain (that's where the risk lives, and where the first slice should probably go).
+Wait for their answers. Listen for: vagueness about the user (a sign the scope isn't understood), vagueness about done (a sign it will expand), and what they flag as uncertain (that's where the risk lives).
 
-If their answers are vague, ask one follow-up before moving on. Do not proceed to slicing on an epic you don't understand.
+If their answers are vague, ask one follow-up before moving on. Do not proceed to slicing on work you don't understand.
 
 ---
 
-## Phase 2: Find the Slices — Socratically
+## Phase 2: Shape the Slices — Socratically
 
-Do not produce a slice list. Guide them to find the slices themselves, one question at a time.
+Based on the size and complexity of the feature, take one of two paths. Do not announce which path you're taking — just follow the one that fits.
+
+### Path A: The feature is already small
+
+If the feature is a single, focused piece of work, help them sharpen it into a well-defined job story. Read `~/.claude/skills/slice/examples/job-stories.md` for the job story format. Guide them with:
+
+- "What's the specific situation the user is in when they need this? Not just 'using the app' — what moment triggers the need?"
+- "What do they want to do in that moment — and why does it matter to them?"
+- "How would you know this is done? What can the user do that they couldn't before — something you could demonstrate in 30 seconds?"
+
+Push on scope:
+
+- "Is this actually one thing, or are you sneaking two things in? Could any part of this ship on its own?"
+- "Is there a simpler version that still solves the user's problem in that moment?"
+
+If pushing reveals that the feature is actually multiple slices, switch to Path B.
+
+### Path B: The feature is large
+
+Guide them to find the slices themselves, one question at a time.
 
 Start here:
 
 **"What's the absolute minimum a user would need to get any value from this at all — the smallest thing that's real, not a prototype?"**
 
-This is the walking skeleton (thoughtbot / XP). It's almost always smaller than they think. Push on it:
+This is the walking skeleton (thoughtbot / XP). It's almost always smaller than they think. Read `~/.claude/skills/slice/examples/full-stack-slices.md` to understand the principle: cut vertically through the stack, not horizontally. Push on it:
 
 - "Could a user actually do something with that, or is it just plumbing?"
 - "Is that one slice, or are you combining two things that could ship separately?"
@@ -46,7 +65,7 @@ This is the walking skeleton (thoughtbot / XP). It's almost always smaller than 
 Once the first slice is clear, work outward:
 
 - "What's the next most important thing — not the next most obvious thing to build, but the next most valuable to the user?"
-- "What's the riskiest assumption in this epic — the thing that, if you're wrong, changes everything? Should that be a slice?"
+- "What's the riskiest assumption — the thing that, if you're wrong, changes everything? Should that be a slice?"
 - "Is there anything in here that only exists to support another feature, not the user? That's probably not a slice."
 - "Which slices depend on each other, and which are actually independent?"
 
@@ -59,25 +78,44 @@ If a slice fails either test, it's either too big or it's not a slice.
 
 ---
 
-## Phase 3: Sequence and Deliverable
+## Phase 3: Deliverable
 
-Once the slices are identified, guide the sequencing:
+### For a single slice
+
+Produce a job story. Read `~/.claude/skills/slice/examples/job-stories.md` for the format:
+
+---
+
+**[Short name]**
+**When** [specific situation the user is in], **I want** [what they need to do] **so** [the outcome that matters to them].
+**Ships when:** [The observable behavior that marks it done — what a user can do, not what the code does.]
+**Risk / learning:** [What this slice tests or de-risks, or "Low risk" if straightforward.]
+
+---
+
+Close with:
+
+**"Is this actually the smallest thing that delivers real value — or did you sneak scope into it?"**
+
+### For multiple slices
+
+Guide the sequencing:
 
 **"Now order them. First: what ships first, and why — not what's easiest to build, but what delivers the most learning or value earliest?"**
 
 Ask:
 
-- "Which slice would tell you the most about whether this epic is heading in the right direction?"
+- "Which slice would tell you the most about whether this is heading in the right direction?"
 - "Which slice has the most technical risk — is it early enough in the sequence?"
-- "If the client ran out of budget after two slices, which two would you want to have shipped?"
+- "If you ran out of budget after two slices, which two would you want to have shipped?"
 
-When sequencing is agreed, produce the deliverable. Read `~/.claude/skills/slice/example.md` for a complete example of the expected format and quality. Format each slice consistently:
+When sequencing is agreed, produce the deliverable. Read `~/.claude/skills/slice/example.md` for a complete example of the expected format and quality. Format each slice as a job story:
 
 ---
 
 **Slice [N]: [Short name]**
-**As a** [specific user], **I want** [capability] **so that** [value delivered].
-**Ships when:** [The observable behaviour that marks it done — what a user can do, not what the code does.]
+**When** [specific situation the user is in], **I want** [what they need to do] **so** [the outcome that matters to them].
+**Ships when:** [The observable behavior that marks it done — what a user can do, not what the code does.]
 **Depends on:** [Any prior slice it requires, or "none".]
 **Risk / learning:** [What this slice tests or de-risks.]
 
