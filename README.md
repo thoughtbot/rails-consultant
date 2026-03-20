@@ -15,12 +15,10 @@ Stay tuned. We first need to [submit][] to the offcial marketplace.
 
 ### Understanding the Codebase
 
-| Command      | Description                                                                                                                                                                                                                                |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `/onboard`   | The 30,000-foot view before touching anything. Explores architecture, conventions, key models, infrastructure, test health, and risk signals. Start here on a new engagement.                                                              |
-| `/explain`   | Translates a specific piece of code into plain understanding — what it does and why, not whether it's good. Checks git history first so the "why" behind the code isn't lost.                                                              |
-| `/flow`      | Traces a user flow through the codebase and renders it as an ASCII call graph: routes → controller → service objects → models → jobs and mailers. Surfaces branch points, side effects, and recent git changes for every file in the path. |
-| `/prior‑art` | Finds every place the codebase handles a specific concern — the consistent pattern and the exceptions. Answers the "how does this app do X?" question before you build something that reinvents it.                                        |
+| Command      | Description                                                                                                                                                                                                                              |
+| ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/explain`   | Explains a specific piece of code or a user-facing flow. Point it at a file, class, or method for a close reading; point it at a feature or user action for a system-level diagram with entry points, branching logic, and side effects. |
+| `/prior‑art` | Finds every place the codebase handles a specific concern — the consistent pattern and the exceptions. Answers the "how does this app do X?" question before you build something that reinvents it.                                      |
 
 ### Test-Driven Development
 
