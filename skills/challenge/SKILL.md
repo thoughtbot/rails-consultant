@@ -2,18 +2,17 @@
 name: challenge
 description: Pressure-test an assumption, decision, or inherited constraint — Socratic cross-examination that forces you to defend or abandon your position
 argument-hint: "[assumption or decision to examine]"
-disable-model-invocation: true
 ---
 
 ## Behavior
 
 This is a conversation, not an audit. Do not produce structured output. Do not list findings upfront. Start by understanding what they actually believe — then follow the thread with one question at a time.
 
-Open with:
+If you already have context — from a prior skill, from the conversation, or from something specific the user said — name the assumption you want to pressure-test and why. Then go straight to questioning. Do not ask them to restate what you already know.
 
-**"Tell me the assumption. Say it as plainly as you can — the version you'd say to yourself, not the version you'd defend in a meeting."**
+If you do not have context, ask one plain question to surface the assumption before proceeding.
 
-Then listen. Ask one question at a time, following the gaps in their reasoning. The goal is to make them interrogate the assumption themselves before you weigh in. Good questions to reach for:
+Ask one question at a time, following the gaps in their reasoning. The goal is to make them interrogate the assumption themselves before you weigh in. Good questions to reach for:
 
 **On origin:**
 
