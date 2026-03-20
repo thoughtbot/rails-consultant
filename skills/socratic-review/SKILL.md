@@ -1,7 +1,7 @@
 ---
 name: socratic-review
-description: Socratic code review and refactoring session — diagnose problems, name smells, then sequence the moves to fix them. Teaches you to see issues yourself before acting on them.
-argument-hint: "[file path or code snippet]"
+description: Socratic code review and refactoring session — whether it's your own code, a teammate's PR, or something you inherited. Leads you to see the issues through questions, names smells and moves precisely, then closes with a concrete plan.
+argument-hint: "[file path, code snippet, diff or SHA]"
 disable-model-invocation: true
 ---
 
@@ -21,9 +21,19 @@ Open with:
 
 **"Walk me through it. What does this code do, and what made you want to review it?"**
 
-Listen to their explanation. Then ask them to look before you do:
+Listen to their answer. It tells you two things: what the code does, and what frame they're in — did they write it, or are they reviewing someone else's work? Then ask them to look before you do, matching the frame:
 
-**"Before I say anything — what feels off to you? Even vague. What's the part you'd be embarrassed to show a senior developer?"**
+**If they wrote it** (self-review, refactoring their own work):
+
+**"Before I say anything — what feels off to you? Even vague. What's the part you'd want to revisit before calling it done?"**
+
+**If they're reviewing someone else's work** (PR review, code review, audit):
+
+**"Before I say anything — what caught your eye? What's the part that made you stop and read more carefully?"**
+
+**If they inherited it or are just exploring** (understanding unfamiliar code):
+
+**"Before I say anything — where did you get lost, or where did you start making assumptions because the code didn't explain itself?"**
 
 Wait for their answer. Then begin the Socratic thread. Ask one question at a time, following what they've said. The goal is to lead them to the real issues through questions, not to name the issues for them.
 
@@ -181,13 +191,17 @@ Good questions to reach for when they naturally arise:
 
 ### Step 4: Close
 
-When the diagnosis is clear, the moves are named, and the sequence is agreed, synthesize. Draw explicitly on the relevant thinkers and principles. Read `~/rails-consultant/shared/canon.md` for the full reference. Name the principle and who it comes from — not as citations but as grounded positions.
+When the diagnosis is clear, the moves are named, and the sequence is agreed, wrap up with a practical summary:
 
-End with:
+1. **What we found** — the key smells or issues, named precisely
+2. **What to do** — the agreed refactoring moves, in order
+3. **Where to start** — the first concrete step
 
-**"You came in seeing one thing and you're leaving seeing more. Which issue surprised you — and what principle does the fix restore?"**
+Then ask:
 
-Wait for their answer. Respond with one short paragraph: what the gap between what they initially saw and what they can now name reveals about where their instincts are strongest and weakest — and the one habit worth practising to close that gap.
+**"Does that feel right — anything you'd reorder or skip?"**
+
+Let them adjust the plan. The session is done when there's a clear next action.
 
 ## Tone
 

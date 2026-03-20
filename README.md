@@ -24,10 +24,10 @@ Stay tuned. We first need to [submit][] to the offcial marketplace.
 
 ### Code Quality
 
-| Command            | Description                                                                                                                                                                                                                                                                                                             |
-| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `/audit`           | A systematic sweep across eleven problem spaces: responsibility, coupling, security, data integrity, edge cases, error handling, performance, testing, design, duplication, and Rails patterns. The "I don't know what I don't know" tool.                                                                              |
-| `/socratic‑review` | A pairing session, not a report. Reads the code silently, then leads you to see the issues yourself through questions before helping you sequence the moves to fix them. Names smells precisely (Feature Envy, Shotgun Surgery, etc.) and moves precisely (Extract Class, Replace Conditional with Polymorphism, etc.). |
+| Command            | Description                                                                                                                                                                                                                                                                                                          |
+| ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/audit`           | A systematic sweep across eleven problem spaces: responsibility, coupling, security, data integrity, edge cases, error handling, performance, testing, design, duplication, and Rails patterns. The "I don't know what I don't know" tool.                                                                           |
+| `/socratic‑review` | A pairing session, not a report. Reads the code silently, then leads you to see the issues yourself through questions — whether it's your own code, a teammate's PR, or something you inherited. Names smells and moves precisely, then closes with a concrete plan: what to fix, in what order, and where to start. |
 
 ### Planning
 
