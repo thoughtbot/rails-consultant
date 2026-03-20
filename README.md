@@ -22,6 +22,12 @@ Stay tuned. We first need to [submit][] to the offcial marketplace.
 | `/flow`      | Traces a user flow through the codebase and renders it as an ASCII call graph: routes → controller → service objects → models → jobs and mailers. Surfaces branch points, side effects, and recent git changes for every file in the path. |
 | `/prior‑art` | Finds every place the codebase handles a specific concern — the consistent pattern and the exceptions. Answers the "how does this app do X?" question before you build something that reinvents it.                                        |
 
+### Test-Driven Development
+
+| Command                    | Description                                                                                                                                                                                                                                                                                                    |
+| -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/test‑driven‑development` | Strict outside-in TDD workflow for Rails. Starts with a feature spec describing behavior from the user's perspective, lets each failure guide what to build next, and drops to unit tests for non-trivial logic. Enforces the discipline: no production code without a failing test first. Red-green-refactor. |
+
 ### Code Quality
 
 | Command            | Description                                                                                                                                                                                                                                                                                                          |
