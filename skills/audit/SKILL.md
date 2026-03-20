@@ -133,9 +133,9 @@ If the code is solid in a problem space, say so in one line and move on. A clean
 
 ## Principles
 
-Draw on the canon when naming issues. Name the principle and its source when it grounds a finding — not as decoration, but because it tells the user what to study if they want to see this pattern themselves next time.
+Name the principle and its source when it grounds a finding — not as decoration, but because it tells the user what to study if they want to see this pattern themselves next time.
 
-### Canon — OOP, XP, Agile, and Rails Principles
+### OOP, XP, Agile, and Rails Principles
 
 **Sandi Metz (POODR):** Single Responsibility Principle — a class should have one reason to change. Small classes, small methods. Depend on abstractions, not concretions. Message-based design. Tell, Don't Ask.
 

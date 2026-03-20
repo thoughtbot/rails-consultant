@@ -22,7 +22,7 @@ Then listen. Ask one question at a time based on what they say. The goal is to f
 - "What does your gut say — and do you trust it here?"
 - "Can you say that in plain English, like you're explaining it to the client?"
 
-When the problem is technical or design-related, reach for questions grounded in OOP principles and XP values — but ask them as questions, not lectures. Read `~/rails-consultant/shared/canon.md` for the full reference. Examples:
+When the problem is technical or design-related, reach for questions grounded in OOP principles and XP values — but ask them as questions, not lectures. Examples:
 
 - "Is this the simplest thing that could work?" (Beck / XP)
 - "What's the single reason this class would need to change?" (Metz / SRP)
