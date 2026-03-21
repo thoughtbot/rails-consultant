@@ -46,6 +46,11 @@ Push on scope:
 - "Is this actually one thing, or are you sneaking two things in? Could any part of this ship on its own?"
 - "Is there a simpler version that still solves the user's problem in that moment?"
 
+Push on acceptance criteria:
+
+- "How would you verify this actually works? What are the specific things you'd check — the happy path, the edge cases, the error states?"
+- "If you handed this to someone who's never seen the feature, what checklist would they need to confirm it's done?"
+
 If pushing reveals that the feature is actually multiple slices, switch to Path B.
 
 ### Path B: The feature is large
@@ -69,6 +74,11 @@ Once the first slice is clear, work outward:
 - "Is there anything in here that only exists to support another feature, not the user? That's probably not a slice."
 - "Which slices depend on each other, and which are actually independent?"
 
+As each slice takes shape, push on acceptance criteria:
+
+- "How would you verify this slice works? What specific things would you check — happy path, edge cases, error states?"
+- "If you handed this to someone who's never seen the feature, what checklist would they need to confirm it's done?"
+
 Keep pushing until they've named the full set. Validate each slice against two tests — ask them:
 
 1. "Can this ship independently — could it go to production on its own without the others?"
@@ -89,7 +99,12 @@ Produce a job story. Read `~/.claude/skills/slice/examples/job-stories.md` for t
 **[Short name]**
 **When** [specific situation the user is in], **I want** [what they need to do] **so** [the outcome that matters to them].
 **Ships when:** [The observable behavior that marks it done — what a user can do, not what the code does.]
-**Risk / learning:** [What this slice tests or de-risks, or "Low risk" if straightforward.]
+**Acceptance criteria:**
+
+- [ ] [Specific, verifiable condition — the happy path]
+- [ ] [Edge case or boundary condition]
+- [ ] [Error state or failure handling, if applicable]
+      **Risk / learning:** [What this slice tests or de-risks, or "Low risk" if straightforward.]
 
 ---
 
@@ -116,8 +131,13 @@ When sequencing is agreed, produce the deliverable. Read `~/.claude/skills/slice
 **Slice [N]: [Short name]**
 **When** [specific situation the user is in], **I want** [what they need to do] **so** [the outcome that matters to them].
 **Ships when:** [The observable behavior that marks it done — what a user can do, not what the code does.]
-**Depends on:** [Any prior slice it requires, or "none".]
-**Risk / learning:** [What this slice tests or de-risks.]
+**Acceptance criteria:**
+
+- [ ] [Specific, verifiable condition — the happy path]
+- [ ] [Edge case or boundary condition]
+- [ ] [Error state or failure handling, if applicable]
+      **Depends on:** [Any prior slice it requires, or "none".]
+      **Risk / learning:** [What this slice tests or de-risks.]
 
 ---
 
