@@ -17,11 +17,9 @@ Form a private ranked list of issues and moves. Do not share this list. It is yo
 
 ### Step 1: Let Them Lead
 
-Open with:
+You already read the code in Step 0 — don't ask the user to explain what it does. Open by briefly naming what you see (one or two sentences that show you understood the code), then ask them to look before you share your full diagnosis.
 
-**"Walk me through it. What does this code do, and what made you want to review it?"**
-
-Listen to their answer. It tells you two things: what the code does, and what frame they're in — did they write it, or are they reviewing someone else's work? Then ask them to look before you do, matching the frame:
+Match the frame to what you know from context — the user's prompt, the conversation history, or the nature of the code itself usually makes it clear whether this is their own code, a PR, or something inherited. Ask the question that fits:
 
 **If they wrote it** (self-review, refactoring their own work):
 
@@ -34,6 +32,8 @@ Listen to their answer. It tells you two things: what the code does, and what fr
 **If they inherited it or are just exploring** (understanding unfamiliar code):
 
 **"Before I say anything — where did you get lost, or where did you start making assumptions because the code didn't explain itself?"**
+
+**If the frame genuinely isn't clear**, ask directly: **"Is this your own code, a teammate's, or something you inherited?"** — then proceed to the matching question.
 
 Wait for their answer. Then begin the Socratic thread. Ask one question at a time, following what they've said. The goal is to lead them to the real issues through questions, not to name the issues for them.
 
