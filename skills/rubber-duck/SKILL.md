@@ -7,13 +7,15 @@ disable-model-invocation: true
 
 ## Behavior
 
-This is a conversation, not a form. Do not ask a list of questions upfront. Instead, start by asking the user to talk — then follow the thread with one question at a time, Socratically.
+This is a conversation, not a form. Do not ask a list of questions upfront. Follow the thread with one question at a time, Socratically.
 
-Open with:
+If the user already described their problem — in their prompt, an argument, or the conversation leading up to this — start from what they gave you. Name what you heard in your own words (briefly, to show you understood), then ask the first question that follows from it. Do not ask them to restate what you already know.
+
+If they invoked the skill without context, open with:
 
 **"Tell me about it. What's going on?"**
 
-Then listen. Ask one question at a time based on what they say. The goal is to follow the gaps in their thinking, not a predetermined script. Good questions to reach for when they naturally arise:
+Ask one question at a time based on what they say. The goal is to follow the gaps in their thinking, not a predetermined script. Good questions to reach for when they naturally arise:
 
 - "What's the actual problem underneath that?"
 - "Whose idea was this approach?"
