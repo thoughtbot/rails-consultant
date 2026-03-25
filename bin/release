@@ -1,0 +1,92 @@
+#!/usr/bin/env bash
+
+# Release script for the rails-consultant Claude Code plugin.
+# Modeled after the binstub that ships with Ruby gems (bundle gem).
+#
+# Usage:
+#   bin/release           # interactive — prompts for the new version
+#   bin/release 2.1.0     # non-interactive — uses the given version
+
+set -euo pipefail
+
+plugin_json=".claude-plugin/plugin.json"
+
+if [ ! -f "$plugin_json" ]; then
+  echo "Error: $plugin_json not found. Run this from the project root." >&2
+  exit 1
+fi
+
+if ! command -v jq &> /dev/null; then
+  echo "Error: jq is required but not installed. Install it with: brew install jq" >&2
+  exit 1
+fi
+
+current_version=$(jq -r '.version' "$plugin_json")
+echo "Current version: $current_version"
+
+if [ $# -ge 1 ]; then
+  new_version="$1"
+else
+  printf "New version: "
+  read -r new_version
+fi
+
+if [ -z "$new_version" ]; then
+  echo "Error: version cannot be blank." >&2
+  exit 1
+fi
+
+if [ "$new_version" = "$current_version" ]; then
+  echo "Error: new version is the same as the current version." >&2
+  exit 1
+fi
+
+if ! echo "$new_version" | grep -qE '^[0-9]+\.[0-9]+\.[0-9]+$'; then
+  echo "Error: version must follow semver (e.g. 1.2.3)." >&2
+  exit 1
+fi
+
+branch=$(git rev-parse --abbrev-ref HEAD)
+
+if [ "$branch" != "main" ]; then
+  echo "Error: releases must be cut from main (currently on $branch)." >&2
+  exit 1
+fi
+
+if ! git diff --quiet || ! git diff --cached --quiet; then
+  echo "Error: there are uncommitted changes. Commit or stash them first." >&2
+  exit 1
+fi
+
+tag="v$new_version"
+
+if git tag -l "$tag" | grep -q .; then
+  echo "Error: tag $tag already exists." >&2
+  exit 1
+fi
+
+echo ""
+echo "Releasing $current_version -> $new_version"
+echo ""
+
+if [ $# -eq 0 ]; then
+  printf "Continue? [y/N] "
+  read -r confirm
+  if [ "$confirm" != "y" ] && [ "$confirm" != "Y" ]; then
+    echo "Aborted." >&2
+    exit 1
+  fi
+fi
+
+jq --arg v "$new_version" '.version = $v' "$plugin_json" > "$plugin_json.tmp" \
+  && mv "$plugin_json.tmp" "$plugin_json"
+
+git add "$plugin_json"
+git commit -m "Release $tag"
+git tag -a "$tag" -m "Release $tag"
+
+echo ""
+echo "Tagged $tag. Push with:"
+echo ""
+echo "  git push origin $branch --follow-tags"
+echo ""
