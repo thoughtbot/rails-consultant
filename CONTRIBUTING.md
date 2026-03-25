@@ -49,14 +49,13 @@ and a rewording can meaningfully change behavior. Here's how we apply semver:
 - **MINOR** — add a new skill or meaningfully update an existing one.
 - **PATCH** — fix typos, update descriptions, or make trivial adjustments.
 
-To cut a release, use the included binstub:
+Bump the version in `.claude-plugin/plugin.json` as part of your pull request.
+Once the PR is merged, cut a release with the included binstub:
 
-    bin/release           # interactive — prompts for the new version
-    bin/release 2.0.0     # non-interactive
+    bin/release
 
-This updates the version in `.claude-plugin/plugin.json`, commits the change,
-and creates an annotated git tag. It does not push — you'll be shown the push
-command so you can inspect before publishing.
+This reads the version from `plugin.json`, creates an annotated git tag, and
+pushes it.
 
 See [obra/superpowers] for a reference example of how a mature Claude Code plugin
 handles versioning, release notes, and git tags.
