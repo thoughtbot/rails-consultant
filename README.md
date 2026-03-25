@@ -159,6 +159,11 @@ The commands in Rails Consultant pair well with the following plugins.
    of the PR yourself.
 1. Use [`/code-review`][code-review] only after you've given your own feedback.
 
+## Contributing
+
+See the [CONTRIBUTING][] document.
+Thank you, [contributors][]!
+
 ## License
 
 Rails Consultant is Copyright (c) thoughtbot, inc.
@@ -178,11 +183,13 @@ We love open source software!
 See [our other projects][community].
 We are [available for hire][hire].
 
+[CONTRIBUTING]: CONTRIBUTING.md
 [antipatterns]: https://thoughtbot.com/upcase/videos/testing-antipatterns
 [code-review]: https://claude.com/plugins/code-review
 [code-simplifier]: https://claude.com/plugins/code-simplifier
 [community]: https://thoughtbot.com/community?utm_source=github
 [context7]: https://claude.com/plugins/context7
+[contributors]: https://github.com/thoughtbot/rails-consultant/graphs/contributors
 [explanatory-output-style]: https://claude.com/plugins/explanatory-output-style
 [full-stack-slices]: https://thoughtbot.com/blog/break-apart-your-features-into-full-stack-slices
 [hire]: https://thoughtbot.com/hire-us?utm_source=github
