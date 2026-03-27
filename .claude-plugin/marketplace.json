@@ -1,0 +1,23 @@
+{
+  "name": "rails-consultant",
+  "owner": {
+    "name": "thoughtbot"
+  },
+  "metadata": {
+    "description": "A collection of skills for Rails development and consulting, with an emphasis on learning, communication, and client success",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "rails-consultant",
+      "source": {
+        "source": "github",
+        "repo": "thoughtbot/rails-consultant"
+      },
+      "description": "A collection of skills for Rails development and consulting, with an emphasis on learning, communication, and client success",
+      "version": "1.0.0",
+      "category": "workflows",
+      "keywords": ["rails", "ruby", "consulting", "tdd", "code-review"]
+    }
+  ]
+}

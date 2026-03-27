@@ -8,13 +8,13 @@ emphasis on learning, communication, and client success.
 Add the marketplace to Claude Code:
 
 ```
-/plugin marketplace add thoughtbot/thoughtbot-plugins
+/plugin marketplace add thoughtbot/rails-consultant
 ```
 
 Install the plugin:
 
 ```
-plugin install rails-consultant@thoughtbot-plugins
+/plugin install rails-consultant@rails-consultant
 ```
 
 ## Commands
