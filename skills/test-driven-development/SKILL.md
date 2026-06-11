@@ -34,56 +34,58 @@ Implement fresh from tests. Period.
 
 ## Outside-In Development
 
-Start every feature with a high-level test that describes behavior from the user's perspective. Let each failure guide what to build next. Drop to unit tests when you encounter non-trivial logic.
+Start every feature with a high-level test that describes behavior from the user's perspective. Run it, read the failure, and let that failure dictate your next move. As failures push you down the stack, write a new failing test at each layer you drop into — never write code for a layer without a failing test at that layer demanding it.
 
-Read `examples/outside-in-testing.md` for a complete walkthrough and `examples/testing-pyramid.md` for how test types combine into an optimal suite.
+Read `examples/outside-in-testing.md` for a walkthrough of the philosophy and `examples/testing-pyramid.md` for how test types combine into an optimal suite.
 
-### The Outer Loop: Feature Specs
+### One Change, One Run
 
-1. Take the user story
-2. Write a feature spec describing the behavior end-to-end
-3. Run it — watch it fail
-4. The error tells you what to build next: a route, a controller action, a view, a model method
-5. Build the minimum to get past that error
-6. Run again — next error drives next piece
-7. When you hit non-trivial logic, drop to the inner loop
+After every change — writing a test, adding a route, creating a file, implementing a method — run the affected test immediately:
 
-Feature specs use real database records. No mocks — except for external services (use webmock or fakes). Tests should run without an internet connection.
+```bash
+bundle exec rspec spec/features/guest_searches_for_items_spec.rb
+```
 
-### The Inner Loop: Unit Tests
+The failure message is your instruction for what to do next. Don't batch changes and don't guess ahead: one change, one run, read the failure, decide. If you made two changes before running, you no longer know which one the test is reacting to.
 
-When the feature spec error points to logic that needs its own proof — a search method, a calculation, a validation rule:
+### Drop Down by Writing the Next Failing Test
 
-1. Write a unit test for that specific behavior
-2. Follow Red-Green-Refactor (below)
-3. Pass the unit test
-4. Return to the feature spec — next error drives next piece
+A failure rarely means "write this exact line." It usually means "the layer below isn't there yet." When the active test's failure points to a layer that has behavior of its own — a controller action, an endpoint, a model method — **drop down and write a failing test at that layer before building it.**
 
-Unit tests isolate the object under test. Mock collaborators aggressively — the goal is to prove the functionality of this object, not its collaborators. Difficulty testing two objects in isolation signals too-tight coupling.
+Think of it as a stack of failing tests:
 
-### When to Drop Down
+- The **active** test is the one whose failure you're reading right now.
+- Its failure points to a missing lower layer → write a new failing test at that layer. It becomes the active test.
+- Drive that test with Red-Green-Refactor. If _it_ forces you down another level, push another failing test.
+- When the active test goes green, pop it: rerun the test one layer up. Its next failure drives the next move.
 
-Not every piece needs a unit test. The feature spec covers the glue.
+Drop to whichever layer the failure names — not always one rung at a time. Continue until the top-level feature spec is green with nothing left on the stack.
 
-**Just build it** (feature spec covers it):
+The ladder of test types, top to bottom:
 
-- Routes
-- Empty controller actions
-- Simple views and partials
-- Wiring and delegation
+| When the failure points to…                                         | Write this failing test      |
+| ------------------------------------------------------------------- | ---------------------------- |
+| End-to-end behavior from the user's perspective                     | Feature / system spec        |
+| A controller action, response, status, or redirect                  | Request (or controller) spec |
+| Logic in a model, service object, query, calculation, or validation | Model / unit spec            |
 
-**Unit test first** (non-trivial logic):
+Feature and request specs are integration tests: real database records, no mocks — except external services (use webmock or fakes), so the suite runs offline. Unit specs isolate the object under test: mock collaborators aggressively, because the goal is to prove _this_ object, not its collaborators. Difficulty testing two objects in isolation signals too-tight coupling.
 
-- Model methods with business logic
-- Service objects
-- Query objects
-- Calculations, validations, transformations
+### Build Directly Only for Inert Glue
 
-The testing pyramid: many unit tests at the bottom, few feature tests at the top. Unit tests are fast and precise. Feature tests prove the system works end-to-end. Each plays to its strengths.
+A few things have no behavior of their own, so they get no test of their own — but you still add them only because a failing test one layer up demanded them:
+
+- The route line (a request spec failing with `No route matches` drives it)
+- An empty class or module to clear a `NameError`
+- Trivial markup a feature spec's content expectation already covers
+
+Everything with behavior gets its own failing test first. When in doubt, drop down and write the test.
+
+The testing pyramid: many unit tests at the bottom, fewer request specs in the middle, a few feature specs at the top. Unit tests are fast and precise; feature tests prove the system works end-to-end. Each plays to its strengths.
 
 ## Red-Green-Refactor
 
-The inner cycle. Every unit test follows this loop — and so does each error-driven step in the outer loop.
+The cycle every test follows — feature spec, request spec, and model spec alike. Each failing test on the stack runs this loop; a test going green is what lets you pop back up to the layer above.
 
 ```dot
 digraph tdd_cycle {
@@ -234,7 +236,7 @@ Keep tests green. Don't add behavior.
 
 ### Repeat
 
-Return to the feature spec. Next error drives the next piece. Drop to unit tests when needed. Continue until the feature spec is green.
+Pop the stack. Rerun the test one layer up and read its next failure — it drives the next move: build inert glue, or push a new failing test for the next layer down. Keep going until the top-level feature spec is green and the stack is empty.
 
 ## Good Tests
 
@@ -300,23 +302,27 @@ Tests-first force edge case discovery before implementing. Tests-after verify yo
 
 ## Common Rationalizations
 
-| Excuse                                 | Reality                                                                 |
-| -------------------------------------- | ----------------------------------------------------------------------- |
-| "Too simple to test"                   | Simple code breaks. Test takes 30 seconds.                              |
-| "I'll test after"                      | Tests passing immediately prove nothing.                                |
-| "Tests after achieve same goals"       | Tests-after = "what does this do?" Tests-first = "what should this do?" |
-| "Already manually tested"              | Ad-hoc ≠ systematic. No record, can't re-run.                           |
-| "Deleting X hours is wasteful"         | Sunk cost fallacy. Keeping unverified code is technical debt.           |
-| "Keep as reference, write tests first" | You'll adapt it. That's testing after. Delete means delete.             |
-| "Need to explore first"                | Fine. Throw away exploration, start with TDD.                           |
-| "Test hard = design unclear"           | Listen to test. Hard to test = hard to use.                             |
-| "TDD will slow me down"                | TDD faster than debugging. Pragmatic = test-first.                      |
-| "Manual test faster"                   | Manual doesn't prove edge cases. You'll re-test every change.           |
-| "Existing code has no tests"           | You're improving it. Add tests for existing code.                       |
+| Excuse                                  | Reality                                                                  |
+| --------------------------------------- | ------------------------------------------------------------------------ |
+| "Too simple to test"                    | Simple code breaks. Test takes 30 seconds.                               |
+| "Controller's just wiring, skip a spec" | Wiring has behavior — routing, params, response. Write the request spec. |
+| "I'll run the test once at the end"     | You won't know which change caused which failure. One change, one run.   |
+| "I'll test after"                       | Tests passing immediately prove nothing.                                 |
+| "Tests after achieve same goals"        | Tests-after = "what does this do?" Tests-first = "what should this do?"  |
+| "Already manually tested"               | Ad-hoc ≠ systematic. No record, can't re-run.                            |
+| "Deleting X hours is wasteful"          | Sunk cost fallacy. Keeping unverified code is technical debt.            |
+| "Keep as reference, write tests first"  | You'll adapt it. That's testing after. Delete means delete.              |
+| "Need to explore first"                 | Fine. Throw away exploration, start with TDD.                            |
+| "Test hard = design unclear"            | Listen to test. Hard to test = hard to use.                              |
+| "TDD will slow me down"                 | TDD faster than debugging. Pragmatic = test-first.                       |
+| "Manual test faster"                    | Manual doesn't prove edge cases. You'll re-test every change.            |
+| "Existing code has no tests"            | You're improving it. Add tests for existing code.                        |
 
 ## Red Flags — STOP and Start Over
 
 - Code before test
+- Built a controller, model method, or service without a failing test at that layer
+- Made several changes, then ran the test once
 - Test after implementation
 - Test passes immediately
 - Can't explain why test failed
@@ -336,7 +342,7 @@ Tests-first force edge case discovery before implementing. Tests-after verify yo
 
 **Story:** As a guest, I can search for items so I can find what I want.
 
-**Outer loop — Feature spec**
+**Top of the stack — feature spec**
 
 ```ruby
 # spec/features/guest_searches_for_items_spec.rb
@@ -353,9 +359,30 @@ feature "Guest searches for items" do
 end
 ```
 
-Run it. First error: no route. Add the route. Next error: no controller. Create it. Next error: no `search` method on `Item` — drop to the inner loop.
+Run it. The failure points at the items index — a controller-layer concern. Don't build an empty action the feature spec merely covers; drop down and write a failing **request spec.**
 
-**Inner loop — Unit test**
+**Drop down — request spec**
+
+```ruby
+# spec/requests/items_spec.rb
+RSpec.describe "Items", type: :request do
+  it "renders items matching the search term" do
+    create(:item, name: "Widget")
+
+    get items_path, params: { search: "Widget" }
+
+    expect(response.body).to include("Widget")
+  end
+end
+```
+
+Run it — one change, one run, each time:
+
+- `No route matches` → add the route (inert glue). Run again.
+- `uninitialized constant ItemsController` → create the controller and an empty `index`. Run again.
+- Body is missing "Widget" → the action needs `Item.search`, which is logic. Drop down again and write a failing **model spec.**
+
+**Drop down — model spec**
 
 ```ruby
 # spec/models/item_spec.rb
@@ -369,15 +396,15 @@ RSpec.describe Item, ".search" do
 end
 ```
 
-Verify RED. Implement `Item.search`. Verify GREEN. Return to feature spec. Next error drives next piece. Continue until the feature spec is green.
+Verify RED. Implement `Item.search`. Verify GREEN — pop the model spec. Rerun the request spec; wire the action and view until it's green, then pop it. Rerun the feature spec and drive the remaining UI pieces the same way until it's green and the stack is empty.
 
 ## Example: Bug Fix
 
 **Bug:** Empty email accepted
 
-Start with a feature spec reproducing the bug from the user's perspective, then drop to a unit test for the validation logic.
+Start with a feature spec reproducing the bug from the user's perspective. Registration already exists, so the failure points straight at the model's missing validation — drop directly to a model spec rather than through the request layer. Drop to the layer the failure names.
 
-**Outer loop — Feature spec**
+**Top of the stack — feature spec**
 
 ```ruby
 # spec/features/guest_registers_spec.rb
@@ -392,7 +419,7 @@ feature "Guest registers" do
 end
 ```
 
-**Inner loop — Unit test**
+**Drop down — model spec**
 
 ```ruby
 # spec/models/user_spec.rb
@@ -414,13 +441,15 @@ class User < ApplicationRecord
 end
 ```
 
-Unit test passes. Return to feature spec. Continue until green.
+Model spec passes — pop it. Rerun the feature spec; it's green. Done.
 
 ## Verification Checklist
 
 Before marking work complete:
 
 - [ ] Every new function/method has a test
+- [ ] Ran the affected test after every change — never batched two changes before running
+- [ ] Each layer dropped into (controller, model, service) got its own failing test first
 - [ ] Watched each test fail before implementing
 - [ ] Each test failed for expected reason (feature missing, not typo)
 - [ ] Wrote minimal code to pass each test
