@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [1.1.0] - 2026-06-12
+
 - Fan out subagents for the `socratic-review` skill's silent assessment: large or
   unfamiliar targets (multi-file PRs, SHAs, inherited code) are now explored by
   parallel subagents — one per problem space — whose findings are merged into the
