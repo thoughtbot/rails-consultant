@@ -1,5 +1,7 @@
 # Rails Consultant
 
+[![skills.sh](https://skills.sh/b/thoughtbot/rails-consultant)](https://skills.sh/thoughtbot/rails-consultant)
+
 A collection of [skills][] for Rails development and consulting, with an
 emphasis on learning, communication, and client success.
 
