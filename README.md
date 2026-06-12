@@ -5,6 +5,15 @@
 A collection of [skills][] for Rails development and consulting, with an
 emphasis on learning, communication, and client success.
 
+## Source Material
+
+Several skills draw on articles, books, and talks created by thoughtbot:
+
+- [Testing from the Outside-In][outside-in]
+- [Rails Test Types and the Testing Pyramid][testing-pyramid]
+- [Break Apart Your Features into Full-Stack Slices][full-stack-slices]
+- [Job Stories][job-stories]
+
 ## Installation
 
 ### Via skills
