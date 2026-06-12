@@ -1,3 +1,10 @@
+> **Note:** This article teaches the outside-in philosophy and where to mock. This
+> skill applies a stricter discipline than the walkthrough below: when a failure
+> forces you down a layer (e.g. into the controller), write a _failing test at that
+> layer first_ — a request spec for the controller — rather than building an empty
+> action the feature spec merely covers. See "Drop Down by Writing the Next Failing
+> Test" in `SKILL.md`.
+
 A few months ago my colleague [Josh Steiner] wrote a comprehensive post on [How
 We Test Rails Applications], detailing the different types tests we write and
 the various technologies that go with them. In this follow up, we will take a
