@@ -11,11 +11,6 @@ Several skills draw on articles, books, and talks created by thoughtbot:
 
 - [Testing from the Outside-In][outside-in]
 - [Rails Test Types and the Testing Pyramid][testing-pyramid]
-- [Testing Antipatterns][antipatterns]
-- [How We Test Rails Applications][how-we-test]
-- [Don't Stub the System Under Test][dont-stub]
-- [Feature tests with Capybara][capybara]
-- [Testing Rails][testing-rails]
 - [Break Apart Your Features into Full-Stack Slices][full-stack-slices]
 - [Job Stories][job-stories]
 
@@ -211,21 +206,17 @@ We are [available for hire][hire].
 
 [CONTRIBUTING]: CONTRIBUTING.md
 [antipatterns]: https://thoughtbot.com/upcase/videos/testing-antipatterns
-[capybara]: https://thoughtbot.com/blog/using-capybara-to-test-javascript-that-makes-http
 [code-review]: https://claude.com/plugins/code-review
 [code-simplifier]: https://claude.com/plugins/code-simplifier
 [community]: https://thoughtbot.com/community?utm_source=github
 [context7]: https://claude.com/plugins/context7
 [contributors]: https://github.com/thoughtbot/rails-consultant/graphs/contributors
-[dont-stub]: https://thoughtbot.com/blog/don-t-stub-the-system-under-test
 [explanatory-output-style]: https://claude.com/plugins/explanatory-output-style
 [full-stack-slices]: https://thoughtbot.com/blog/break-apart-your-features-into-full-stack-slices
 [hire]: https://thoughtbot.com/hire-us?utm_source=github
-[how-we-test]: https://thoughtbot.com/blog/how-we-test-rails-applications
 [job-stories]: https://thoughtbot.com/playbook/rapid-product-validation/jtbd#how-to-write-and-use-job-stories
 [outside-in]: https://thoughtbot.com/blog/testing-from-the-outsidein
 [security-guidance]: https://claude.com/plugins/security-guidance
 [skills]: https://code.claude.com/docs/en/skills
 [superpowers]: https://github.com/obra/superpowers/blob/main/skills/test-driven-development/SKILL.md
 [testing-pyramid]: https://thoughtbot.com/blog/rails-test-types-and-the-testing-pyramid
-[testing-rails]: https://gumroad.com/l/testing-rails
