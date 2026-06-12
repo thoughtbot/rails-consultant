@@ -7,6 +7,16 @@ emphasis on learning, communication, and client success.
 
 ## Installation
 
+### Via skills
+
+Install with [skills][]:
+
+```
+npx skills add thoughtbot/rails-consultant
+```
+
+### Via Claude Code
+
 Add the marketplace to Claude Code:
 
 ```
