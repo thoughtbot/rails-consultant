@@ -49,8 +49,10 @@ and a rewording can meaningfully change behavior. Here's how we apply semver:
 - **MINOR** — add a new skill or meaningfully update an existing one.
 - **PATCH** — fix typos, update descriptions, or make trivial adjustments.
 
-Bump the version in `.claude-plugin/plugin.json` as part of your pull request.
-Once the PR is merged, cut a release with the included binstub:
+Bump the version in `.claude-plugin/plugin.json` as part of your pull request,
+and keep `.claude-plugin/marketplace.json` in sync — it carries the same version
+in both its `metadata.version` and its `plugins[].version` fields. Once the PR is
+merged, cut a release with the included binstub:
 
     bin/release
 
