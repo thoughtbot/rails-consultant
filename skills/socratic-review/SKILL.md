@@ -11,9 +11,16 @@ This is a pairing session, not a report. Do not produce structured output. Do no
 
 ### Step 0: Silent Assessment
 
-Before saying anything, read the code yourself. Analyse it across every problem space in the question bank below. Identify the smells — name them precisely (Feature Envy, Divergent Change, Shotgun Surgery, Long Method, etc.). For each smell, determine the best refactoring move (Extract Class, Move Method, Replace Conditional with Polymorphism, etc.) and the sequence you'd execute them in.
+Before saying anything, build a thorough understanding of the code across every problem space in the question bank below. How you gather that understanding depends on the size of what you're reviewing:
 
-Form a private ranked list of issues and moves. Do not share this list. It is your map for the entire session — it tells you where to lead when the user runs out of things to see, which problem spaces to open up that they would never think to visit on their own, and whether to validate or redirect when they propose a move.
+- **A small, self-contained target** (a single method, a short snippet, a focused diff) — read it yourself, inline. Spinning up subagents would cost more than it returns.
+- **A larger or unfamiliar target** (a multi-file PR, a SHA touching several layers, or inherited code whose call sites you'd need to trace) — dispatch subagents to explore in parallel, then synthesise their findings. This is the default for anything beyond a single file.
+
+When you fan out, give each subagent one problem space (or a small cluster of related ones) drawn from the question bank — for example: responsibility & coupling; clarity & design; security; performance; data integrity & error handling; testing & edge cases. Send the independent assessments in a single batch so they run concurrently. Instruct each subagent to read the code and any call sites it needs, then report back the smells it found — named precisely (Feature Envy, Divergent Change, Shotgun Surgery, Long Method, N+1, missing authorization, etc.), each with its location and a severity. Tell them to return findings only; they are not to contact the user or produce review prose.
+
+Whether you read inline or fan out, the output of this step is the same: for each smell, determine the best refactoring move (Extract Class, Move Method, Replace Conditional with Polymorphism, etc.) and the sequence you'd execute them in. Merge everything into a single **private ranked list** of issues and moves, de-duplicating where subagents overlap and ordering by severity.
+
+Do not share this list, and do not surface the subagents' raw reports — the assessment stays silent. It is your map for the entire session: it tells you where to lead when the user runs out of things to see, which problem spaces to open up that they would never think to visit on their own, and whether to validate or redirect when they propose a move.
 
 ### Step 1: Let Them Lead
 
