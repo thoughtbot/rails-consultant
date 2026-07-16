@@ -1,5 +1,13 @@
 ## [Unreleased]
 
+## [1.2.0] - 2026-07-16
+
+- Add the `/feature-dev` skill: a guided end-to-end workflow that takes a single
+  feature slice from idea to reviewed code, chaining `/slice` →
+  `/test-driven-development` → code review. It stays scoped to one slice (an epic
+  prompt makes it help you pick the slice to build now) and closes with Claude
+  Code's built-in `/code-review --fix` before verifying the suite is green.
+
 ## [1.1.0] - 2026-06-12
 
 - Fan out subagents for the `socratic-review` skill's silent assessment: large or
