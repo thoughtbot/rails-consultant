@@ -42,7 +42,7 @@ Match the effort to the feature. For a small, well-understood change, a few targ
 
 - Find features similar to this one and trace their implementation end to end.
 - Map the architecture and conventions for the area this slice touches (models, controllers, jobs, views, wherever it lands).
-- Identify the testing patterns and factories relevant to this work — how do feature specs, request specs, and model specs look in this app?
+- Identify the testing patterns relevant to this work — the framework (RSpec or Minitest), how tests are structured across the layers (end-to-end/system, request or controller, model/unit), and what factories or fixtures exist.
 
 Ask each explorer to return the 5–10 files most worth reading. When they return, **read those files yourself** before proceeding — the subagents build the map, but you need the detail in context to slice and test well.
 
@@ -68,7 +68,7 @@ Do not move on until the user is satisfied the slice is genuinely the smallest t
 
 **Invoke the `test-driven-development` skill** (Skill tool, `test-driven-development`) and follow it without shortcuts. Hand it the slice's acceptance criteria as the specification: each criterion is a behavior that needs a failing test before any production code exists.
 
-The two skills fit together naturally — `slice` produced the observable behaviors, and TDD drives them outside-in: start with a feature spec for the "ships when" behavior, let its failure push you down through request and model specs, and write minimal code at each layer. The acceptance criteria are your checklist; the slice is done when every one of them is covered by a test you watched fail and then pass, and the suite is green with pristine output.
+The two skills fit together naturally — `slice` produced the observable behaviors, and TDD drives them outside-in: start with a high-level test for the "ships when" behavior — a system or feature test — let its failure push you down through the lower layers (request/controller, then model), and write minimal code at each layer. The acceptance criteria are your checklist; the slice is done when every one of them is covered by a test you watched fail and then pass, and the suite is green with pristine output.
 
 Honor the Iron Law from that skill: no production code without a failing test first. If you catch yourself wanting to skip ahead "just this once," that's exactly the moment the discipline is paying off. When every acceptance criterion is green, the slice is built — move to review.
 
@@ -87,15 +87,11 @@ Run Claude Code's built-in code review over the slice and let it apply the fixes
 ```
 
 - The **level** sets how hard the review looks. `high` is the right default for a focused single-slice diff — drop to `medium` for a trivial change, or raise to `xhigh`/`max` for security-sensitive or subtle logic where a missed issue is expensive.
-- **`--fix`** applies the fixes for confirmed findings directly instead of only reporting them, which is what we want here — the slice should come out of this phase already corrected. (Use **`--comment`** instead when the intent is to surface findings without changing the code — e.g. the user asked for a review but wants to decide on the fixes themselves.)
+- **`--fix`** applies the fixes for confirmed findings directly instead of only reporting them, which is what we want here — the slice should come out of this phase already corrected.
 
 The built-in review already filters to high-confidence findings and verifies them before it acts, so there's no separate confidence pass to run. `references/code-review.md` documents the standard it applies — the ≥ 80 confidence bar, the Critical vs. Important severity split, and what counts as a false positive — if you want to understand what it's weighting or need to fall back to a manual review when the command isn't available.
 
-Because `--fix` edits code outside the red-green-refactor loop, **re-run the full suite once it finishes** to confirm the slice is still green and nothing regressed:
-
-```bash
-bundle exec rspec
-```
+Because `--fix` edits code outside the red-green-refactor loop, **re-run the full suite once it finishes** — using whatever test command this app uses (the one you identified in Phase 2, e.g. `bin/rails test`, `bundle exec rspec`, or the app's Rake task) — to confirm the slice is still green and nothing regressed.
 
 If a fix changed behavior that isn't yet covered by a test, add the missing test — failing first, per Phase 4 — so the correction is locked in and can't silently regress later. Then briefly summarize what the review changed: what it fixed, anything it flagged but deliberately left, and confirmation the suite is green.
 
