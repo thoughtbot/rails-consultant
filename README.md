@@ -44,7 +44,7 @@ Install the plugin:
 
 #### `/feature‑dev`
 
-Takes one feature slice from idea to reviewed code in a single guided pass: shapes it into a well-defined slice, builds it test-first, then reviews and fixes the diff before it ships. Chains `/slice` → `/test-driven-development` → code review, holding the discipline at each handoff — it won't build until the slice is sharp, and won't call the work done until the diff is reviewed and the suite is green. Scoped to one slice on purpose; hand it an epic and it helps you pick the single slice to build now.
+Takes one feature slice from idea to reviewed, committed code in a single guided pass: shapes it into a well-defined slice, builds it test-first, reviews and fixes the diff, then lands it as a clean commit. Chains `/slice` → `/test-driven-development` → code review → `/git-commit`, holding the discipline at each handoff — it won't build until the slice is sharp, and won't call the work done until the diff is reviewed and the suite is green. It also keeps the implementation lean, holding the production-code diff to a ~300-line budget. Scoped to one slice on purpose; hand it an epic and it helps you pick the single slice to build now.
 
 ```
 /feature-dev Add a "copy to clipboard" button to code snippets on docs pages
@@ -52,7 +52,7 @@ Takes one feature slice from idea to reviewed code in a single guided pass: shap
 /feature-dev Admins can soft-delete comments and restore them within 30 days
 ```
 
-Adapted from Anthropic's [Feature Development][feature-dev] plugin, threaded through this plugin's `/slice` and `/test-driven-development` skills and closed out with Claude Code's built-in `/code-review --fix`.
+Adapted from Anthropic's [Feature Development][feature-dev] plugin, threaded through this plugin's `/slice`, `/test-driven-development`, and `/git-commit` skills and closed out with Claude Code's built-in `/code-review --fix`.
 
 ### Understanding the Codebase
 
