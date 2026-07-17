@@ -101,6 +101,17 @@ A pairing session, not a report. Reads the code silently, then leads you to see 
 /socratic-review I inherited this controller and something feels off
 ```
 
+### Version Control
+
+#### `/git‑commit`
+
+Turns your working changes into atomic commits, messages and all — no approval gate. Reads the diff, groups related changes so a freshly built feature lands in one commit while unrelated work (review fixes, stray refactors, a bug fix riding along) is split apart, then writes each message in the thoughtbot style: explaining the why, flagging risks and surprises, and referencing an issue or PR only when it's obvious.
+
+```
+/git-commit
+/git-commit this addresses the review feedback on the auth PR
+```
+
 ### Planning
 
 #### `/slice`
@@ -185,6 +196,8 @@ Use `/feature-dev` to run the whole loop as one guided pass, or run the steps yo
    [Full-Stack Slice][full-stack-slices].
 1. Use `/test-driven-development` to drive out the implementation by [testing from the outside-in][outside-in] using the [testing pyramid][testing-pyramid].
 1. Use `/simplify` to refactor the shameless green implementation.
+1. Use `/git-commit` to group the work into atomic commits with well-written
+   messages.
 
 ### Code review
 
