@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "A collection of skills for Rails development and consulting, with an emphasis on learning, communication, and client success",
-    "version": "1.1.0"
+    "version": "1.2.0"
   },
   "plugins": [
     {
@@ -15,7 +15,7 @@
         "repo": "thoughtbot/rails-consultant"
       },
       "description": "A collection of skills for Rails development and consulting, with an emphasis on learning, communication, and client success",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "category": "workflows",
       "keywords": ["rails", "ruby", "consulting", "tdd", "code-review"]
     }
