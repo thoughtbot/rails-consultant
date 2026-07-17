@@ -1,6 +1,6 @@
 ---
 name: feature-dev
-description: Use this skill when someone wants to build a brand-new feature in a Rails app — also called a ticket, story, or slice — and go through the whole process with you rather than just getting code written. The intent to match — they name something to build ("add X", "let users do Y", "develop Z") and want it done the disciplined, complete way — scoped into the smallest shippable slice, built test-first with strict TDD, then reviewed before merging. Any request that pairs building a feature with wanting it done thoroughly, "properly", "the right way", "from scratch", or "start to finish" — or that mentions defining the slice, writing tests first, or reviewing the diff — should trigger this. Do NOT use when there is no new feature to build end-to-end, such as reviewing an existing PR, adding tests to code already written, breaking an epic into stories, framework or version upgrades, performance tuning, or open-ended "how should I design or structure X" questions.
+description: Take one new feature slice from idea to reviewed, shipped code in a single guided pass — scope it into the smallest shippable slice, build it test-first with strict TDD, then review and fix the diff before merging. Chains slice → test-driven-development → the built-in /code-review. Not for reviewing an existing PR, upgrades, or open-ended design questions.
 argument-hint: "[feature or slice to build]"
 disable-model-invocation: true
 ---
@@ -123,4 +123,4 @@ The pieces this workflow orchestrates are each rigorous on their own; your job i
 - `test-driven-development` is strict about order. Don't let the momentum of a clear slice tempt you into writing code before the test.
 - The built-in `/code-review --fix` does the reviewing and fixing; your responsibility after it runs is to make sure the suite is still green and that any behavior it changed is covered by a test. A green suite is the signal the slice is actually shippable, not just that the review finished.
 
-If any of the three skills isn't available in the environment, follow its `SKILL.md` directly (in `skills/<name>/SKILL.md`) rather than skipping the phase — the sequence is the point.
+Depending on how the plugin was installed, `slice` and `test-driven-development` may appear namespaced as `rails-consultant:slice` and `rails-consultant:test-driven-development` — invoke whichever name the Skill tool lists. If any of the three skills isn't available at all, follow its `SKILL.md` directly (`~/.claude/skills/<name>/SKILL.md`, or the plugin's `skills/<name>/SKILL.md`) rather than skipping the phase — the sequence is the point.
