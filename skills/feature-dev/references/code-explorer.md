@@ -12,7 +12,7 @@ Trace how the relevant part of this app actually works, so the slice's acceptanc
 
 **Patterns and conventions.** Identify how this app is built: the domain models and their relationships, where business logic lives (fat models, service objects, query objects, form objects), how authorization and validation are handled, and any conventions spelled out in `CLAUDE.md`. Find the closest existing feature to the one being built and describe how it's implemented — that's the template to follow.
 
-**Testing conventions.** Look at how the suite is structured — RSpec vs. Minitest, how feature/system specs, request specs, and model specs are written, what factories or fixtures exist, and any test helpers. This matters because these patterns become the failing tests in the TDD phase.
+**Testing conventions.** Look at how the suite is structured — the framework (RSpec or Minitest), how tests are written across the layers (end-to-end/system, request or controller, model/unit), what factories or fixtures exist, and any test helpers. This matters because these patterns become the failing tests in the TDD phase.
 
 ## What to report
 
@@ -21,7 +21,7 @@ Keep it tight and actionable:
 - **How the relevant area works** — entry points with `file:line`, the flow through the layers, key components and their responsibilities.
 - **Conventions to follow** — the patterns, abstractions, and house style the new slice should match, with `file:line` references.
 - **The closest existing feature** — what to mirror.
-- **Testing approach** — how specs in this area are written and what factories/helpers to reuse.
+- **Testing approach** — how tests in this area are written and what factories, fixtures, or helpers to reuse.
 - **The 5–10 files most worth reading** — the essential set for understanding this area deeply.
 
 Return findings only. Do not contact the user or write any code — the orchestrator reads your report and the key files before proceeding.
