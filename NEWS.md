@@ -1,5 +1,12 @@
 ## [Unreleased]
 
+## [1.2.0] - 2026-07-17
+
+- Add the `git-commit` skill: `/git-commit` reads the working tree, groups
+  related changes into atomic commits, and writes each message in the thoughtbot
+  style — explaining the why, flagging risks and surprises, and keeping a
+  cohesive feature in one commit while splitting unrelated work apart.
+
 ## [1.1.0] - 2026-06-12
 
 - Fan out subagents for the `socratic-review` skill's silent assessment: large or
