@@ -13,7 +13,7 @@ The workflow's whole reason for existing is to resist the pull toward premature 
 
 **Scope discipline:** this workflow refines and builds exactly **one slice**. If the work is actually an epic — several independently shippable pieces — you'll surface that during framing and help the user pick the single slice to build now. Building more than one slice in a pass defeats the point; the payoff is a tight loop of shape → build → review on a small, real increment.
 
-**Leanness discipline:** a small slice does not guarantee a small diff. Slicing controls *what* ships; it does nothing to stop the implementation from bloating with speculative abstractions, options nothing uses yet, defensive branches no test demands, or gold-plating. Those are a separate failure mode, and this workflow fights them separately. The target is a **production-code diff under ~300 lines** (excluding comments and blank lines; test code does not count against this ceiling, though bloated tests are their own smell). Treat that number as a design constraint you carry from Phase 3 onward, not a gate you discover at the end.
+**Leanness discipline:** a small slice does not guarantee a small diff. Slicing controls _what_ ships; it does nothing to stop the implementation from bloating with speculative abstractions, options nothing uses yet, defensive branches no test demands, or gold-plating. Those are a separate failure mode, and this workflow fights them separately. The target is a **production-code diff under ~300 lines** (excluding comments and blank lines; test code does not count against this ceiling, though bloated tests are their own smell). Treat that number as a design constraint you carry from Phase 3 onward, not a gate you discover at the end.
 
 Use `TodoWrite` to track the phases so the user can see where they are.
 
@@ -78,7 +78,7 @@ Honor the Iron Law from that skill: no production code without a failing test fi
 
 **Keep the implementation lean while you build.** TDD's "write the minimal code to pass the current test" is your best defense against a bloated diff — take it literally. Concretely, as you work through the criteria:
 
-- Don't introduce an abstraction (a service object, a concern, a base class, a config option) until a *second* caller actually needs it. One caller is not a pattern.
+- Don't introduce an abstraction (a service object, a concern, a base class, a config option) until a _second_ caller actually needs it. One caller is not a pattern.
 - Don't add error handling, branches, or parameters that no failing test demands. If it isn't driven by a criterion, it isn't in scope for this slice.
 - Reuse what Phase 2 surfaced instead of building parallel machinery. The leanest diff leans on code that already exists.
 
@@ -93,7 +93,7 @@ git diff --stat "$(git merge-base HEAD main)"...HEAD -- ':(exclude)test' ':(excl
 If you're at or under budget, move to review. If you're over, do **not** just proceed — make an explicit, written call among three options and tell the user which one applies:
 
 - **Accidental complexity** — over-abstraction, dead flexibility, code no criterion demanded. Simplify it now, before review. This is the common case and the whole reason for the checkpoint.
-- **Essential complexity** — the slice genuinely spans enough layers that the code can't be smaller without losing behavior. Legitimate, but say *why* in one or two sentences; an unexplained large diff is indistinguishable from a bloated one.
+- **Essential complexity** — the slice genuinely spans enough layers that the code can't be smaller without losing behavior. Legitimate, but say _why_ in one or two sentences; an unexplained large diff is indistinguishable from a bloated one.
 - **The slice was too big** — if the size traces back to scope rather than implementation, the honest fix is upstream. Return to the Phase 1/3 decision, ship the smaller piece, and defer the rest.
 
 This is an advisory checkpoint, not a hard gate — a justified large diff is allowed to proceed. What's not allowed is drifting past 300 lines without noticing. Once the size is either under budget or a considered decision, the slice is built — move to review.
@@ -143,9 +143,9 @@ Mark the todos complete and give a short summary:
 
 **Goal:** land the finished, reviewed slice in version control as a clean commit.
 
-**Invoke the `git-commit` skill** (Skill tool, `git-commit`). The whole point of this workflow is that everything in the working tree is *one coherent slice*, so `git-commit` should land it as a single atomic commit rather than splitting it — the model, its migration, the controller, the view, and the tests all tell one story. The exception is anything genuinely independent that snuck in (an unrelated cleanup, a drive-by fix from the review); let `git-commit` make that call and split those out.
+**Invoke the `git-commit` skill** (Skill tool, `git-commit`). The whole point of this workflow is that everything in the working tree is _one coherent slice_, so `git-commit` should land it as a single atomic commit rather than splitting it — the model, its migration, the controller, the view, and the tests all tell one story. The exception is anything genuinely independent that snuck in (an unrelated cleanup, a drive-by fix from the review); let `git-commit` make that call and split those out.
 
-Feed it the slice's "ships when" line as context so the commit message explains *why* the slice exists, not just what changed. If the review in Phase 5 flagged a risk or a deliberate trade-off, mention it so that lands in the message too.
+Feed it the slice's "ships when" line as context so the commit message explains _why_ the slice exists, not just what changed. If the review in Phase 5 flagged a risk or a deliberate trade-off, mention it so that lands in the message too.
 
 `git-commit` stops at creating commits — it does not push and does not open a PR. That's intentional; leave the branch ready for the user to push and open the PR themselves. Depending on install, the skill may be listed as `rails-consultant:git-commit`.
 
