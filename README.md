@@ -40,6 +40,20 @@ Install the plugin:
 
 ## Commands
 
+### Feature Development
+
+#### `/feature‑dev`
+
+Takes one feature slice from idea to reviewed, committed code in a single guided pass: shapes it into a well-defined slice, builds it test-first, reviews and fixes the diff, then lands it as a clean commit. Chains `/slice` → `/test-driven-development` → code review → `/git-commit`, holding the discipline at each handoff — it won't build until the slice is sharp, and won't call the work done until the diff is reviewed and the suite is green. It also keeps the implementation lean, holding the production-code diff to a ~300-line budget. Scoped to one slice on purpose; hand it an epic and it helps you pick the single slice to build now.
+
+```
+/feature-dev Add a "copy to clipboard" button to code snippets on docs pages
+/feature-dev Authors can schedule a post to publish at a future time
+/feature-dev Admins can soft-delete comments and restore them within 30 days
+```
+
+Adapted from Anthropic's [Feature Development][feature-dev] plugin, threaded through this plugin's `/slice`, `/test-driven-development`, and `/git-commit` skills and closed out with Claude Code's built-in `/code-review --fix`.
+
 ### Understanding the Codebase
 
 #### `/explain`
@@ -176,7 +190,7 @@ The commands in Rails Consultant pair well with the following plugins.
 
 ## Common Workflows
 
-### Feature development
+Use `/feature-dev` to run the whole loop as one guided pass, or run the steps yourself:
 
 1. Use `/slice` to break down a feature or epic into a
    [Full-Stack Slice][full-stack-slices].
@@ -225,6 +239,7 @@ We are [available for hire][hire].
 [context7]: https://claude.com/plugins/context7
 [contributors]: https://github.com/thoughtbot/rails-consultant/graphs/contributors
 [explanatory-output-style]: https://claude.com/plugins/explanatory-output-style
+[feature-dev]: https://github.com/anthropics/claude-code/tree/main/plugins/feature-dev
 [full-stack-slices]: https://thoughtbot.com/blog/break-apart-your-features-into-full-stack-slices
 [hire]: https://thoughtbot.com/hire-us?utm_source=github
 [job-stories]: https://thoughtbot.com/playbook/rapid-product-validation/jtbd#how-to-write-and-use-job-stories
