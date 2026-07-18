@@ -56,7 +56,7 @@ Close the phase with a short summary of the patterns and conventions that will s
 
 **Goal:** turn the framed feature into one sharp, well-defined slice with real acceptance criteria.
 
-**Invoke the `slice` skill** (Skill tool, `slice`) and let it run the conversation. Because Phase 1 already established this is a single slice, `slice` should sharpen it into one job story (its Path A) rather than break an epic apart. Feed it what you learned in Phases 1–2 so the conversation starts warm instead of from zero.
+**Run the `slice` skill's process** and let it run the conversation. `slice` is user-invoke-only (`disable-model-invocation: true`), so you can't call it through the Skill tool — read its `SKILL.md` (see the path note below) and drive its process yourself. Because Phase 1 already established this is a single slice, `slice` should sharpen it into one job story (its Path A) rather than break an epic apart. Feed it what you learned in Phases 1–2 so the conversation starts warm instead of from zero.
 
 What you need out of this phase is the deliverable `slice` produces: a job story with a clear **"ships when"** and a concrete list of **acceptance criteria** — happy path, edge cases, and error states. Those acceptance criteria are not paperwork; they become the failing tests in Phase 4. Push (or let `slice` push) until each criterion is specific and verifiable — "a user can X and sees Y" — because a vague criterion produces a vague test that proves nothing.
 
@@ -70,7 +70,7 @@ Close the phase with a rough **size budget** for the implementation: given what 
 
 **Goal:** implement the slice with strict, outside-in TDD, driven by the acceptance criteria.
 
-**Invoke the `test-driven-development` skill** (Skill tool, `test-driven-development`) and follow it without shortcuts. Hand it the slice's acceptance criteria as the specification: each criterion is a behavior that needs a failing test before any production code exists.
+**Run the `test-driven-development` skill's process** without shortcuts. Like `slice`, this skill is user-invoke-only (`disable-model-invocation: true`), so you can't call it through the Skill tool — read its `SKILL.md` and drive its red-green-refactor loop yourself. Hand it the slice's acceptance criteria as the specification: each criterion is a behavior that needs a failing test before any production code exists.
 
 The two skills fit together naturally — `slice` produced the observable behaviors, and TDD drives them outside-in: start with a high-level test for the "ships when" behavior — a system or feature test — let its failure push you down through the lower layers (request/controller, then model), and write minimal code at each layer. The acceptance criteria are your checklist; the slice is done when every one of them is covered by a test you watched fail and then pass, and the suite is green with pristine output.
 
@@ -160,4 +160,6 @@ The pieces this workflow orchestrates are each rigorous on their own; your job i
 - The built-in `/code-review --fix` does the reviewing and fixing; your responsibility after it runs is to make sure the suite is still green and that any behavior it changed is covered by a test. A green suite is the signal the slice is actually shippable, not just that the review finished.
 - `git-commit` makes the atomic-commit call itself. Because a slice is one coherent change, expect a single commit — don't pre-split the work for it, but do hand it the "ships when" context so the message explains the why.
 
-Depending on how the plugin was installed, `slice`, `test-driven-development`, and `git-commit` may appear namespaced as `rails-consultant:slice`, `rails-consultant:test-driven-development`, and `rails-consultant:git-commit` — invoke whichever name the Skill tool lists. If any of the four skills isn't available at all, follow its `SKILL.md` directly (`~/.claude/skills/<name>/SKILL.md`, or the plugin's `skills/<name>/SKILL.md`) rather than skipping the phase — the sequence is the point.
+**How to reach each skill.** `slice` and `test-driven-development` are user-invoke-only (`disable-model-invocation: true`): the Skill tool refuses them with an error, so you must **read and follow their `SKILL.md` directly** rather than calling them. `git-commit` has no such restriction — invoke it through the Skill tool as Phase 7 describes. Depending on how the plugin was installed these may appear namespaced (`rails-consultant:slice`, `rails-consultant:test-driven-development`, `rails-consultant:git-commit`); use whichever name applies.
+
+Each `SKILL.md` lives at the plugin's `skills/<name>/SKILL.md` (or `~/.claude/skills/<name>/SKILL.md` for a standalone install). Whatever the reason a phase's skill can't be invoked — user-only, not installed, or otherwise unavailable — follow its `SKILL.md` rather than skipping the phase. The sequence is the point.

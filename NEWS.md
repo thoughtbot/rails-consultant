@@ -1,5 +1,11 @@
 ## [Unreleased]
 
+- Fix `/feature-dev` erroring at the slicing phase: it invoked `slice` and
+  `test-driven-development` through the Skill tool, but both are user-invoke-only
+  (`disable-model-invocation`) and the tool rejects them. Those phases now follow
+  each skill's `SKILL.md` directly, and the workflow spells out which skills the
+  Skill tool can reach and which must be followed inline.
+
 ## [1.3.0] - 2026-07-17
 
 - Add the `/feature-dev` skill: a guided end-to-end workflow that takes a single
