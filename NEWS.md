@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [1.3.1] - 2026-07-18
+
 - Fix `/feature-dev` erroring at the slicing phase: it invoked `slice` and
   `test-driven-development` through the Skill tool, but both are user-invoke-only
   (`disable-model-invocation`) and the tool rejects them. Those phases now follow
