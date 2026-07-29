@@ -1,5 +1,15 @@
 ## [Unreleased]
 
+## [1.4.0] - 2026-07-29
+
+- Make `/socratic-review`'s Step 0 assessment concrete about how it fans out. It
+  now names the `Agent` tool and the `general-purpose` agent type instead of
+  vaguely saying "dispatch subagents," hands each subagent a bundled brief
+  (`references/smell-explorer.md`) alongside its problem space, and requires the
+  orchestrator to read the key files itself before opening the session — the
+  session discusses and then changes that code, which can't be done from
+  severity labels and `file:line` pointers alone.
+
 ## [1.3.1] - 2026-07-18
 
 - Fix `/feature-dev` erroring at the slicing phase: it invoked `slice` and
