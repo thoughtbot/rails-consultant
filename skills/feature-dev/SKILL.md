@@ -40,7 +40,7 @@ Then make an explicit call on size. Ask yourself (and the user, if it's genuinel
 
 This matters most in a mature Rails app: the right slice and the right tests depend on where similar features live, what the testing conventions are, and which abstractions already exist. Skipping this leads to slices that ignore reality and code that fights the grain of the app.
 
-Match the effort to the feature. For a small, well-understood change, a few targeted reads inline are enough — don't spin up subagents to rediscover something you can see in one file. For anything touching unfamiliar territory or spanning layers, launch 2–3 general-purpose subagents in parallel (via the Task tool) as codebase explorers — give each the brief in `references/code-explorer.md` plus a different angle to cover:
+Match the effort to the feature. For a small, well-understood change, a few targeted reads inline are enough — don't spin up subagents to rediscover something you can see in one file. For anything touching unfamiliar territory or spanning layers, launch 2–3 general-purpose subagents in parallel (via the `Agent` tool) as codebase explorers — give each the brief in `references/code-explorer.md` plus a different angle to cover:
 
 - Find features similar to this one and trace their implementation end to end.
 - Map the architecture and conventions for the area this slice touches (models, controllers, jobs, views, wherever it lands).
@@ -48,7 +48,9 @@ Match the effort to the feature. For a small, well-understood change, a few targ
 
 Ask each explorer to return the 5–10 files most worth reading. When they return, **read those files yourself** before proceeding — the subagents build the map, but you need the detail in context to slice and test well.
 
-Close the phase with a short summary of the patterns and conventions that will shape the slice: where the code will live, what it should look like, what to reuse.
+Close the phase with a short summary of the patterns and conventions that will shape the slice: where the code will live, what it should look like, what to reuse. Include what already exists — if part of the feature is half-built or an adjacent feature covers some of it, that changes the slice, and Phase 3 needs to know before it starts asking questions.
+
+**This phase is the grounding that `slice` would otherwise do for itself.** Its Phase 1 has a codebase-grounding step that fans out the same way, and it is written to stand down when the conversation already carries a map. Carry this summary into Phase 3 so that happens — see the note there.
 
 ---
 
@@ -57,6 +59,8 @@ Close the phase with a short summary of the patterns and conventions that will s
 **Goal:** turn the framed feature into one sharp, well-defined slice with real acceptance criteria.
 
 **Run the `slice` skill's process** and let it run the conversation. `slice` is user-invoke-only (`disable-model-invocation: true`), so you can't call it through the Skill tool — read its `SKILL.md` (see the path note below) and drive its process yourself. Because Phase 1 already established this is a single slice, `slice` should sharpen it into one job story (its Path A) rather than break an epic apart. Feed it what you learned in Phases 1–2 so the conversation starts warm instead of from zero.
+
+**Skip `slice`'s codebase-grounding step — Phase 2 already did it.** Its Phase 1 ends with a grounding step that fans out subagents to find what already exists, what's reusable, and how comparable features are tested. That is exactly Phase 2's job here, and the step tells you to stand down when the conversation already carries a map. Hand it Phase 2's summary and the files you read, and go straight to shaping the slice. Running it again would spend real tokens rediscovering what you already know — but do use it as a checklist: if Phase 2 didn't surface what already exists or what the real edge cases in this area are, fill that gap now, because Phase 3's acceptance criteria depend on both.
 
 What you need out of this phase is the deliverable `slice` produces: a job story with a clear **"ships when"** and a concrete list of **acceptance criteria** — happy path, edge cases, and error states. Those acceptance criteria are not paperwork; they become the failing tests in Phase 4. Push (or let `slice` push) until each criterion is specific and verifiable — "a user can X and sees Y" — because a vague criterion produces a vague test that proves nothing.
 
@@ -155,7 +159,7 @@ Feed it the slice's "ships when" line as context so the commit message explains 
 
 The pieces this workflow orchestrates are each rigorous on their own; your job is to run them in sequence and keep the handoffs clean, not to water them down.
 
-- `slice` is Socratic — it leads the user to define the work through questions. Let it. Don't pre-answer for them.
+- `slice` is Socratic — it leads the user to define the work through questions. Let it. Don't pre-answer for them. Arriving from Phase 2 makes this harder, not easier: you know things the user hasn't been told, and the pull is to skip the questions and present the slice. Use what you know to make the questions specific instead.
 - `test-driven-development` is strict about order. Don't let the momentum of a clear slice tempt you into writing code before the test.
 - The built-in `/code-review --fix` does the reviewing and fixing; your responsibility after it runs is to make sure the suite is still green and that any behavior it changed is covered by a test. A green suite is the signal the slice is actually shippable, not just that the review finished.
 - `git-commit` makes the atomic-commit call itself. Because a slice is one coherent change, expect a single commit — don't pre-split the work for it, but do hand it the "ships when" context so the message explains the why.

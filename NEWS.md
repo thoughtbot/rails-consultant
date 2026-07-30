@@ -1,5 +1,20 @@
 ## [Unreleased]
 
+## [1.5.0] - 2026-07-30
+
+- Ground `/slice` in the codebase before it starts slicing. Phase 1 now ends with
+  an optional step that fans out subagents to find whether the feature already
+  exists, what's reusable, and how comparable features are tested — the last of
+  which is what turns vague acceptance criteria into concrete ones. The findings
+  are there to sharpen the Socratic questions, not to answer them, and the step
+  stands down for greenfield work or when the conversation already carries a
+  codebase map.
+- Rework `/feature-dev`'s handoff into slicing now that `/slice` grounds itself.
+  Phase 2 is that grounding, so Phase 3 explicitly skips `/slice`'s version of it
+  rather than paying for the same exploration twice, and uses it as a checklist
+  instead: if Phase 2 missed what already exists or what the real edge cases are,
+  fill the gap before writing acceptance criteria.
+
 ## [1.4.0] - 2026-07-29
 
 - Make `/socratic-review`'s Step 0 assessment concrete about how it fans out. It

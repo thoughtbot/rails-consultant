@@ -27,6 +27,25 @@ Wait for their answers. Listen for: vagueness about the user (a sign the scope i
 
 If their answers are vague, ask one follow-up before moving on. Do not proceed to slicing on work you don't understand.
 
+### Ground it in the codebase — when there is one
+
+Slices invented in the abstract ignore reality. In an existing app, the right cut depends on what's already there: half of it may exist already, the layers it touches may already have the abstractions it needs, and the edge cases worth putting in acceptance criteria are the ones this domain actually has, not the ones you can imagine.
+
+Skip this step entirely when it doesn't apply:
+
+- **The conversation already carries a codebase map.** If you arrived here from `/feature-dev`, its Phase 2 has already done this work — use what it found and move on. Never explore the same ground twice.
+- **There's nothing to explore.** Greenfield work, a brand-new app, or a feature that touches no existing behavior. Same for a product-shaped conversation where no repo is in play.
+
+Otherwise, match the effort to the feature. For a small change in familiar territory, a few targeted reads inline are enough. For anything spanning layers or touching code you don't know, launch 2–3 general-purpose subagents in parallel (via the `Agent` tool) — give each the brief in `references/slice-explorer.md` plus a different angle to cover:
+
+- Find out whether this already exists, in whole or in part — the feature itself, an earlier attempt, or adjacent behavior that covers some of it.
+- Map the layers and models this would touch, and what abstractions are already available to reuse.
+- Find the closest comparable feature and report how it's tested — including the specific edge cases and error states those tests cover.
+
+Ask each subagent to return the files most worth reading. When they return, read those files yourself before opening Phase 2.
+
+**What you do with this matters more than finding it.** These facts are here to sharpen your questions, not to answer them. You now know things the developer may not, and the temptation is to hand it over as a plan — don't. Keep asking; let the grounding make the questions specific. "There's already a `Subscription#cancel` that soft-deletes — does your slice extend that or replace it?" is the same Socratic move as before, just aimed somewhere real. Do not present findings as a report, do not propose the slices yourself, and do not slide into designing the implementation. The developer still does the seeing.
+
 ---
 
 ## Phase 2: Shape the Slices — Socratically
