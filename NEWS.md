@@ -1,5 +1,14 @@
 ## [Unreleased]
 
+## [1.5.1] - 2026-07-30
+
+- Fix `/slice` silently losing its examples in a plugin install. Four reads in
+  `skills/slice/SKILL.md` pointed at `~/.claude/skills/slice/…`, which only
+  exists if you installed the skills standalone; under the plugin the files sit
+  in the plugin cache, so the reads failed and the skill carried on without the
+  job story format or the full-stack slicing examples. The paths are now
+  relative to the skill directory, which resolves in both installs.
+
 ## [1.5.0] - 2026-07-30
 
 - Ground `/slice` in the codebase before it starts slicing. Phase 1 now ends with
