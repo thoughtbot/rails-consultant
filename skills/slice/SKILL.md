@@ -54,7 +54,7 @@ Based on the size and complexity of the feature, take one of two paths. Do not a
 
 ### Path A: The feature is already small
 
-If the feature is a single, focused piece of work, help them sharpen it into a well-defined job story. Read `~/.claude/skills/slice/examples/job-stories.md` for the job story format. Guide them with:
+If the feature is a single, focused piece of work, help them sharpen it into a well-defined job story. Read `examples/job-stories.md` for the job story format. Guide them with:
 
 - "What's the specific situation the user is in when they need this? Not just 'using the app' — what moment triggers the need?"
 - "What do they want to do in that moment — and why does it matter to them?"
@@ -80,7 +80,7 @@ Start here:
 
 **"What's the absolute minimum a user would need to get any value from this at all — the smallest thing that's real, not a prototype?"**
 
-This is the walking skeleton (thoughtbot / XP). It's almost always smaller than they think. Read `~/.claude/skills/slice/examples/full-stack-slices.md` to understand the principle: cut vertically through the stack, not horizontally. Push on it:
+This is the walking skeleton (thoughtbot / XP). It's almost always smaller than they think. Read `examples/full-stack-slices.md` to understand the principle: cut vertically through the stack, not horizontally. Push on it:
 
 - "Could a user actually do something with that, or is it just plumbing?"
 - "Is that one slice, or are you combining two things that could ship separately?"
@@ -111,7 +111,7 @@ If a slice fails either test, it's either too big or it's not a slice.
 
 ### For a single slice
 
-Produce a job story. Read `~/.claude/skills/slice/examples/job-stories.md` for the format:
+Produce a job story. Read `examples/job-stories.md` for the format:
 
 ---
 
@@ -143,7 +143,7 @@ Ask:
 - "Which slice has the most technical risk — is it early enough in the sequence?"
 - "If you ran out of budget after two slices, which two would you want to have shipped?"
 
-When sequencing is agreed, produce the deliverable. Read `~/.claude/skills/slice/example.md` for a complete example of the expected format and quality. Format each slice as a job story:
+When sequencing is agreed, produce the deliverable. Read `example.md` for a complete example of the expected format and quality. Format each slice as a job story:
 
 ---
 
