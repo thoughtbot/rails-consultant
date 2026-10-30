@@ -26,16 +26,17 @@ npx skills add thoughtbot/rails-consultant
 
 ### Via Claude Code
 
-Add the marketplace to Claude Code:
+Add the [thoughtbot marketplace](https://github.com/thoughtbot/skills) to
+Claude Code:
 
 ```
-/plugin marketplace add thoughtbot/rails-consultant
+/plugin marketplace add thoughtbot/skills
 ```
 
 Install the plugin:
 
 ```
-/plugin install rails-consultant@rails-consultant
+/plugin install rails-consultant@skills
 ```
 
 ## Commands
