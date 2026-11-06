@@ -91,8 +91,8 @@ author would rather not write — this is a workaround, this gets slow at 10x th
 data — and the dead ends, since "we tried X, it failed because Y" pre-empts the
 reviewer's first suggestion. Write in thoughtbot's [voice and tone][voice]:
 conversational, "we" for the team, contractions, short sentences, numerals (3, not
-three), sentence-case headings, no emoji. Plain words: no "it's worth noting",
-"this ensures".
+three), sentence-case headings, no emoji in the text. Plain words: no "it's worth
+noting", "this ensures".
 
 **Open with the problem and one analogy.** The reviewer may have no context on the
 problem this branch solves, and a mechanism means nothing until they know what
