@@ -104,9 +104,8 @@ uploads them yet.
 
 ## Evals
 
-Every skill has [eval cases][40] in `evals/<skill>/`. The ones for
-[`/ask-claude`][39] sit directly in `evals/`. Run one skill's cases from the
-repo root:
+Every skill has [eval cases][40] in `evals/<skill>/`. Run one skill's cases
+from the repo root:
 
 ```
 claude plugin eval . --case 'slice-*' --scaffold --max-cost-usd 10 --allow-tools Write Bash
