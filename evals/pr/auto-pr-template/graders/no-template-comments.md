@@ -1,5 +1,5 @@
 ---
 type: regex
-pattern: '<!--'
+pattern: "<!--"
 match: not_contains
 ---

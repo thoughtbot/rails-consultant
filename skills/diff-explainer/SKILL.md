@@ -31,7 +31,7 @@ Size up the change from the stat before reading `git diff "$MB"` — a diff you 
 into context whole is one you can no longer decide to skip. Upstream first, and
 `refs/heads/` not bare `main`, or you diff against the wrong base: a fork of
 `develop` drags in everyone's `develop` commits, a trunk named anything else finds
-no base at all, and a *tag* called `main` beats the branch of the same name. Empty
+no base at all, and a _tag_ called `main` beats the branch of the same name. Empty
 `$MB` also means an unborn HEAD — no commits yet, nothing to explain.
 
 `git diff "$MB"` covers committed and uncommitted work both, so a branch with no
@@ -75,7 +75,7 @@ the reason, or a deletion that looks unrelated, is a decision. Skip renames,
 formatting, and mechanical churn. Generated files get one line saying so and an
 `<em>` elision line inside the `<pre><code>` instead of their diff.
 
-The pull toward over-annotating is strong, since every hunk has *something* sayable.
+The pull toward over-annotating is strong, since every hunk has _something_ sayable.
 Resist it: a walkthrough beats the raw diff only by being shorter than it, so a big
 diff gets a shorter page, not a longer one. Ten annotations read beat thirty
 skimmed. Before publishing, delete every annotation a competent reviewer would
@@ -86,7 +86,7 @@ make sense together, and if B must be understood before A means anything, B firs
 
 Write each annotation in one to three sentences; a longer one is usually two, or a
 paragraph belonging in "Start here". If a sentence would still be true with the diff
-hidden, it's a *what* and can go. The ones that earn their place are the ones an
+hidden, it's a _what_ and can go. The ones that earn their place are the ones an
 author would rather not write — this is a workaround, this gets slow at 10x the
 data — and the dead ends, since "we tried X, it failed because Y" pre-empts the
 reviewer's first suggestion. Plain words: no "it's worth noting", "this ensures".
@@ -132,7 +132,7 @@ choose: pick the element that describes the content — `<ins>` and `<del>` for 
 `<aside data-note>` for an annotation — and leave the `<style>` block alone, so every
 walkthrough reads the same way. Everything inside `<main>` is a worked example —
 replace it. Three calls the comment doesn't make: the `<hgroup>` carries the change's
-*name*, two to four words, not a summary; the watch list `<dl>` holds the two to four
+_name_, two to four words, not a summary; the watch list `<dl>` holds the two to four
 things a reviewer would regret missing; and the `data-note` kinds are color-coded, so
 pick the one that's true. Four things reliably spoil the page: unescaped `&`, `<`, `>`
 in diff lines; raw typographic characters (write `&mdash;`, `&minus;`, `&hellip;` —

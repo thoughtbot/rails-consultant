@@ -35,7 +35,7 @@ Most changes have nothing here, and returning nothing is the ordinary result —
 
 ## The confidence bar
 
-Score every finding out of 100: how sure you are it's true *and* that the author would agree it's worth changing. Below 80, drop it without mentioning it. What you're protecting is the author's trust — six findings that are all right get acted on; twenty where six are wrong teach them to skim the next review.
+Score every finding out of 100: how sure you are it's true _and_ that the author would agree it's worth changing. Below 80, drop it without mentioning it. What you're protecting is the author's trust — six findings that are all right get acted on; twenty where six are wrong teach them to skim the next review.
 
 Every finding carries an evidence line with two citations: the `file:line` of what changed, and the `file:line` of the thing that still assumes the old behavior. Where the surviving dependent is outside this repository and you can't cite it, say what it is and that you couldn't check — that's an honest finding, and the author can resolve it in a second. A finding with neither isn't one.
 

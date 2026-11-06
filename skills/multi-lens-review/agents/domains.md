@@ -15,7 +15,7 @@ Read past the diff to confirm a tell. A concept that only appears in changed lin
 
 ## Restraint is most of the job
 
-One or two findings, or none at all. *Emerging* means the code is asking; it doesn't mean you can imagine an abstraction. Two occurrences are a coincidence, the third is a domain. If you find yourself inventing the concept rather than locating it, you've written Speculative Generality into someone else's change and it's now their problem.
+One or two findings, or none at all. _Emerging_ means the code is asking; it doesn't mean you can imagine an abstraction. Two occurrences are a coincidence, the third is a domain. If you find yourself inventing the concept rather than locating it, you've written Speculative Generality into someone else's change and it's now their problem.
 
 Don't propose a restructure larger than the change it came from. A forty-line diff doesn't justify a new package. But if the change is the third time this concept has come up, say that — the point of reviewing at this altitude is to catch the moment extraction gets cheaper than continuing to spread.
 
@@ -33,6 +33,6 @@ Name the concept, list where it currently lives, and say what it would own. "The
 
 ## The confidence bar
 
-Score every finding out of 100: how sure you are it's true *and* that the author would agree it's worth changing. Below 80, drop it without mentioning it. What you're protecting is the author's trust — six findings that are all right get acted on; twenty where six are wrong teach them to skim the next review.
+Score every finding out of 100: how sure you are it's true _and_ that the author would agree it's worth changing. Below 80, drop it without mentioning it. What you're protecting is the author's trust — six findings that are all right get acted on; twenty where six are wrong teach them to skim the next review.
 
 Every finding carries an evidence line: the three occurrence sites, as paths. Two is a coincidence, so a finding that can only cite two isn't one.

@@ -210,7 +210,7 @@ inventing rationale. Short beats thorough; a reviewer skims a long PR.
 
 The default body:
 
-~~~
+````
 ```markdown
 {what changed for the people using it, and why, one to three sentences}
 
@@ -220,11 +220,11 @@ The default body:
 
 {the attribution line}
 ```
-~~~
+````
 
 A note:
 
-~~~markdown
+````markdown
 **Risk:** We charge the card before saving the `Payment`, so a failed
 save leaves a charge with no record. We might want to save it first.
 
@@ -240,7 +240,7 @@ card charged $40 --> saving the payment fails
 ```
 
 _Claude Opus 5.5 (claude-opus-5-5)_
-~~~
+````
 
 ### Attribution
 
@@ -250,7 +250,7 @@ Never guess a model.
 
 - **Body**, last line, its own paragraph:
   `_Written by Claude Opus 5.5 (claude-opus-5-5) with /pr --auto. No human
-  has edited this yet._`
+has edited this yet._`
 - **Each note**, its own last line: `_Claude Opus 5.5 (claude-opus-5-5)_`.
   Notes show up one at a time on GitHub, so each one needs it.
 

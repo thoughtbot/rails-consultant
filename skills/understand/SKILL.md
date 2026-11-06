@@ -27,7 +27,7 @@ changes between them is where the truth lives.
 - **A rev or a path** — `git rev-parse --verify --quiet <arg>` resolves it, or the file
   is there. If both (`docs` the branch, `docs/` the directory), ask which.
 - **A number, or a link to a PR or issue** — that's a PR (`gh pr view <n>`, `gh pr
-  diff <n>`), so pull the number out of the URL instead of fetching the page, which
+diff <n>`), so pull the number out of the URL instead of fetching the page, which
   gets you a rendered description and a truncated file list. A bare number loses to a
   branch of that name. No working `gh`, say so and take the branch.
 - **Any other URL** — a ticket, a doc page. Fetch it, then check what came back is the
@@ -83,7 +83,7 @@ second failure with extra steps.
 Ask each for **claims with a citation you can open** — `<file>:<line>`, not prose.
 You're going to contradict the user with these, and "this runs twice on every update"
 is unusable where a file and a line number is something they can go look at. Ask too
-what they *didn't* reach, because a fact sheet that stopped early looks exactly like
+what they _didn't_ reach, because a fact sheet that stopped early looks exactly like
 one that found nothing there.
 
 If the thing isn't in this repo at all, say so before you start. You can still
@@ -130,7 +130,7 @@ every boundary the subsystem has.
 
 **Never ask about something you haven't verified.** Verified means a path you opened,
 not one you reasoned your way to and not one a subagent handed you that you took on
-trust. A fact sheet is a lead; a citation you didn't check makes a wrong claim *more*
+trust. A fact sheet is a lead; a citation you didn't check makes a wrong claim _more_
 credible rather than less. But what needs verifying is the premise, not the answer:
 "which write wins?" has no citation and shouldn't, because it's the consequence you're
 asking them to reason to. What needs a path is the claim that two writes can race here

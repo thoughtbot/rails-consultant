@@ -34,7 +34,7 @@ Read-only, and stricter than the other reviewers because proving a bug is the na
 
 ## The confidence bar
 
-Score every finding out of 100: how sure you are it's true *and* that the author would agree it's worth changing. Below 80, drop it without mentioning it. What you're protecting is the author's trust — six findings that are all right get acted on; twenty where six are wrong teach them to skim the next review.
+Score every finding out of 100: how sure you are it's true _and_ that the author would agree it's worth changing. Below 80, drop it without mentioning it. What you're protecting is the author's trust — six findings that are all right get acted on; twenty where six are wrong teach them to skim the next review.
 
 The bar is worth more here than anywhere else, because a wrong bug report is the one finding the author can't dismiss on sight. They have to go prove the code works.
 

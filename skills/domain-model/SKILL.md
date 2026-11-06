@@ -10,13 +10,13 @@ The user describes how their business actually works. You come back with the con
 
 Five things come out, and nothing else:
 
-| | |
-| --- | --- |
-| **Language** | The words the business uses, meaning what the business means. |
-| **Flow** | The events, in order. Past tense — something became true. |
-| **Rules** | Whenever X happens, we do Y. The branches and the exceptions. |
-| **Aggregates** | Whatever protects a rule and emits those events. |
-| **Contexts** | Where a word stops meaning one thing and starts meaning another. |
+|                |                                                                  |
+| -------------- | ---------------------------------------------------------------- |
+| **Language**   | The words the business uses, meaning what the business means.    |
+| **Flow**       | The events, in order. Past tense — something became true.        |
+| **Rules**      | Whenever X happens, we do Y. The branches and the exceptions.    |
+| **Aggregates** | Whatever protects a rule and emits those events.                 |
+| **Contexts**   | Where a word stops meaning one thing and starts meaning another. |
 
 No entities-versus-value-objects, no repositories, no schema, no class diagram — those are implementation, and this is what implementation gets checked against. Don't read code either. The code already chose names, and the ones it chose are the loudest thing in the room; read them and they end up in the model, at which point the model can only tell you what the code already says.
 
@@ -51,19 +51,19 @@ Play the harvest back as a plain list before interviewing. It's where they catch
 
 Rounds of 2 to 4 questions. One at a time is a slog; twelve at once is a survey.
 
-**Define the word the first time you use it.** Aggregate, context, event — the user described a business, so this vocabulary is yours, not theirs. One line, in their own process's terms, before you ask them anything with it in: *"an aggregate is whatever gets to refuse — the thing that would stop you double-booking that table."* Three rounds of answers from someone who didn't know what you were asking are three rounds you have to throw away.
+**Define the word the first time you use it.** Aggregate, context, event — the user described a business, so this vocabulary is yours, not theirs. One line, in their own process's terms, before you ask them anything with it in: _"an aggregate is whatever gets to refuse — the thing that would stop you double-booking that table."_ Three rounds of answers from someone who didn't know what you were asking are three rounds you have to throw away.
 
-**Lead with a proposed model, not a question.** "What are the aggregates here?" hands the work back and gets you a shrug. Instead: *"I'm treating `Policy` as the thing that says no — it decides whether a claim is covered, and nothing else has enough information to. Push back if something else owns that."* A proposal is easy to accept and easy to reject, so it moves fast, and what they defend tells you what's real. If they ask why you drew a boundary there and your answer is a DDD principle rather than something they told you, you invented it — drop it and say so. A proposal they skip is not a yes; carry it to the playback.
+**Lead with a proposed model, not a question.** "What are the aggregates here?" hands the work back and gets you a shrug. Instead: _"I'm treating `Policy` as the thing that says no — it decides whether a claim is covered, and nothing else has enough information to. Push back if something else owns that."_ A proposal is easy to accept and easy to reject, so it moves fast, and what they defend tells you what's real. If they ask why you drew a boundary there and your answer is a DDD principle rather than something they told you, you invented it — drop it and say so. A proposal they skip is not a yes; carry it to the playback.
 
-**Never name a concept they didn't.** If the model needs a term the user never used, it's a proposal and gets marked as one: *"you don't have a word for the period between lapse and cancellation — I'm calling it the grace period, tell me what the business calls it."* Untagged invented vocabulary is how a model becomes unfalsifiable. Asking "what do you call this?" produces a word; it doesn't prove one was in use. Mark those the same way, and ask where they'd hear it said.
+**Never name a concept they didn't.** If the model needs a term the user never used, it's a proposal and gets marked as one: _"you don't have a word for the period between lapse and cancellation — I'm calling it the grace period, tell me what the business calls it."_ Untagged invented vocabulary is how a model becomes unfalsifiable. Asking "what do you call this?" produces a word; it doesn't prove one was in use. Mark those the same way, and ask where they'd hear it said.
 
-**Events** are past tense and business-observable: *Order placed. Policy lapsed.* The test is whether someone would say it happened without knowing there's software involved — "user clicks submit" is UI, "record saved" is storage. Order them; the sequence encodes which steps can't be reordered.
+**Events** are past tense and business-observable: _Order placed. Policy lapsed._ The test is whether someone would say it happened without knowing there's software involved — "user clicks submit" is UI, "record saved" is storage. Order them; the sequence encodes which steps can't be reordered.
 
-**Rules** are the conditionals, and they aren't events. *"Whenever the track is closed, we move to the bikepath."* Every "if", "unless", "sometimes" and "except when" in their description is one, and they're the reason step 1 asks for the exceptions. A flow with the branches stripped out is a happy path, which is the one version of a process nobody needed written down.
+**Rules** are the conditionals, and they aren't events. _"Whenever the track is closed, we move to the bikepath."_ Every "if", "unless", "sometimes" and "except when" in their description is one, and they're the reason step 1 asks for the exceptions. A flow with the branches stripped out is a happy path, which is the one version of a process nobody needed written down.
 
-**Aggregates** answer *who says no?* Ask what rule must never break, then what the smallest set of things is that changes together to enforce it. If enforcing it needs two things to agree, ask whose job it is to make them agree: if it's the person doing the thing, they're one aggregate; if it's someone else's job or a nightly check, the rule holds but late, and it goes in `## Rules` with the delay the business will tolerate. An aggregate protecting no rule is a table — say so. And if nothing anywhere protects a rule, say that plainly too: it means the flow and its rules are the whole model, and either that's fine or there's a floor the business wants and hasn't got. Don't call it CRUD; that's a design instruction and you haven't earned it.
+**Aggregates** answer _who says no?_ Ask what rule must never break, then what the smallest set of things is that changes together to enforce it. If enforcing it needs two things to agree, ask whose job it is to make them agree: if it's the person doing the thing, they're one aggregate; if it's someone else's job or a nightly check, the rule holds but late, and it goes in `## Rules` with the delay the business will tolerate. An aggregate protecting no rule is a table — say so. And if nothing anywhere protects a rule, say that plainly too: it means the flow and its rules are the whole model, and either that's fine or there's a floor the business wants and hasn't got. Don't call it CRUD; that's a design instruction and you haven't earned it.
 
-**Contexts** announce themselves when the user qualifies a term mid-sentence: *"well, a customer in billing is..."* Follow that hesitation. Other tells: different people, different teams, delays nobody minds. Before splitting, check the far side is a whole model rather than a mode — its own terms, its own flow, and someone who never has to care about the other. If one person walks through both in a single pass, it's a branch: put it in `## Rules` and keep one context. One context is a legitimate answer, but say why you're not splitting rather than just not mentioning it.
+**Contexts** announce themselves when the user qualifies a term mid-sentence: _"well, a customer in billing is..."_ Follow that hesitation. Other tells: different people, different teams, delays nobody minds. Before splitting, check the far side is a whole model rather than a mode — its own terms, its own flow, and someone who never has to care about the other. If one person walks through both in a single pass, it's a branch: put it in `## Rules` and keep one context. One context is a legitimate answer, but say why you're not splitting rather than just not mentioning it.
 
 **Stop** when every event has an aggregate that emits it or is accounted for by a rule, every aggregate protects a rule you can state in one sentence, no term has two live meanings, and no two terms share one meaning without a ruling — either they're one act and the business names the survivor, or they're two acts and the Language table says what the difference is. Whatever still fails after three rounds goes in `## Unresolved` and you draft; an open question recorded in the model beats an answer you talked them into at question fifteen. No checkpoint here; go straight to step 4 in the same turn.
 
@@ -71,7 +71,7 @@ Rounds of 2 to 4 questions. One at a time is a slog; twelve at once is a survey.
 
 Read `assets/domain-template.md` now. Reading it at save time is how this turns into a freehand summary. Fill it in and paste the filled-in file — the file, every section, not a description of it:
 
-~~~
+````
 Here's the model I'd save to `docs/domains/{slug}.md`. Nothing written yet.
 
 ```markdown
@@ -83,7 +83,7 @@ Here's the model I'd save to `docs/domains/{slug}.md`. Nothing written yet.
 **Proposals you didn't answer, which I kept:** {list, or "none"}
 
 Say the word and I'll save it.
-~~~
+````
 
 Both lines print even when empty. The first catches the failure this skill exists to prevent; the second is the only place a silent round becomes visible, and silence isn't agreement. Replace every `{placeholder}`; nothing in braces survives to disk.
 

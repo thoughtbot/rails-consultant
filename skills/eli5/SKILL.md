@@ -42,8 +42,8 @@ one agent each:
 - **One real trace.** A single instance start to finish, in order, with the branch at
   each step and what happens when it fails — real route, real config value, a row from
   seeds or fixtures, a real filename, cited `file:line`. This is what step 4 draws.
-- **The words.** Every term a newcomer would bounce off, and what each means *in this
-  repo*, which is usually narrower than in general.
+- **The words.** Every term a newcomer would bounce off, and what each means _in this
+  repo_, which is usually narrower than in general.
 
 Tell each that "I couldn't find a real example" is an acceptable answer, or an agent
 with no way to come back empty manufactures one that reads exactly like a real one. If
@@ -76,7 +76,7 @@ where first principles don't.
 
 **Say the plain version first and the real name once, after,** so they can go search
 for it: "the server kills the process when the machine runs low on memory; the logs
-call that *evicted*."
+call that _evicted_."
 
 **Show real values.** `ORDERS_PER_PAGE = 25`, so page 3 starts at order 51.
 

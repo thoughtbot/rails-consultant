@@ -1,5 +1,5 @@
 ---
 type: file_exists
-path: '**/*.html'
+path: "**/*.html"
 exists: false
 ---

@@ -8,7 +8,7 @@ Three of these are code smells read forward — Long Method, Primitive Obsession
 
   The shape is an identity function slotted into a composition: `f(g(x))` where `g` returns `x` unchanged. Fowler's was `apply_highlights(apply_ranges(lines))`, but it has other bodies — a middleware that just calls the next handler, a filter that keeps everything, a hook that returns its input, a strategy that returns the current default, a query object with no conditions yet. In a language without cheap composition it's a private function called on one line that returns its argument.
 
-  Not this when the feature has to change what the existing step already does. A seam only pays when the new behavior *composes* — a step before or after — so if the feature threads into the current logic line by line, the pass-through is dead code and you've prepared nothing.
+  Not this when the feature has to change what the existing step already does. A seam only pays when the new behavior _composes_ — a step before or after — so if the feature threads into the current logic line by line, the pass-through is dead code and you've prepared nothing.
 
 - **The feature is the third case.** An `if/else` on two variants, and this makes three. Turn the branch into data or dispatch first, and the feature becomes one entry instead of a third limb.
 

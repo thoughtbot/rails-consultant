@@ -8,13 +8,13 @@ argument-hint: "[PR number, branch, or paths to review]"
 
 Five reviewers, dispatched in parallel, each reading the same change from a different distance:
 
-| Agent | Question |
-| --- | --- |
-| `agents/defects.md` | Is this code wrong — broken, slow, or exploitable? |
-| `agents/spec-fidelity.md` | Did we build what was asked for, and only that? |
-| `agents/conventions.md` | Does this look like the rest of the codebase? |
-| `agents/domains.md` | Is a domain concept trying to emerge here? |
-| `agents/compatibility.md` | Does anything still depend on what this replaced? |
+| Agent                     | Question                                           |
+| ------------------------- | -------------------------------------------------- |
+| `agents/defects.md`       | Is this code wrong — broken, slow, or exploitable? |
+| `agents/spec-fidelity.md` | Did we build what was asked for, and only that?    |
+| `agents/conventions.md`   | Does this look like the rest of the codebase?      |
+| `agents/domains.md`       | Is a domain concept trying to emerge here?         |
+| `agents/compatibility.md` | Does anything still depend on what this replaced?  |
 
 They stay separate so the structural reviewer has nothing cheaper to do. One reviewer asked all five questions spends its attention on naming nits, and never reaches "those five files are one domain object in a trenchcoat."
 

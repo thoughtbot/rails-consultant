@@ -15,9 +15,9 @@ nothing ran, say that here.}
 
 ## Ledger
 
-| # | Step | Where | Seen |
-|---|------|-------|------|
-| 1 | {what happened, with real values} | `{file:line}` | ran / read / stubbed |
+| #   | Step                              | Where         | Seen                 |
+| --- | --------------------------------- | ------------- | -------------------- |
+| 1   | {what happened, with real values} | `{file:line}` | ran / read / stubbed |
 
 ## Surprises
 

@@ -1,12 +1,12 @@
 ---
 name: trace
 description: Run a scenario and record what actually happened.
-argument-hint: "[scenario, e.g. \"user creates an account\"]"
+argument-hint: '[scenario, e.g. "user creates an account"]'
 ---
 
 # Trace
 
-Reading code tells you what *should* happen. Running it tells you what does: the
+Reading code tells you what _should_ happen. Running it tells you what does: the
 callback nobody mentioned, the job that enqueues two more, the email that goes out
 twice. That's the gap this fills. The output is a record, in order, of what one
 scenario did when it ran, with every step marked as seen or only read.
@@ -69,7 +69,7 @@ in Surprises. Redact keys and tokens before writing a captured call anywhere.
 
 **Stub anything destructive.** Killing processes, dropping databases, deleting or
 moving files outside the repo. Intercept it in your script before the scenario
-starts, record the call it *would* have made, and return what the real one would.
+starts, record the call it _would_ have made, and return what the real one would.
 For files, point the run at a temp directory. Can't be intercepted safely? Don't
 run past it. Stop the run there, and trace the rest by reading, marked as read.
 

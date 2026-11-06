@@ -1,7 +1,7 @@
 ---
 name: ask-claude
 description: Recommend the best way to have Claude do something, checked against Anthropic's current docs, then write the prompt and run it once approved. Use when someone asks how they should prompt you, what the best way to ask for something is, or which Claude feature fits a job (CLAUDE.md, skill, hook, subagent, workflow, plan mode, /goal, MCP, headless, the API), even if they don't name a feature.
-argument-hint: "[task, e.g. \"users can't sign up\" or \"run rubocop after every edit\"]"
+argument-hint: '[task, e.g. "users can''t sign up" or "run rubocop after every edit"]'
 ---
 
 # Ask Claude
@@ -148,7 +148,7 @@ Use only the parts that earn their place:
 - **Out of scope.** What not to touch, what not to add. Agents widen tasks on their
   own.
 - **Done when.** A check that runs, named exactly: `bin/rspec
-  spec/requests/auth_callbacks_spec.rb` passes, not "the spec passes". Use the
+spec/requests/auth_callbacks_spec.rb` passes, not "the spec passes". Use the
   project's own test command from step 1. Then what to report: the cause in a line,
   the command and its output as proof, what changed, what it couldn't check.
 - **Can't reach.** Production data, error trackers, third-party dashboards. Say so,

@@ -1,6 +1,6 @@
 ---
 name: implement-with-tdd
-description: Implement a SPEC, plan, or feature  outside-in, with TDD. 
+description: Implement a SPEC, plan, or feature  outside-in, with TDD.
 argument-hint: "[path to a SPEC or plan, or a description of the change]"
 ---
 

@@ -56,11 +56,11 @@ If the idea already arrives slice-sized, say so and go straight to step 4. The r
 
 Rounds of 2 to 4 questions. One at a time is a slog; twelve at once is a survey.
 
-**Lead with a cut.** "Should we include search?" makes the user do the work, and they'll say yes. Instead: *"I'm cutting search. With a dozen records the user can scan the list. Push back if that's wrong."* A proposed cut is easy to accept and easy to reject, so it moves fast, and whatever they defend tells you what actually matters. Use `AskUserQuestion` when the choices are genuinely enumerable, plain questions otherwise.
+**Lead with a cut.** "Should we include search?" makes the user do the work, and they'll say yes. Instead: _"I'm cutting search. With a dozen records the user can scan the list. Push back if that's wrong."_ A proposed cut is easy to accept and easy to reject, so it moves fast, and whatever they defend tells you what actually matters. Use `AskUserQuestion` when the choices are genuinely enumerable, plain questions otherwise.
 
 **Defend the cuts you propose.** If they ask why, answer it rather than restating the cut. A cut you can't answer for wasn't grounded in the recon, so withdraw it.
 
-**Spend the recon.** You did the reading so the cuts could be specific, so use it. *"I'm not building an exporter. The reports page already renders CSV at `<the file you found>`, and this can go through the same path"* is a cut the user can verify. Name the file. Vague cuts get argued about; grounded ones get accepted in one line.
+**Spend the recon.** You did the reading so the cuts could be specific, so use it. _"I'm not building an exporter. The reports page already renders CSV at `<the file you found>`, and this can go through the same path"_ is a cut the user can verify. Name the file. Vague cuts get argued about; grounded ones get accepted in one line.
 
 **One test for everything.** For each behavior still standing: cut it, and does the slice still deliver the job story's outcome? If yes, cut it. Nothing earns an acceptance criterion until it has survived that question out loud. Guardrails are exempt.
 
@@ -76,11 +76,11 @@ There is no checkpoint at the end of the interview. The moment you're at the flo
 
 Read `assets/spec-template.md` now, before you write anything else. Reading it at save time instead is how this step turns into a freehand summary.
 
-Fill it in, then paste the filled-in file into the message. Not a description of it, not the job story and a sentence about the slice: the file, every section, acceptance criteria included, worded the way it will be worded on disk. The wording of a criterion *is* the scope boundary, so the text under review has to be the real text. If your message has no acceptance criteria in it, you skipped this step.
+Fill it in, then paste the filled-in file into the message. Not a description of it, not the job story and a sentence about the slice: the file, every section, acceptance criteria included, worded the way it will be worded on disk. The wording of a criterion _is_ the scope boundary, so the text under review has to be the real text. If your message has no acceptance criteria in it, you skipped this step.
 
 The message looks like this, and nothing is on disk when you send it:
 
-~~~
+````
 Here's the SPEC I'd save to `docs/specs/{slug}.md`. Nothing written yet.
 
 ```markdown
@@ -92,15 +92,15 @@ Here's the SPEC I'd save to `docs/specs/{slug}.md`. Nothing written yet.
 - ...
 
 Say the word and I'll save it.
-~~~
+````
 
 The template is thin on purpose: title, one-sentence summary, job story, acceptance criteria, plus `## Where to look` and `## Owed`, each only if it has something to carry. This is a contract rather than a design doc. Don't write a design, a file plan, or an ordering — that's the implementing session's to decide, and it'll have read the code more recently than you.
 
 Two things do carry over. Decisions, because they go missing rather than stale: "go through the existing export path rather than building a new one" belongs in the summary sentence if the user approved it. And the paths from step 2, because a path is cheap to check and expensive to find again.
 
-**`## Where to look` is a reading list, not a plan.** At most six paths, fewer if fewer earn it: the ones you'd open first if you were implementing this yourself. Each gets one line on why it matters to *this* slice — "the CSV rendering this can go through", not "the reports controller". A path with no reason is noise the next session has to open before it can judge it, which costs more than leaving it out. A path already named in the summary sentence or a criterion doesn't repeat here.
+**`## Where to look` is a reading list, not a plan.** At most six paths, fewer if fewer earn it: the ones you'd open first if you were implementing this yourself. Each gets one line on why it matters to _this_ slice — "the CSV rendering this can go through", not "the reports controller". A path with no reason is noise the next session has to open before it can judge it, which costs more than leaving it out. A path already named in the summary sentence or a criterion doesn't repeat here.
 
-Spend one of the six on the test nearest this slice, and name the command that runs it. Reading the local test idiom is the one piece of exploration the implementing session is *required* to do before its first test, so it's the line that saves real work. Stamp the section with `git rev-parse --short HEAD`: the paths survive a moving repo better than the reasons beside them do, and the stamp is what lets the next session tell how much to trust each one.
+Spend one of the six on the test nearest this slice, and name the command that runs it. Reading the local test idiom is the one piece of exploration the implementing session is _required_ to do before its first test, so it's the line that saves real work. Stamp the section with `git rev-parse --short HEAD`: the paths survive a moving repo better than the reasons beside them do, and the stamp is what lets the next session tell how much to trust each one.
 
 **The acceptance criteria are the scope boundary.** There's no in/out list because there doesn't need to be one: if a behavior isn't in a criterion, it isn't in the slice. That only holds if the criteria are tight, so write them as behavior someone can observe by using the thing. Given a starting state, when the user does something, then something is observably true. "A blank title is rejected by the validation layer" names an implementation the next session should get to choose; "when I submit with the title empty, then I see the form again with an error on the title field" says the same thing and decides nothing. Outside a UI the same rule holds: "when I run `report --format=csv` with no matching records, then it prints the header row and exits 0". Where recon found something specific enough to change the work, put it in the criterion itself.
 
@@ -135,7 +135,7 @@ What changes:
 
 The final reply is the comment, so it carries nothing else:
 
-~~~
+```
 <!-- spec -->
 {the filled-in template, in full}
 <!-- /spec -->
@@ -147,7 +147,7 @@ The final reply is the comment, so it carries nothing else:
 - {finding} — {fixed / rejected, and why}
 
 _Written by {model name} ({model ID}) with /slice --auto. No human has edited this yet._
-~~~
+```
 
 No code block around the SPEC: GitHub would show it as raw text. Write the two marker lines exactly as shown, each on its own line. GitHub hides them, so the SPEC renders, and the next step finds the SPEC by them.
 

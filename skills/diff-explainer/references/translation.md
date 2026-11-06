@@ -4,7 +4,7 @@ Read this when you know the reader's background and the project isn't in it.
 
 ## The point of an analogy
 
-The reviewer isn't confused about programming. They're missing the *conventions*:
+The reviewer isn't confused about programming. They're missing the _conventions_:
 what this framework does for you, what's expected to live where, what's normal
 versus what's a workaround. Their own stack gives them exactly that at home, so
 the analogy does real work: it hands them the conventions they'd otherwise have
@@ -29,7 +29,7 @@ a null check: nobody needs a translation for that. Forcing an analogy onto
 something obvious reads as condescension, and the reviewer starts skimming.
 
 **Never make the analogy do the explaining.** The annotation still has to say
-why the change was made. The analogy only makes the *what* cheap to parse so the
+why the change was made. The analogy only makes the _what_ cheap to parse so the
 why has room.
 
 **Say so when there's no match.** Type systems, eventual consistency, explicit
@@ -41,18 +41,22 @@ Describe the actual thing plainly instead of stretching a comparison.
 For a Laravel developer reading a Go branch.
 
 **Weak, syntax with no why:**
+
 > This adds a `sync.Once` around the config loader.
 
 **Better, convention plus the reason:**
+
 > Does what binding a singleton in a service provider does: the config is read
 > once, the first time anything asks, and shared after that. It moved here
 > because two packages were each reading the file on their own and disagreed
 > after a deploy.
 
 **Weak, the analogy is the whole annotation:**
+
 > A goroutine is basically a queued job.
 
 **Better, analogy sets up the actual point:**
+
 > Starting a goroutine here is like dispatching a Laravel job, minus the queue:
 > it runs in the same process, so a restart mid-resize loses the thumbnail,
 > with no `failed_jobs` row to pick it back up. That's why the upload is marked

@@ -8,7 +8,7 @@ argument-hint: "[feature description or path to a SPEC]"
 
 > Make the change easy, then make the easy change. — Kent Beck
 
-You're looking for the refactorings *this* feature asks for. A preparatory refactoring earns its place by making the feature's diff smaller and more obvious, so if you can't show that, leave it out — a finding that stands on its own without the feature is a code review finding, and `/multi-lens-review` is where it goes.
+You're looking for the refactorings _this_ feature asks for. A preparatory refactoring earns its place by making the feature's diff smaller and more obvious, so if you can't show that, leave it out — a finding that stands on its own without the feature is a code review finding, and `/multi-lens-review` is where it goes.
 
 You identify, you don't refactor. Nothing here edits code. The report has to survive being pasted into a session that has none of this conversation, which is the real constraint on how long it can be.
 
@@ -63,7 +63,7 @@ Wave two is in hand by now. The prior-art file lists are a prediction of which f
 
 One to three, and zero is a legitimate result. Every move is behavior-preserving: the tests passing now pass after, unchanged. The moment a move needs a new test it isn't preparation, it's the feature.
 
-**Score each one out of 100** — how sure you are that the move is genuinely behavior-preserving *and* that the feature's diff actually gets smaller. Below 80, drop it without mentioning it. The scarce thing isn't the reader's attention, it's their willingness to detour before starting on what they actually sat down to build. One move they can see the point of gets made; three speculative ones get the whole report ignored.
+**Score each one out of 100** — how sure you are that the move is genuinely behavior-preserving _and_ that the feature's diff actually gets smaller. Below 80, drop it without mentioning it. The scarce thing isn't the reader's attention, it's their willingness to detour before starting on what they actually sat down to build. One move they can see the point of gets made; three speculative ones get the whole report ignored.
 
 Judge the detour by what the sketch already tells you rather than estimating code you haven't written: how many files the feature touches, how many call sites move, whether the new behavior becomes a body for one function or edits threaded through several. "Goes from 4 files to 1, at the cost of moving 3 call sites" is checkable. Line counts for unwritten code read as measurements and aren't.
 
@@ -85,7 +85,7 @@ Today this feature lands as:
 Covered by: {the command, and what it exercises at the site — or "nothing"}
 ```
 
-The lines under *today* are the argument, so they name files and functions. If a line could describe any change — messy, clearer, easier to follow — it isn't filled in yet.
+The lines under _today_ are the argument, so they name files and functions. If a line could describe any change — messy, clearer, easier to follow — it isn't filled in yet.
 
 They say where the feature's edits land, not how to write them. The report is the case for the move; the feature is someone else's to build, and it's going to `/implement-with-tdd` after this anyway. A helper's body, a guard clause, the expression that does the actual work — leave all of it out, however clearly you can see it. Writing it here adds length the move doesn't need and quietly turns a refactoring report into a half-finished implementation plan.
 

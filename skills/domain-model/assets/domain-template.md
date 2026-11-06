@@ -5,8 +5,8 @@ interesting boundary turned out to be.}
 
 ## Language
 
-| Term | What it means here | Watch out |
-| --- | --- | --- |
+| Term                               | What it means here                       | Watch out                                                                                                    |
+| ---------------------------------- | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
 | {term, in the business's own word} | {the meaning it carries in this process} | {the near-synonym it isn't, the other meaning elsewhere, "named on request — not observed in use", or blank} |
 
 ## Flow

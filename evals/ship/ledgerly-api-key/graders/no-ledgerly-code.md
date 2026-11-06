@@ -1,5 +1,5 @@
 ---
 type: file_exists
-path: 'lib/**/*edgerly*'
+path: "lib/**/*edgerly*"
 exists: false
 ---
