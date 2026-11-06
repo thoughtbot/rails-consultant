@@ -2,7 +2,7 @@
 type: llm
 ---
 
-Steve's PR voice: the body opens with what prompted the change ("Now that ...", "Prior to this ...", "In an effort to ...", or a sentence stating the problem), not with what changed. It speaks as "we" for the team and never as "I". Short paragraphs, no headings.
+thoughtbot's PR voice: the body opens with what prompted the change ("Now that ...", "Prior to this ...", "In an effort to ...", or a sentence stating the problem), not with what changed. It speaks as "we" for the team and never as "I". Short paragraphs, no headings.
 
 The PR body is the description the reply hands back, usually in a fenced block; a title on its first line is fine. Notes tied to a file and line are not the body. Judge only the body.
 

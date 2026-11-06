@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+- `/pr`, `/commit`, `/diff-explainer`, and `/slice --auto` write in thoughtbot's
+  [voice and tone](https://thoughtbot.com/playbook/the-thoughtbot-way/brand/voice-and-tone),
+  not one person's.
+
 ## [2.0.0] - 2026-11-06
 
 - Replace every skill with the stack-agnostic set from

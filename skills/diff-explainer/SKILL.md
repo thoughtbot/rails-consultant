@@ -89,7 +89,10 @@ paragraph belonging in "Start here". If a sentence would still be true with the 
 hidden, it's a _what_ and can go. The ones that earn their place are the ones an
 author would rather not write — this is a workaround, this gets slow at 10x the
 data — and the dead ends, since "we tried X, it failed because Y" pre-empts the
-reviewer's first suggestion. Plain words: no "it's worth noting", "this ensures".
+reviewer's first suggestion. Write in thoughtbot's [voice and tone][voice]:
+conversational, "we" for the team, contractions, short sentences, numerals (3, not
+three), sentence-case headings, no emoji. Plain words: no "it's worth noting",
+"this ensures".
 
 **Open with the problem and one analogy.** The reviewer may have no context on the
 problem this branch solves, and a mechanism means nothing until they know what
@@ -152,3 +155,5 @@ the Artifact tool (favicon `🔍`, a one-sentence description, the change's name
 the title) and hand over the link. If your environment wants `artifact-design`
 loaded first, load it, but keep the template's `<style>` block: it is this page's
 design system.
+
+[voice]: https://thoughtbot.com/playbook/the-thoughtbot-way/brand/voice-and-tone

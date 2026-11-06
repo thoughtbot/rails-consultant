@@ -132,6 +132,7 @@ What changes:
 - **Revise once.** Fix what holds up, drop what doesn't. No second review.
 - **Guess, and say so.** Anything only a human could answer, like who receives an email or which plan a limit applies to, gets your best guess, recorded under `## Assumptions`. A guess the reader can see costs one edit; a guess buried in a criterion ships.
 - **No file.** Don't write `docs/specs/`. On a CI runner it's thrown away unless pushed, and the comment is the handoff.
+- **Write in thoughtbot's [voice and tone](https://thoughtbot.com/playbook/the-thoughtbot-way/brand/voice-and-tone).** The team reads this comment. Conversational, contractions, short sentences, numerals (3, not three), no emoji. The template's fixed wording stays word for word.
 
 The final reply is the comment, so it carries nothing else:
 
