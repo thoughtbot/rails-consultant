@@ -5,8 +5,17 @@
 This is a simple set of skills optimized for general-purpose software
 development across tech stacks.
 
-My preference is to rely on the [built-in commands][1] as much as possible,
-which is why I have such a small set of skills.
+Our preference is to rely on the [built-in commands][1] as much as possible,
+which is why we have such a small set of skills.
+
+## Source Material
+
+Several skills draw on articles, books, and talks created by thoughtbot:
+
+- [Testing from the Outside-In][outside-in]
+- [Rails Test Types and the Testing Pyramid][testing-pyramid]
+- [Break Apart Your Features into Full-Stack Slices][full-stack-slices]
+- [Job Stories][job-stories]
 
 ## Installation
 
@@ -92,42 +101,6 @@ why and the risks. Anything still owed comes back to you in the terminal,
 not as a PR comment. You rewrite the description before marking it ready.
 Screenshots from verification stay on the machine that ran it; nothing
 uploads them yet.
-
-## Why these work
-
-I created these because I was staffed on a project where I had no familiarity
-with the tech-stack or language. I found I could still be effective by doubling
-down on evergreen consulting skills, and offloading the implementation to the
-LLM.
-
-This only works if I still understand what I'm building, and if I can trust the
-generated code.
-
-Offloading the implementation works. Offloading the understanding doesn't,
-because I can't offload responsibility. The LLM makes it more challenging to
-understand what I'm doing because it can convert a feature into a slice so
-quickly. So, a lot of these skills exist to slow me down enough to absorb and
-scrutinize its work. I use [`/understand`][25] so that I can eventually explain
-a concept myself. I use [`/eli5`][28] for when I have no familiarity at all and
-need a direct explanation. I use [`/rubber-duck`][24] when the SPEC looks
-plausible, but I want to be critical. I use [`/diff-explainer`][6] so I can
-understand the context behind the code, since I didn't write it. I use
-[`/pr`][34] to write the PR description myself since the feature is my
-responsibility and I also find it helps with retention. It also helps with
-credibility, since reviewers can tell when a description wasn't written by the
-person who opened the PR.
-
-Since I'm offloading implementation, I need to trust it. I use [`/slice`][2] to
-keep the change small while still delivering value. I use
-[`/implement-with-tdd`][4] to drive out the implementation with tests. I use
-[`/multi-lens-review`][5] to look for defects and check the result against the
-SPEC. I use `/verify` to run the actual app, since passing tests doesn't mean
-the feature works.
-
-None of this is new. Before LLMs, you still planned before you started coding,
-you still used TDD to implement the feature, and you still had limited context
-when you reviewed your colleague's PRs. The only difference now is that an LLM
-can accelerate planning and do the implementation.
 
 ## Evals
 
@@ -369,6 +342,10 @@ We are [available for hire][hire].
 [community]: https://thoughtbot.com/community?utm_source=github
 [contributors]: https://github.com/thoughtbot/rails-consultant/graphs/contributors
 [hire]: https://thoughtbot.com/hire-us?utm_source=github
+[full-stack-slices]: https://thoughtbot.com/blog/break-apart-your-features-into-full-stack-slices
+[job-stories]: https://thoughtbot.com/playbook/rapid-product-validation/jtbd#how-to-write-and-use-job-stories
+[outside-in]: https://thoughtbot.com/blog/testing-from-the-outsidein
+[testing-pyramid]: https://thoughtbot.com/blog/rails-test-types-and-the-testing-pyramid
 [1]: https://code.claude.com/docs/en/commands
 [2]: #slice
 [3]: #preparatory-refactor
