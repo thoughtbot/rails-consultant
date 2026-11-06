@@ -95,9 +95,16 @@ Most commits have one or two. None is fine.
   service stubbed that behaves differently for real. An audit log that rounds
   "didn't run it" up to silence is worse than none.
 
-Write these for a teammate skimming `git log`, not for the code. Plain words, no
-"this ensures", "robust", "it's worth noting". Don't list the files you touched.
-Bullets are fine when there are three separate risks. Otherwise prose.
+Write these for a teammate skimming `git log`, not for the code, in thoughtbot's
+[voice and tone][voice]:
+
+- Conversational. "We" for the team, never "I". Contractions, easy words, short
+  sentences. No "this ensures", "robust", "it's worth noting".
+- Numerals ("3 retries", not "three retries"), unless the number starts a
+  sentence. The Oxford comma. No emoji.
+
+Don't list the files you touched. Bullets are fine when there are 3 separate
+risks. Otherwise prose.
 
 **Never invent a why.** The good reasons come from this session: what you tried,
 what broke, what surprised you. None of that is in the diff. If you're committing
@@ -135,3 +142,5 @@ Co-Authored-By: Claude <noreply@anthropic.com>
 Show `git log --oneline` for the new commits. Then one line each for anything
 worth knowing: a split you made, files you left uncommitted and why, a hook that
 complained.
+
+[voice]: https://thoughtbot.com/playbook/the-thoughtbot-way/brand/voice-and-tone

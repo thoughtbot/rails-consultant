@@ -168,7 +168,7 @@ inventing rationale. Short beats thorough; a reviewer skims a long PR.
   - Bad: "Adds a PDF format to `InvoicesController#show` (a3e96d0)."
   - Good: "Support resends old invoices by hand a few times a week. Now
     customers can download them as PDFs."
-- **Write the body and notes in Steve's voice.** See [Voice](#voice).
+- **Write the body and notes in thoughtbot's voice.** See [Voice](#voice).
 - **Notes go on the lines.** Each risk, tradeoff, or open question becomes an
   inline comment on the line it's about, starting `**Risk:**`,
   `**Tradeoff:**`, or `**Open question:**`. One to two sentences, for the
@@ -259,22 +259,28 @@ co-author trailer on top of it.
 
 ### Voice
 
-The body and the notes should read like Steve wrote them. This comes
-from Steve's PRs and review comments on thoughtbot/top_secret.
+The body and the notes should sound like thoughtbot, not one person.
+This follows thoughtbot's [voice and tone][voice] guide.
 
 Both:
 
 - **"We" for the team**, at least once in the body and in each note:
-  "Now we ...", "We send ...". Never "I"; you aren't Steve.
-- **Plain and a little casual**: "it feels like a good time to ...",
-  "That's OK for now." No sales words, and no stiff ones like
-  "Consider", "Ensure", or "potential issue".
+  "Now we ...", "We send ...". Never "I".
+- **Conversational, not academic or enterprisey.** Contractions
+  ("doesn't", "we're"), easy words, short sentences. If a sentence is
+  awkward to read aloud, simplify it. No sales words, and no stiff ones
+  like "Consider", "Ensure", or "potential issue".
+- **Serious when it matters.** A light touch is fine in the body. A
+  risk stays plain: no jokes about lost data.
+- **Mechanics.** Numerals ("3 retries", not "three retries"), unless
+  the number starts a sentence. Oxford comma. No emoji. One exclamation point per paragraph at most; most
+  need none.
 
 The body:
 
 - **Open with what prompted the change**, not what changed: "Now that
-  ...", "Prior to this, ...", "In an effort to ...", "Follow-up to
-  #77.", or the problem in one sentence. Pick what fits.
+  ...", "Prior to this, ...", "Follow-up to #77.", or the problem in
+  one sentence. Pick what fits.
 - **Then what changed**, a sentence or two.
 - **Caveats get their own short paragraph**: "For the time being, ...",
   "Note that ...".
@@ -308,6 +314,8 @@ The notes, like a teammate's review comment:
   for now, since nothing calls it yet."
 
 Only the voice. Every claim still comes from the branch.
+
+[voice]: https://thoughtbot.com/playbook/the-thoughtbot-way/brand/voice-and-tone
 
 ### Open it
 
