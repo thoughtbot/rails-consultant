@@ -1,5 +1,30 @@
 ## [Unreleased]
 
+## [2.0.0] - 2026-11-06
+
+- Replace every skill with the stack-agnostic set from
+  [stevepolitodesign/skills](https://github.com/stevepolitodesign/skills), per
+  [discussion #57](https://github.com/thoughtbot/rails-consultant/discussions/57).
+- Removed, with the nearest replacement:
+  - `/git-commit`: use `/commit`.
+  - `/test-driven-development`: use `/implement-with-tdd`.
+  - `/feature-dev`: use `/slice`, then `/ship`.
+  - `/socratic-review`: use `/multi-lens-review`, then `/understand` to work
+    through what it found.
+  - `/explain`: use `/eli5`, or `/trace` for a flow.
+  - `/challenge`: use `/rubber-duck`.
+  - `/hard-news`, `/offboard`, `/prior-art`, `/standup`: no replacement.
+- Added: `/ask-claude`, `/commit`, `/diff-explainer`, `/domain-model`, `/eli5`,
+  `/implement-with-tdd`, `/multi-lens-review`, `/pr`, `/preparatory-refactor`,
+  `/risk-score`, `/ship`, `/trace`, `/understand`.
+- Replaced with new versions: `/rubber-duck`, `/slice`.
+- New requirements:
+  - `/risk-score` runs a Python script, so it needs `python3`.
+  - `/ship` runs as a Claude Code workflow, so it needs the Workflow tool.
+  - `/pr` and `/ship` open PRs with `gh`. Other skills use it for PR numbers
+    and fall back to git without it.
+- Add eval cases for every skill under `evals/`.
+
 ## [1.5.1] - 2026-07-30
 
 - Fix `/slice` silently losing its examples in a plugin install. Four reads in

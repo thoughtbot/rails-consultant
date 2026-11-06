@@ -2,8 +2,11 @@
 
 [![skills.sh](https://skills.sh/b/thoughtbot/rails-consultant)](https://skills.sh/thoughtbot/rails-consultant)
 
-A collection of [skills][] for Rails development and consulting, with an
-emphasis on learning, communication, and client success.
+This is a simple set of skills optimized for general-purpose software
+development across tech stacks.
+
+Our preference is to rely on the [built-in commands][1] as much as possible,
+which is why we have such a small set of skills.
 
 ## Source Material
 
@@ -16,196 +19,300 @@ Several skills draw on articles, books, and talks created by thoughtbot:
 
 ## Installation
 
-### Via skills
+### Claude Code
 
-Install with [skills][]:
-
-```
-npx skills add thoughtbot/rails-consultant
-```
-
-### Via Claude Code
-
-Add the marketplace to Claude Code:
+Add thoughtbot's marketplace:
 
 ```
-/plugin marketplace add thoughtbot/rails-consultant
+/plugin marketplace add thoughtbot/skills
 ```
 
 Install the plugin:
 
 ```
-/plugin install rails-consultant@rails-consultant
+/plugin install rails-consultant@skills
 ```
 
-## Commands
-
-### Feature Development
-
-#### `/feature‑dev`
-
-Takes one feature slice from idea to reviewed, committed code in a single guided pass: shapes it into a well-defined slice, builds it test-first, reviews and fixes the diff, then lands it as a clean commit. Chains `/slice` → `/test-driven-development` → code review → `/git-commit`, holding the discipline at each handoff — it won't build until the slice is sharp, and won't call the work done until the diff is reviewed and the suite is green. It also keeps the implementation lean, holding the production-code diff to a ~300-line budget. Scoped to one slice on purpose; hand it an epic and it helps you pick the single slice to build now.
+### Codex, and other agents
 
 ```
-/feature-dev Add a "copy to clipboard" button to code snippets on docs pages
-/feature-dev Authors can schedule a post to publish at a future time
-/feature-dev Admins can soft-delete comments and restore them within 30 days
+npx skills@latest add thoughtbot/rails-consultant
 ```
 
-Adapted from Anthropic's [Feature Development][feature-dev] plugin, threaded through this plugin's `/slice`, `/test-driven-development`, and `/git-commit` skills and closed out with Claude Code's built-in `/code-review --fix`.
+## How to use these skills
 
-### Understanding the Codebase
+These skills can be run independently, but are intended to be run in a series
+of **new sessions** when building out a feature from start to finish.
 
-#### `/explain`
+### Discovery and planning
 
-Explains a specific piece of code or a user-facing flow. Point it at a file, class, or method for a close reading; point it at a feature or user action for a system-level diagram with entry points, branching logic, and side effects.
+> [!TIP]
+> Not sure how to ask for something, like "why can't some users log in?", or
+> which Claude feature fits a job? Start with [`/ask-claude`][38].
 
-```
-/explain app/models/user.rb
-/explain password reset
-/explain the Stripe webhook handler
-```
+0. Optionally, use [`/domain-model`][26] on new projects or features to capture
+   business logic.
+   - Use [`/understand`][25] and/or [`/eli5`][28] to reinforce your
+     understanding of the business logic.
+   - Use [`/trace`][36] to see what an existing flow actually does before you
+     change it.
+1. First, use [`/slice`][2] to come up with the simplest possible thing to ship
+   that adds value.
+   - Use [`/understand`][25] and/or [`/eli5`][28] to reinforce your
+     understanding of the generated SPEC.
+   - Use [`/rubber-duck`][24] to slow down and scrutinize the generated SPEC.
 
-#### `/prior‑art`
+### Implementation
 
-Finds every place the codebase handles a specific concern — the consistent pattern and the exceptions. Answers the "how does this app do X?" question before you build something that reinvents it.
+2. Then, run [`/preparatory-refactor`][3] to see if there's an opportunity to
+   refactor ahead of time to make the feature easier to implement.
+3. Then, run [`/implement-with-tdd`][4] against the SPEC created from
+   [`/slice`][2] to drive out the simplest implementation.
+4. Then, run [`/multi-lens-review`][5] to find defects in that implementation,
+   and to refactor it.
 
-```
-/prior-art How does this app handle authorization?
-/prior-art Where do we send transactional emails?
-/prior-art How are background jobs retried on failure?
-```
+### Verification and review
 
-### Test-Driven Development
+5. Then, run `/verify` to confirm the change against the running app, not just
+   the tests. This is [built into Claude Code][30].
+6. Then, run [`/diff-explainer`][6] to create an [artifact][7] that will
+   help you understand the changeset.
+   - After reviewing the artifact, use [`/rubber-duck`][24] to slow down and
+     scrutinize generated code, or [`/understand`][25] to reinforce your
+     understanding. If you need more help, start with [`/eli5`][28].
+7. Finally, run [`/pr`][34] to open a PR with a description you write
+   yourself. The feature is your responsibility, and writing about it helps it
+   stick.
 
-#### `/test‑driven‑development`
+### Running them as a dynamic workflow
 
-Strict outside-in TDD workflow for Rails. Starts with a feature spec describing behavior from the user's perspective, lets each failure guide what to build next, and drops to unit tests for non-trivial logic. Enforces the discipline: no production code without a failing test first. Red-green-refactor.
-
-```
-/test-driven-development Users can cancel their subscription from the billing page
-/test-driven-development Fix the bug where archived projects still appear in search results
-```
-
-Based on [Superpowers][superpowers] by Jesse Vincent, adapted for Rails with guidance from [Testing from the Outside-In][outside-in], [The Testing Pyramid][testing-pyramid], and [Testing Antipatterns][antipatterns].
-
-### Code Quality
-
-#### `/socratic‑review`
-
-A pairing session, not a report. Reads the code silently, then leads you to see the issues yourself through questions — whether it's your own code, a teammate's PR, or something you inherited. Names smells and moves precisely, then closes with a concrete plan: what to fix, in what order, and where to start.
-
-```
-/socratic-review app/services/payment_processor.rb
-/socratic-review the open PR on branch feature/notifications
-/socratic-review I inherited this controller and something feels off
-```
-
-### Version Control
-
-#### `/git‑commit`
-
-Turns your working changes into atomic commits, messages and all — no approval gate. Reads the diff, groups related changes so a freshly built feature lands in one commit while unrelated work (review fixes, stray refactors, a bug fix riding along) is split apart, then writes each message in the thoughtbot style: explaining the why, flagging risks and surprises, and referencing an issue or PR only when it's obvious.
+Steps 2 through 5 are mechanical once the SPEC exists, so [`/ship`][31] runs
+them as a [workflow][21], then opens a draft PR with `/pr --auto`:
 
 ```
-/git-commit
-/git-commit this addresses the review feedback on the auth PR
+/ship docs/specs/the-slug.md
 ```
 
-### Planning
+Each step gets its own context, and each one commits with [`/commit`][32] before
+the next starts.
 
-#### `/slice`
+The draft PR stands in for step 6. Its description and line notes cover the
+why and the risks. Anything still owed comes back to you in the terminal,
+not as a PR comment. You rewrite the description before marking it ready.
+Screenshots from verification stay on the machine that ran it; nothing
+uploads them yet.
 
-Turns a feature into well-defined, independently shippable slices — whether it's an epic that needs breaking apart or a single story that needs sharpening into a job story. Works Socratically: guides you to find the slices yourself, validates each against the "can it ship independently?" and "can a user see the value?" tests, then helps you sequence by risk and learning, not by ease.
+## Evals
 
-```
-/slice Users need to be able to manage their subscription
-/slice We need an admin dashboard for customer support
-/slice Add multi-tenancy to the existing app
-```
-
-Inspired by [Break Apart Your Features into Full-Stack Slices][full-stack-slices] and [Job Stories][job-stories] from the thoughtbot Playbook.
-
-### Thinking and Decisions
-
-#### `/rubber‑duck`
-
-Socratic friction to help you find clarity, not sympathy. Follows your thinking with one question at a time — the actual problem underneath, what you've already ruled out, what your gut says. Closes with an honest synthesis and one question you've been avoiding.
+Every skill has [eval cases][40] in `evals/<skill>/`. The ones for
+[`/ask-claude`][39] sit directly in `evals/`. Run one skill's cases from the
+repo root:
 
 ```
-/rubber-duck I can't decide between a service object and a concern here
-/rubber-duck I keep going back and forth on whether to extract this into a gem
-/rubber-duck
+claude plugin eval . --case 'slice-*' --scaffold --max-cost-usd 10 --allow-tools Write Bash
 ```
 
-#### `/challenge`
+- Case names start with the skill's name, which is what `--case` matches.
+- `--scaffold` runs each case's `scaffold.sh`, which builds the sample app it
+  runs against.
+- Most skills need `--allow-tools Write Bash`. `/ship` also needs `Edit
+Workflow`. `/ask-claude` needs `"WebFetch(domain:code.claude.com)"
+"WebFetch(domain:platform.claude.com)"` instead.
+- Each skill's baseline scores are in its "Add evals for" PR, listed in
+  [discussion #71][42].
+- Every run is billed to your account, from about $0.10 for a question that
+  shouldn't trigger a skill to about $2.40 for a `/ship` run.
+- The CLI needs its own login, even inside the desktop app: `claude auth login`.
+- Results go to `evals/results/`, which is gitignored.
+- Cases with a `scaffold.sh` need `--scaffold`. The `/pr` cases also need
+  `--allow-tools Bash Write Edit Agent`.
 
-Cross-examines a belief, design decision, or inherited constraint. Asks where it came from, what evidence would change it, and what the simplest alternative is. Has opinions — says directly when an assumption is weak and names the better path.
+## Reference
+
+### Ask Claude
+
+[`/ask-claude`][39] references the Claude docs to figure out the best tool for
+the job, whether that's a hook, a skill, or just a better prompt. It shows you
+the prompt before running anything.
+
+### Commit
+
+[`/commit`][33] turns your changes into atomic commits. Each message captures
+the why, risks, tradeoffs and alternatives considered, so the history serves as
+an audit log of what the LLM did.
+
+Used by `/ship` for every commit, which gives `/diff-explainer` the context it
+needs.
+
+### Diff explainer
+
+[`/diff-explainer`][8] is meant to help someone understand the why, risks,
+tradeoffs and alternatives considered when viewing a `diff` generated by an LLM
+through an [artifact][7].
+
+Because agentic coding sometimes means you're not actually authoring your code,
+you lose context into the decision-making process of each commit.
+
+The reviewer may not know the problem either, so the page opens with a simple
+everyday analogy for it unless you ask it not to.
+
+If you're working in an unfamiliar tech-stack, name the one you know and it'll
+explain the change in those terms:
 
 ```
-/challenge We need microservices because the monolith won't scale
-/challenge We can't use Hotwire because our UI is too complex
-/challenge The client says we have to support IE11
+/diff-explainer from the perspective of a WordPress developer
 ```
 
-### Client Communication
+Otherwise it uses the background in your `CLAUDE.md`, if there is one, and
+explains the change in the stack's own terms if not.
 
-#### `/standup`
+Finally, in order to be consistent across artifacts, the template ships its own
+small stylesheet, so every walkthrough looks the same.
 
-Writes a polished, ready-to-send client update. Checks git for context, then asks what the code can't tell: what you actually spent time on, what the client must know, what risks you might be softening. Pushes on internal team communication too — not just what goes to the client.
+### Domain model
+
+[`/domain-model`][27] takes a business process described in plain language and
+extracts the domain. Useful for new projects and features, but can be run at
+any time.
+
+### ELI5
+
+[`/eli5`][29] explains code or a concept as simply as possible. Opens with a
+simple everyday analogy unless you ask it not to, then uses real values from
+the codebase when possible to help create simple, concrete demonstrations.
+
+Use [`/understand`][23] to help you reinforce what you've learned.
+
+### Implement with TDD
+
+[`/implement-with-tdd`][10] drives out an implementation with TDD, working
+[from the outside in][11] and starting with [shameless green][12]. This skill
+is optimized to cap a feature at around 200 lines of code in an effort to keep
+things small.
+
+Intended to be run after `/preparatory-refactor`, but before
+`/multi-lens-review`.
+
+### Multi-lens review
+
+[`/multi-lens-review`][15] reviews a change with five parallel subagents: one
+hunting defects (bugs, performance, security), one checking we adhered to the
+SPEC, one on code quality and reducing [smells][16], one identifying emerging
+domains, and one asking what still depends on the behavior we replaced.
+
+The defects subagent stands in for the built-in `/code-review` [command][1],
+and covers the ground `/security-review` does too. It's not named `/review`
+because Claude Code ships a built-in `/review`.
+
+### Preparatory refactor
+
+[`/preparatory-refactor`][13] takes a SPEC or plan and identifies opportunities
+for a [preparatory refactor][14].
+
+Intended to be run after `/slice`, but before `/implement-with-tdd`.
+
+Note that `/multi-lens-review` contains an Agent responsible for identifying
+emerging Domains.
+
+### PR
+
+[`/pr`][35] opens a PR, but leaves the description to you. It briefs you on
+what changed, suggests a title in the repo's style, and then waits for you to
+write the description. Once you do, it proofreads it lightly and opens the PR
+after you sign off on the exact text.
+
+`/pr --auto` is for when nobody's around. It opens a draft PR whose body says,
+in plain English, what changed for the people using the product and why. No
+file paths or commit SHAs. Risks, tradeoffs, and open questions go up as inline
+comments on the lines they're about, each with a plain-English version in the
+style of `/eli5`: an everyday analogy, and an ASCII drawing when the order of
+events is the point. You rewrite the description before
+marking it ready. Off GitHub, it replies with the title, body, and notes
+instead.
+
+It doesn't take or host screenshots. Pass image URLs you've already uploaded
+with `--screenshots`, and it embeds them in the body:
 
 ```
-/standup
-/standup We spent most of the day debugging a production issue with Sidekiq
+/pr --auto --screenshots https://example.com/orders-before.png https://example.com/orders-after.png
 ```
 
-#### `/hard‑news`
+### Risk score
 
-A prep session before a difficult client conversation. Asks you to write your opening sentences before polishing them — then uses what comes out to show you how you instinctively handle pressure. Produces the opening, explanation, path forward, likely reactions, and specific phrases to avoid.
-
-```
-/hard-news The launch date is going to slip by two weeks
-/hard-news We found a security vulnerability in production
-/hard-news We need to recommend rewriting a module the client just paid for
-```
-
-#### `/offboard`
-
-Walks through the Designer/Developer wrap-up checklist for offboarding a client engagement — one item at a time, assisting where it can (scanning for secrets, checking branches, reviewing the README). No documents produced; the conversation is the deliverable.
+[`/risk-score`][43] scores how risky a PR or branch is and replies with JSON,
+so CI can act on it. A script does the scoring with fixed rules, so the same
+diff always gets the same score. Claude only picks the diff and hands back what
+the script printed, even when you tell it the change is tiny.
 
 ```
-/offboard
-/offboard We're wrapping up the Acme Corp engagement this Friday
+/risk-score            # this branch vs. its base
+/risk-score 123        # PR 123, via gh
+/risk-score release    # this branch vs. release
 ```
 
-## Recommended Plugins
+The rules and their points are listed in the skill. They recognize the
+migrations, config, and dependency files of most stacks, not just Rails: a Knex
+`dropColumn` scores the same as a Rails `remove_column`. To change how
+something scores, change `skills/risk-score/scripts/score.py` in a PR of its own.
 
-The commands in Rails Consultant pair well with the following plugins.
+The script doesn't need Claude. In CI, pipe a diff straight in and gate on the
+level:
 
-- [Code Review][code-review]
-- [Code Simplifier][code-simplifier]
-- [Context7][context7]
-- [Explanatory Output Style][explanatory-output-style]
-- [Security Guidance][security-guidance]
+```
+gh pr diff 123 | python3 skills/risk-score/scripts/score.py | jq -e '.level != "high"'
+```
 
-## Common Workflows
+### Rubber duck
 
-Use `/feature-dev` to run the whole loop as one guided pass, or run the steps yourself:
+[`/rubber-duck`][22] is what the name implies. Use this when you want to slow
+down and scrutinize generated code or a SPEC generated by `/slice`.
 
-1. Use `/slice` to break down a feature or epic into a
-   [Full-Stack Slice][full-stack-slices].
-1. Use `/test-driven-development` to drive out the implementation by [testing from the outside-in][outside-in] using the [testing pyramid][testing-pyramid].
-1. Use `/simplify` to refactor the shameless green implementation.
-1. Use `/git-commit` to group the work into atomic commits with well-written
-   messages.
+### Ship
 
-### Code review
+[`/ship`][31] runs steps 2 through 5 against a SPEC as a [dynamic
+workflow][21] and opens a draft PR.
 
-1. Use `/explain` to help you understand the change.
-1. Use `/socratic-review` to deliberately slow down and get a better
-   understanding
-   of the PR yourself.
-1. Use [`/code-review`][code-review] only after you've given your own feedback.
+### Slice
+
+[`/slice`][17] turns a rough idea into a [vertical slice][18] with accompanying
+[job stories][19] and acceptance criteria.
+
+The idea is that the smaller the slice, the easier it'll be for an LLM or human
+to implement and ship.
+
+The SPEC also carries a short list of the files recon read, stamped with the
+commit it read them at. `/preparatory-refactor` and `/implement-with-tdd` start
+from those paths instead of rediscovering them. They're pointers, not a plan —
+neither skill treats the list as scope, and the repo wins where they disagree.
+
+Pass `--auto` to run it without a human, like from a GitHub issue:
+
+```
+/slice --auto <the idea or issue body>
+```
+
+It skips the interview and makes the cuts itself. A fresh subagent reviews the
+draft in place of you, and anything it had to guess goes under
+`## Assumptions`. It replies with the SPEC instead of writing a file, so the
+reply can be posted as a comment on the issue.
+
+### Trace
+
+[`/trace`][37] runs a scenario, like "user creates an account", in your
+development environment and records what actually happened, in order. Anything destructive, like killing a process or dropping a database, is
+stubbed. The trace is saved to `docs/traces/`.
+
+Useful during discovery and planning, and pairs well with `/eli5` and `/slice`.
+
+### Understand
+
+[`/understand`][23] helps you understand something by using the [Socratic
+method][20] instead of explaining it to you.
+
+Pairs well with `/diff-explainer`, `/domain-model`, and `/slice` since it'll
+help reinforce your understanding.
+
+Use [`/eli5`][29] if you have no familiarity with the subject matter.
 
 ## Contributing
 
@@ -232,19 +339,51 @@ See [our other projects][community].
 We are [available for hire][hire].
 
 [CONTRIBUTING]: CONTRIBUTING.md
-[antipatterns]: https://thoughtbot.com/upcase/videos/testing-antipatterns
-[code-review]: https://claude.com/plugins/code-review
-[code-simplifier]: https://claude.com/plugins/code-simplifier
 [community]: https://thoughtbot.com/community?utm_source=github
-[context7]: https://claude.com/plugins/context7
 [contributors]: https://github.com/thoughtbot/rails-consultant/graphs/contributors
-[explanatory-output-style]: https://claude.com/plugins/explanatory-output-style
-[feature-dev]: https://github.com/anthropics/claude-code/tree/main/plugins/feature-dev
-[full-stack-slices]: https://thoughtbot.com/blog/break-apart-your-features-into-full-stack-slices
 [hire]: https://thoughtbot.com/hire-us?utm_source=github
+[full-stack-slices]: https://thoughtbot.com/blog/break-apart-your-features-into-full-stack-slices
 [job-stories]: https://thoughtbot.com/playbook/rapid-product-validation/jtbd#how-to-write-and-use-job-stories
 [outside-in]: https://thoughtbot.com/blog/testing-from-the-outsidein
-[security-guidance]: https://claude.com/plugins/security-guidance
-[skills]: https://code.claude.com/docs/en/skills
-[superpowers]: https://github.com/obra/superpowers/blob/main/skills/test-driven-development/SKILL.md
 [testing-pyramid]: https://thoughtbot.com/blog/rails-test-types-and-the-testing-pyramid
+[1]: https://code.claude.com/docs/en/commands
+[2]: #slice
+[3]: #preparatory-refactor
+[4]: #implement-with-tdd
+[5]: #multi-lens-review
+[6]: #diff-explainer
+[7]: https://code.claude.com/docs/en/artifacts
+[8]: skills/diff-explainer/SKILL.md
+[10]: skills/implement-with-tdd/SKILL.md
+[11]: https://thoughtbot.com/blog/testing-from-the-outsidein
+[12]: https://sandimetz.com/99bottles-sample-ruby
+[13]: skills/preparatory-refactor/SKILL.md
+[14]: https://martinfowler.com/articles/preparatory-refactoring-example.html
+[15]: skills/multi-lens-review/SKILL.md
+[16]: https://refactoring.guru/refactoring/smells
+[17]: skills/slice/SKILL.md
+[18]: https://thoughtbot.com/blog/break-apart-your-features-into-full-stack-slices
+[19]: https://thoughtbot.com/blog/product-management-templates-job-story
+[20]: https://en.wikipedia.org/wiki/Socratic_method
+[21]: https://code.claude.com/docs/en/workflows
+[22]: skills/rubber-duck/SKILL.md
+[23]: skills/understand/SKILL.md
+[24]: #rubber-duck
+[25]: #understand
+[26]: #domain-model
+[27]: skills/domain-model/SKILL.md
+[28]: #eli5
+[29]: skills/eli5/SKILL.md
+[30]: https://code.claude.com/docs/en/skills#run-and-verify-your-app
+[31]: skills/ship/SKILL.md
+[32]: #commit
+[33]: skills/commit/SKILL.md
+[34]: #pr
+[35]: skills/pr/SKILL.md
+[36]: #trace
+[37]: skills/trace/SKILL.md
+[38]: #ask-claude
+[39]: skills/ask-claude/SKILL.md
+[40]: https://code.claude.com/docs/en/plugin-evals
+[42]: https://github.com/stevepolitodesign/skills/discussions/71
+[43]: skills/risk-score/SKILL.md
