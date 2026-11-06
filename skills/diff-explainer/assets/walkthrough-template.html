@@ -1,0 +1,278 @@
+<title>Session Store Swap</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&display=swap">
+
+<!--
+  DIFF WALKTHROUGH TEMPLATE
+  =========================
+  The <style> block below is the whole design. There are no layout classes on
+  purpose: pick the element that describes the content and the stylesheet styles
+  it. Every colour is a token on :root with a dark-mode copy, so the page follows
+  the reader's theme. Don't rewrite it - every walkthrough is supposed to look the
+  same so a reviewer learns the page once.
+
+  Everything inside <main> is a WORKED EXAMPLE (an Express app moving sessions to
+  Redis, with no reader background named). Replace it with the real change.
+
+  The elements and what they mean here:
+    <header> + <hgroup>   title and one-line thesis; the <dl> under it is branch/churn
+    <article>             "Start here" - the problem and its everyday analogy,
+                          then the summary card and the watch list
+    <ol> / <li>           the walkthrough, one item per file or tight group of files
+    <pre><code>           the diff. <ins> a added line, <del> a removed line,
+                          bare text a context line, <small> a hunk header,
+                          <em> an elision ("41 lines not shown")
+    <figure>              a before/after diagram: two <div>s, each a <b> label and
+                          a <pre> of plain ASCII. <ins> marks a new part, <del> a
+                          part that's gone. One in "Start here"; more only inside
+                          an <aside> whose point is a change of shape.
+    <aside data-note>     an annotation. data-note is why | risk | tradeoff |
+                          alternative, and the colour follows it, so pick the one
+                          that's true. The <h3> inside is its label.
+
+  The page ends when the diff ends. There is no closing argument block: the
+  reviewer forms the verdict, not this page.
+
+  Two encoding rules that keep this page readable everywhere it gets opened:
+  escape ampersands and angle brackets inside diff lines, and write typographic
+  characters as HTML entities (&mdash; &minus; &hellip;) rather than raw bytes.
+  These pages get opened as local files and emailed around, and a raw em dash
+  turns into mojibake the moment something guesses the wrong encoding.
+
+  Delete this comment block before publishing.
+-->
+
+<style>
+  /* One reading column; diffs scroll sideways inside their own box. */
+  :root {
+    --bg: #f7f8fa; --surface: #eceff4; --fg: #1c2230; --muted: #5a6376; --line: #d3d9e3;
+    --why: #2a5bd7; --risk: #c0362c; --ins: #1d7a3c; --tradeoff: #8a5800; --alternative: #6a4cbb;
+    --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+    --space: 1rem;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #12151b; --surface: #1b2029; --fg: #e3e7ee; --muted: #98a1b3; --line: #2c3341;
+      --why: #7ea4ff; --risk: #ff7b72; --ins: #5ad06e; --tradeoff: #e3b341; --alternative: #b69af2;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #12151b; --surface: #1b2029; --fg: #e3e7ee; --muted: #98a1b3; --line: #2c3341;
+    --why: #7ea4ff; --risk: #ff7b72; --ins: #5ad06e; --tradeoff: #e3b341; --alternative: #b69af2;
+    color-scheme: dark;
+  }
+
+  body { background: var(--bg); color: var(--fg); font: 1rem/1.6 var(--sans); }
+  main {
+    max-width: 52rem; margin: 0 auto;
+    padding-block: calc(var(--space) * 2.5);
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  main > * + * { margin-top: calc(var(--space) * 2.5); }
+
+  h1, h2, h3 { margin: 0; line-height: 1.25; font-weight: 600; text-wrap: balance; }
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.3rem; }
+  p { margin: 0 0 var(--space); max-width: 65ch; }
+  hgroup { margin-bottom: var(--space); }
+  hgroup > p { margin: 0.25rem 0 0; color: var(--muted); }
+  header > hgroup > p { font-size: 1.15rem; }
+
+  dl { display: grid; grid-template-columns: max-content 1fr; gap: 0.35rem 1.5rem; margin: var(--space) 0 0; }
+  dt { color: var(--muted); font-weight: 600; }
+  dd { margin: 0; min-width: 0; }
+
+  article { padding: calc(var(--space) * 1.5); border: 1px solid var(--line); border-radius: 6px; }
+  article > header { margin-bottom: var(--space); }
+
+  ol { margin: 0; padding: 0; list-style: none; }
+  ol > li + li { margin-top: calc(var(--space) * 3); padding-top: calc(var(--space) * 3); border-top: 1px solid var(--line); }
+  li h2 { font-size: 1.15rem; overflow-wrap: anywhere; }
+
+  code, pre { font-family: var(--mono); font-size: 0.875rem; }
+  code { padding: 0.1em 0.3em; border-radius: 3px; background: var(--surface); }
+  h2 > code, h3 > code, pre code { padding: 0; background: none; font-size: inherit; }
+  pre { margin: 0 0 var(--space); padding: var(--space); overflow-x: auto; line-height: 1.5; border-radius: 6px; background: var(--surface); }
+  ins, del { text-decoration: none; }
+  ins { color: var(--ins); background: color-mix(in srgb, var(--ins) 12%, transparent); }
+  del { color: var(--risk); background: color-mix(in srgb, var(--risk) 12%, transparent); }
+  pre small, pre em { color: var(--muted); font-size: inherit; }
+
+  figure {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+    gap: var(--space); margin: var(--space) 0;
+  }
+  figure > div { min-width: 0; }
+  figure pre { margin: 0; }
+  figure b { display: block; margin-bottom: 0.25rem; color: var(--muted); font-size: 0.8rem; }
+  figcaption { grid-column: 1 / -1; color: var(--muted); font-size: 0.875rem; }
+
+  aside {
+    --note: var(--muted);
+    margin: var(--space) 0;
+    padding: calc(var(--space) * 0.75) var(--space);
+    border-left: 0.25rem solid var(--note);
+    background: var(--surface);
+  }
+  aside > :last-child { margin-bottom: 0; }
+  aside pre { background: var(--bg); }
+  aside h3 {
+    margin-bottom: 0.35rem;
+    color: var(--note);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  aside[data-note="why"] { --note: var(--why); }
+  aside[data-note="risk"] { --note: var(--risk); }
+  aside[data-note="tradeoff"] { --note: var(--tradeoff); }
+  aside[data-note="alternative"] { --note: var(--alternative); }
+</style>
+
+<main>
+
+  <header>
+    <hgroup>
+      <h1>Session Store Swap</h1>
+      <p>Logins stopped surviving deploys. Sessions now live in Redis instead of the web process's memory.</p>
+    </hgroup>
+    <dl>
+      <dt>Branch</dt><dd><code>redis-sessions</code> onto <code>main</code></dd>
+      <dt>Change</dt><dd>4 files, +86 / &minus;21</dd>
+    </dl>
+  </header>
+
+  <article>
+    <header><h2>Start here</h2></header>
+    <p>Every deploy logged everyone out. Picture a coat check where each attendant keeps the claim tickets in their own pocket: when one goes home at shift change, every coat they took in is stranded, and a guest who walks up to the other attendant isn't recognized at all. This branch moves the tickets to one board behind the counter that every attendant reads, so a shift change doesn't matter.</p>
+    <p>In the code: sessions were held in the web process's own memory, so restarting the process threw them away &mdash; and with two processes running, a user could land on the one that had never seen them. This moves sessions into Redis so any process can read them and a restart doesn't matter.</p>
+    <figure>
+      <div>
+        <b>Before</b>
+<pre>         +-- web.1  [sessions]
+browser -+
+         +-- web.2  [different sessions]
+
+deploy: restart --&gt; <del>memory wiped</del>
+                --&gt; <del>everyone logged out</del></pre>
+      </div>
+      <div>
+        <b>After</b>
+<pre>         +-- web.1 --+
+browser -+           +--&gt; <ins>Redis [sessions]</ins>
+         +-- web.2 --+
+
+deploy: restart --&gt; Redis untouched
+                --&gt; <ins>still logged in</ins></pre>
+      </div>
+      <figcaption>Sessions move out of each process and into one shared store.</figcaption>
+    </figure>
+    <p>The change is small on purpose. Nothing about how login works changed; only where the session is kept. Not in this branch: no migration of existing sessions, and no Redis in the test suite &mdash; tests still use the in-memory store.</p>
+    <dl>
+      <dt>Risk</dt>
+      <dd>Deploying this logs everyone out once. Existing sessions live in the old store and nothing copies them over.</dd>
+      <dt>Tradeoff</dt>
+      <dd>Redis is now required to boot, so <code>REDIS_URL</code> has to be set before the release goes out, or the new release crashes on boot.</dd>
+      <dt>Alternative</dt>
+      <dd>Signed cookies would have needed no Redis at all, since the session rides along in the cookie itself. Our payload is over the 4KB limit, so that was out.</dd>
+    </dl>
+  </article>
+
+  <ol>
+
+    <li>
+      <hgroup>
+        <h2><code>src/session.js</code></h2>
+        <p>+31 / &minus;6</p>
+      </hgroup>
+      <p>This is the whole change. Everything else is here to support it.</p>
+
+<pre><code><small>@@ -1,9 +1,14 @@</small>
+ const session = require("express-session");
+<ins>+const RedisStore = require("connect-redis").default;</ins>
+<ins>+const { createClient } = require("redis");</ins>
+
+<ins>+const client = createClient({ url: process.env.REDIS_URL });</ins>
+<ins>+client.connect().catch(console.error);</ins>
+
+ module.exports = session({
+<ins>+  store: new RedisStore({ client, prefix: "sess:" }),</ins>
+   secret: process.env.SESSION_SECRET,
+<del>-  resave: true,</del>
+<ins>+  resave: false,</ins>
+ });
+</code></pre>
+
+      <aside data-note="why">
+        <h3>Why</h3>
+        <p>With no <code>store</code> set, this library keeps sessions in the process's own memory. One restart and they're gone. Pointing it at Redis is the one-line fix; the rest of this PR is wiring.</p>
+      </aside>
+
+      <aside data-note="tradeoff">
+        <h3>Tradeoff</h3>
+        <p><code>resave: false</code> stops us writing the session back to Redis on every single request. Cheaper, but a session that's read and never written won't have its expiry pushed forward &mdash; so an idle-but-active user can get logged out at the 2 week mark rather than 2 weeks after their last click. That felt like the right trade at our traffic.</p>
+      </aside>
+    </li>
+
+    <li>
+      <hgroup>
+        <h2><code>src/health.js</code></h2>
+        <p>+12 / &minus;1</p>
+      </hgroup>
+      <p>The health check now fails if Redis is unreachable, so a broken session store takes the process out of rotation instead of quietly logging everyone out.</p>
+
+<pre><code><small>@@ -4,7 +4,11 @@ router.get("/healthz", async (req, res) =&gt; {</small>
+<del>-  res.json({ ok: true });</del>
+<ins>+  try {</ins>
+<ins>+    await client.ping();</ins>
+<ins>+  } catch {</ins>
+<ins>+    return res.status(503).json({ ok: false, redis: false });</ins>
+<ins>+  }</ins>
+<ins>+  res.json({ ok: true });</ins>
+</code></pre>
+
+      <aside data-note="risk">
+        <h3>Risk</h3>
+        <p>This makes Redis a hard dependency for booting healthy. If Redis has a blip, every process reports unhealthy at once and the whole app goes down rather than degrading. That's deliberate &mdash; a running app that silently loses logins is worse &mdash; but it's a real change in failure mode.</p>
+        <figure>
+          <div>
+            <b>Before: Redis blips</b>
+<pre>/healthz --&gt; 200
+app      --&gt; up, logins fail quietly</pre>
+          </div>
+          <div>
+            <b>After: Redis blips</b>
+<pre>/healthz --&gt; <ins>503 on every server</ins>
+app      --&gt; <ins>down until Redis is back</ins></pre>
+          </div>
+        </figure>
+      </aside>
+    </li>
+
+    <li>
+      <hgroup>
+        <h2><code>package.json</code> &middot; <code>package-lock.json</code></h2>
+        <p>+43 / &minus;14</p>
+      </hgroup>
+      <p>Two new dependencies, same as adding two gems. The lockfile churn is generated &mdash; nothing to read there.</p>
+
+<pre><code><small>@@ -12,6 +12,8 @@ "dependencies": {</small>
+<ins>+    "connect-redis": "^7.1.1",</ins>
+<ins>+    "redis": "^4.6.13",</ins>
+     "express": "^4.18.2",
+<em>&hellip; 41 lines of package-lock.json not shown</em>
+</code></pre>
+
+      <aside data-note="alternative">
+        <h3>Alternative tried</h3>
+        <p>First attempt used <code>ioredis</code>, which is the more common client. It works, but the session library ships types for the other one and the mismatch meant hand-writing an adapter. Not worth it for a client we only call <code>ping</code> on.</p>
+      </aside>
+    </li>
+
+  </ol>
+
+</main>

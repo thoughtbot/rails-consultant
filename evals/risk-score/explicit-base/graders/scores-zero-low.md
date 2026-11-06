@@ -1,0 +1,4 @@
+---
+type: regex
+pattern: '"score":\s*0,[\s\S]*"level":\s*"low"'
+---

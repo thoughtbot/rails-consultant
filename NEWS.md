@@ -1,5 +1,19 @@
 ## [Unreleased]
 
+## [2.0.0] - 2026-11-06
+
+- Replace every skill with the stack-agnostic set from
+  [stevepolitodesign/skills](https://github.com/stevepolitodesign/skills), per
+  [discussion #57](https://github.com/thoughtbot/rails-consultant/discussions/57).
+- Removed: `/challenge`, `/explain`, `/feature-dev`, `/git-commit`,
+  `/hard-news`, `/offboard`, `/prior-art`, `/socratic-review`, `/standup`,
+  `/test-driven-development`.
+- Added: `/ask-claude`, `/commit`, `/diff-explainer`, `/domain-model`, `/eli5`,
+  `/implement-with-tdd`, `/multi-lens-review`, `/pr`, `/preparatory-refactor`,
+  `/risk-score`, `/ship`, `/trace`, `/understand`.
+- Replaced with new versions: `/rubber-duck`, `/slice`.
+- Add eval cases for every skill under `evals/`.
+
 ## [1.5.1] - 2026-07-30
 
 - Fix `/slice` silently losing its examples in a plugin install. Four reads in

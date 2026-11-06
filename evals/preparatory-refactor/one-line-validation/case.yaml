@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: preparatory-refactor-one-line-validation
+context:
+  scaffold_script: scaffold.sh
