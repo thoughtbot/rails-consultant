@@ -1,6 +1,6 @@
 <title>Session Store Swap</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,400;0,600;1,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap">
 
 <!--
   DIFF WALKTHROUGH TEMPLATE
@@ -9,7 +9,8 @@
   purpose: pick the element that describes the content and the stylesheet styles
   it. Every colour is a token on :root with a dark-mode copy, so the page follows
   the reader's theme. Don't rewrite it - every walkthrough is supposed to look the
-  same so a reviewer learns the page once.
+  same so a reviewer learns the page once. It follows thoughtbot's brand
+  (thoughtbot.com/playbook/the-thoughtbot-way/brand).
 
   Everything inside <main> is a WORKED EXAMPLE (an Express app moving sessions to
   Redis, with no reader background named). Replace it with the real change.
@@ -45,26 +46,27 @@
 <style>
   /* One reading column; diffs scroll sideways inside their own box. */
   :root {
-    --bg: #f7f8fa; --surface: #eceff4; --fg: #1c2230; --muted: #5a6376; --line: #d3d9e3;
-    --why: #2a5bd7; --risk: #c0362c; --ins: #1d7a3c; --tradeoff: #8a5800; --alternative: #6a4cbb;
-    --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-    --mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+    --bg: #ffffff; --surface: #faf9f9; --fg: #201313; --muted: #7b6e68; --line: #eae6e4;
+    --brand: #e03131; --why: #2a5bd7; --risk: #e03131; --ins: #1d7a3c; --tradeoff: #8a5800; --alternative: #6a4cbb;
+    --heading: Cosmica, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --sans: PPMori, "PP Mori", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
     --space: 1rem;
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-      --bg: #12151b; --surface: #1b2029; --fg: #e3e7ee; --muted: #98a1b3; --line: #2c3341;
-      --why: #7ea4ff; --risk: #ff7b72; --ins: #5ad06e; --tradeoff: #e3b341; --alternative: #b69af2;
+      --bg: #201313; --surface: #2f1c1c; --fg: #faf9f9; --muted: #c1bab7; --line: #7b6e68;
+      --brand: #f74239; --why: #7ea4ff; --risk: #f74239; --ins: #5ad06e; --tradeoff: #e3b341; --alternative: #b69af2;
       color-scheme: dark;
     }
   }
   :root[data-theme="dark"] {
-    --bg: #12151b; --surface: #1b2029; --fg: #e3e7ee; --muted: #98a1b3; --line: #2c3341;
-    --why: #7ea4ff; --risk: #ff7b72; --ins: #5ad06e; --tradeoff: #e3b341; --alternative: #b69af2;
+    --bg: #201313; --surface: #2f1c1c; --fg: #faf9f9; --muted: #c1bab7; --line: #7b6e68;
+    --brand: #f74239; --why: #7ea4ff; --risk: #f74239; --ins: #5ad06e; --tradeoff: #e3b341; --alternative: #b69af2;
     color-scheme: dark;
   }
 
-  body { background: var(--bg); color: var(--fg); font: 1rem/1.6 var(--sans); }
+  body { background: var(--bg); color: var(--fg); font: 1rem/1.6 var(--sans); border-top: 0.25rem solid var(--brand); }
   main {
     max-width: 52rem; margin: 0 auto;
     padding-block: calc(var(--space) * 2.5);
@@ -73,8 +75,8 @@
   }
   main > * + * { margin-top: calc(var(--space) * 2.5); }
 
-  h1, h2, h3 { margin: 0; line-height: 1.25; font-weight: 600; text-wrap: balance; }
-  h1 { font-size: 2rem; }
+  h1, h2, h3 { margin: 0; font-family: var(--heading); line-height: 1.25; font-weight: 600; text-wrap: balance; }
+  h1 { font-size: 2rem; font-weight: 500; }
   h2 { font-size: 1.3rem; }
   p { margin: 0 0 var(--space); max-width: 65ch; }
   hgroup { margin-bottom: var(--space); }
@@ -92,13 +94,13 @@
   ol > li + li { margin-top: calc(var(--space) * 3); padding-top: calc(var(--space) * 3); border-top: 1px solid var(--line); }
   li h2 { font-size: 1.15rem; overflow-wrap: anywhere; }
 
-  code, pre { font-family: var(--mono); font-size: 0.875rem; }
+  code, pre { font-family: var(--mono); font-size: 0.875rem; font-variant-ligatures: none; }
   code { padding: 0.1em 0.3em; border-radius: 3px; background: var(--surface); }
   h2 > code, h3 > code, pre code { padding: 0; background: none; font-size: inherit; }
   pre { margin: 0 0 var(--space); padding: var(--space); overflow-x: auto; line-height: 1.5; border-radius: 6px; background: var(--surface); }
   ins, del { text-decoration: none; }
-  ins { color: var(--ins); background: color-mix(in srgb, var(--ins) 12%, transparent); }
-  del { color: var(--risk); background: color-mix(in srgb, var(--risk) 12%, transparent); }
+  ins { background: color-mix(in srgb, var(--ins) 15%, transparent); }
+  del { background: color-mix(in srgb, var(--risk) 15%, transparent); }
   pre small, pre em { color: var(--muted); font-size: inherit; }
 
   figure {
@@ -122,8 +124,9 @@
   aside pre { background: var(--bg); }
   aside h3 {
     margin-bottom: 0.35rem;
-    color: var(--note);
+    font-family: var(--mono);
     font-size: 0.7rem;
+    font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
