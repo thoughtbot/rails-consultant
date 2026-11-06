@@ -18,7 +18,8 @@
   The elements and what they mean here:
     <header> + <hgroup>   title and one-line thesis; the <dl> under it is branch/churn
     <article>             "Start here" - the problem and its everyday analogy,
-                          then the summary card and the watch list
+                          then the summary card and the watch list, one
+                          <aside data-note> per item
     <ol> / <li>           the walkthrough, one item per file or tight group of files
     <pre><code>           the diff. <ins> a added line, <del> a removed line,
                           bare text a context line, <small> a hunk header,
@@ -89,8 +90,9 @@
 
   article { padding: calc(var(--space) * 1.5); border: 1px solid var(--line); border-radius: 6px; }
   article > header { margin-bottom: var(--space); }
+  article p { max-width: none; }
 
-  ol { margin: 0; padding: 0; list-style: none; }
+  ol { margin-bottom: 0; padding: 0; list-style: none; }
   ol > li + li { margin-top: calc(var(--space) * 3); padding-top: calc(var(--space) * 3); border-top: 1px solid var(--line); }
   li h2 { font-size: 1.15rem; overflow-wrap: anywhere; }
 
@@ -175,14 +177,18 @@ deploy: restart --&gt; Redis untouched
       <figcaption>Sessions move out of each process and into one shared store.</figcaption>
     </figure>
     <p>The change is small on purpose. Nothing about how login works changed; only where the session is kept. Not in this branch: no migration of existing sessions, and no Redis in the test suite &mdash; tests still use the in-memory store.</p>
-    <dl>
-      <dt>Risk</dt>
-      <dd>Deploying this logs everyone out once. Existing sessions live in the old store and nothing copies them over.</dd>
-      <dt>Tradeoff</dt>
-      <dd>Redis is now required to boot, so <code>REDIS_URL</code> has to be set before the release goes out, or the new release crashes on boot.</dd>
-      <dt>Alternative</dt>
-      <dd>Signed cookies would have needed no Redis at all, since the session rides along in the cookie itself. Our payload is over the 4KB limit, so that was out.</dd>
-    </dl>
+    <aside data-note="risk">
+      <h3>Risk</h3>
+      <p>Deploying this logs everyone out once. Existing sessions live in the old store and nothing copies them over.</p>
+    </aside>
+    <aside data-note="tradeoff">
+      <h3>Tradeoff</h3>
+      <p>Redis is now required to boot, so <code>REDIS_URL</code> has to be set before the release goes out, or the new release crashes on boot.</p>
+    </aside>
+    <aside data-note="alternative">
+      <h3>Alternative</h3>
+      <p>Signed cookies would have needed no Redis at all, since the session rides along in the cookie itself. Our payload is over the 4KB limit, so that was out.</p>
+    </aside>
   </article>
 
   <ol>

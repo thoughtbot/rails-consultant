@@ -132,8 +132,9 @@ choose: pick the element that describes the content — `<ins>` and `<del>` for 
 `<aside data-note>` for an annotation — and leave the `<style>` block alone, so every
 walkthrough reads the same way. Everything inside `<main>` is a worked example —
 replace it. Three calls the comment doesn't make: the `<hgroup>` carries the change's
-_name_, two to four words, not a summary; the watch list `<dl>` holds the two to four
-things a reviewer would regret missing; and the `data-note` kinds are color-coded, so
+_name_, two to four words, not a summary; the watch list holds the two to four
+things a reviewer would regret missing, one `<aside data-note>` each inside "Start
+here"; and the `data-note` kinds are color-coded, so
 pick the one that's true. Four things reliably spoil the page: unescaped `&`, `<`, `>`
 in diff lines; raw typographic characters (write `&mdash;`, `&minus;`, `&hellip;` —
 these pages get saved locally, where raw multi-byte characters turn into mojibake);

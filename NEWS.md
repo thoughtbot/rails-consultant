@@ -7,6 +7,8 @@
   PP Mori aren't on Google Fonts, so most readers get the same Helvetica
   fallback thoughtbot.com uses. Note kinds keep their blue, amber, and purple so
   they stay easy to tell apart.
+- `/diff-explainer`'s "Start here" watch list is callouts now, matching the
+  file notes, and the first file gets its gap back.
 
 ## [2.0.0] - 2026-11-06
 
