@@ -3,6 +3,7 @@ description: The discount SPEC would change the same order total math in Order, 
 max_turns: 80
 timeout_seconds: 1800
 allowed_tools: [Read, Glob, Grep, Skill, Agent, Bash]
+tags: [regression]
 ---
 
 I'm about to build docs/specs/discount-codes.md. Is there anything I should refactor first so the feature goes in easier?

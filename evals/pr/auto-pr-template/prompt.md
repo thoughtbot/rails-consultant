@@ -3,6 +3,7 @@ description: The repo has a PR template, so the body fills its sections in order
 max_turns: 60
 timeout_seconds: 1200
 allowed_tools: [Read, Glob, Grep, Bash, Skill, Agent, Write, AskUserQuestion]
+tags: [regression]
 ---
 
 Run /pr --auto on this branch. Nobody is watching; your reply gets posted to the team channel.

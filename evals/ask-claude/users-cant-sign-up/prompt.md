@@ -3,6 +3,7 @@ description: A vague bug report should get questions or a prompt that reproduces
 max_turns: 30
 timeout_seconds: 600
 allowed_tools: [Read, Glob, Grep, Skill, WebFetch]
+tags: [regression]
 ---
 
 Users can't sign up on our Rails app. How should I ask you to fix it?

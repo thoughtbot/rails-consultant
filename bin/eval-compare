@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+
+# Print every eval case whose score dropped between two baselines.
+#
+# Usage:
+#   bin/eval-compare evals/baselines/opus-5-5-high.json evals/baselines/new.json
+#
+# Exits 1 if any case dropped by more than 0.34, about one run of three.
+
+set -euo pipefail
+
+if [ $# -ne 2 ]; then
+  echo "Usage: bin/eval-compare <baseline.json> <new.json>" >&2
+  exit 1
+fi
+
+if ! command -v jq &> /dev/null; then
+  echo "Error: jq is required but not installed. Install it with: brew install jq" >&2
+  exit 1
+fi
+
+max_drop=0.34
+
+rows=$(jq -r --slurpfile new "$2" '
+  ($new[0].cases | map({(.name): .score}) | add // {}) as $scores
+  | .cases[]
+  | select($scores[.name] == null or $scores[.name] < .score)
+  | [.name, .score, ($scores[.name] // "missing"),
+     (if $scores[.name] == null then "" else ($scores[.name] - .score) end)]
+  | @tsv
+' "$1")
+
+if [ -z "$rows" ]; then
+  echo "No case dropped."
+  exit 0
+fi
+
+{
+  printf "CASE\tBASE\tNEW\tCHANGE\n"
+  echo "$rows" | awk -F'\t' -v OFS='\t' '{
+    if ($4 == "") print $1, sprintf("%.2f", $2), $3, ""
+    else print $1, sprintf("%.2f", $2), sprintf("%.2f", $3), sprintf("%+.2f", $4)
+  }'
+} | column -t -s $'\t'
+
+if echo "$rows" | awk -F'\t' -v max="$max_drop" '$4 != "" && -$4 > max { found = 1 } END { exit !found }'; then
+  echo
+  echo "At least one case dropped by more than $max_drop."
+  exit 1
+fi

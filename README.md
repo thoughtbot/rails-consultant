@@ -104,15 +104,15 @@ uploads them yet.
 
 ## Evals
 
-Every skill has [eval cases][40] in `evals/<skill>/`. The ones for
-[`/ask-claude`][39] sit directly in `evals/`. Run one skill's cases from the
-repo root:
+Every skill has [eval cases][40] in `evals/<skill>/`. Run one skill's cases
+from the repo root:
 
 ```
 claude plugin eval . --case 'slice-*' --scaffold --max-cost-usd 10 --allow-tools Write Bash
 ```
 
 - Case names start with the skill's name, which is what `--case` matches.
+  The `/ask-claude` cases are the exception.
 - `--scaffold` runs each case's `scaffold.sh`, which builds the sample app it
   runs against.
 - Most skills need `--allow-tools Write Bash`. `/ship` also needs `Edit
@@ -124,6 +124,12 @@ Workflow`. `/ask-claude` needs `"WebFetch(domain:code.claude.com)"
   shouldn't trigger a skill to about $2.40 for a `/ship` run.
 - The CLI needs its own login, even inside the desktop app: `claude auth login`.
 - Results go to `evals/results/`, which is gitignored.
+  `bin/eval-summary evals/results/<label>.json` shrinks one to
+  `evals/baselines/<label>.json`, which is committed.
+- `bin/eval-compare <baseline> <new>` lists the cases whose score dropped,
+  and exits 1 if any dropped by more than 0.34.
+- Cases that scored 1.0 on the Opus 5.5 baseline are tagged `regression`.
+  `--tag regression` runs only those.
 - Cases with a `scaffold.sh` need `--scaffold`. The `/pr` cases also need
   `--allow-tools Bash Write Edit Agent`.
 
