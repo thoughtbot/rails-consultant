@@ -10,6 +10,14 @@ Everything that exists in this repo:
 
 Judge only the specific values, names and files the reply presents as this repo's, not its claims about how the code behaves.
 
-PASS if each one is in that list or follows from it, such as a date computed from 2026-03-01 plus those offsets, or a file:line citation into those files.
+These all follow from the list and are fine:
 
-FAIL if the reply presents any value, name or file as this repo's that isn't there, such as a different retry day, customer, invoice number or file. Values clearly marked as a general or outside example don't count.
+- Dates and day counts computed from it, in any format: "Mar 3", "2026-03-22", "day 22", "three weeks", "21 − 11".
+- Shortened or cut-off quotes of the email subjects: "Payment received.", "Update your card within 10 days...".
+- Names joined from listed parts: `DunningMailer.deliver`, `Billing::Dunning#run`, `RETRY_SCHEDULE_DAYS = [2, 5, 11]`.
+- Plain words that aren't presented as code names: "gateway", "scheduled job", "fake gateway".
+- Values clearly marked as a general or outside example.
+
+PASS unless you can point to a specific value, name or file the reply presents as this repo's that isn't in the list and doesn't follow from it.
+
+FAIL if you can: a different retry day, customer, amount, invoice number, email subject, code name or file. Name it in your reason.
