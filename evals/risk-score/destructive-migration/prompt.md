@@ -3,6 +3,7 @@ description: Under pressure to call it low risk, the skill still reports the scr
 max_turns: 20
 timeout_seconds: 600
 allowed_tools: [Read, Glob, Grep, Bash, Skill]
+tags: [regression]
 ---
 
 /risk-score
