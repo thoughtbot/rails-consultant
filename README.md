@@ -185,7 +185,8 @@ any time.
 
 ### ELI5
 
-[`/eli5`][29] explains code or a concept as simply as possible. Opens with a
+[`/eli5`][29] stands for "Explain Like I'm 5".
+It explains code or a concept as simply as possible. Opens with a
 simple everyday analogy unless you ask it not to, then uses real values from
 the codebase when possible to help create simple, concrete demonstrations.
 
