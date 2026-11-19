@@ -1,5 +1,5 @@
 ---
-name: eli5-not-in-repo
+name: plain-english-not-in-repo
 description: A term the repo doesn't use gets one line saying so, then a general explanation with no made-up repo values.
 max_turns: 40
 timeout_seconds: 900

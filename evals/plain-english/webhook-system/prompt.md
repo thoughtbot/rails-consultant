@@ -1,5 +1,5 @@
 ---
-name: eli5-webhook-system
+name: plain-english-webhook-system
 description: A technical system in code gets a simple everyday analogy by default, not just a comparison to other code.
 max_turns: 40
 timeout_seconds: 900

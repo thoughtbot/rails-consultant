@@ -1,5 +1,5 @@
 ---
-name: eli5-whats-dunning
+name: plain-english-whats-dunning
 description: A billing word used all over the repo gets explained from this repo's own code, job first, with real values and a drawing.
 max_turns: 40
 timeout_seconds: 900
