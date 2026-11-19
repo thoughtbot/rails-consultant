@@ -1,10 +1,10 @@
 ---
-name: eli5
+name: plain-english
 description: Explain something to someone who knows nothing about it.
 argument-hint: "[code, tool, process, or concept you have no familiarity with.]"
 ---
 
-# ELI5
+# Plain English
 
 The user has no foothold. `/understand` questions them about a model they already
 hold; here there is no model to question, and asking produces a guess you then have to

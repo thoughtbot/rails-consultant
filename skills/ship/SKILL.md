@@ -156,7 +156,7 @@ finding about your repo.
 ## What stays outside
 
 Everything before the SPEC — `/domain-model`, `/slice`, and the `/understand`,
-`/eli5`, `/rubber-duck` passes you make over what they produce. Those are the
+`/plain-english`, `/rubber-duck` passes you make over what they produce. Those are the
 steps where you're the one doing the thinking, and handing them to a fleet of
 agents defeats why you ran them.
 
