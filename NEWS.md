@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+- Renamed `/eli5` to `/plain-english`.
+
 ## [2.1.0] - 2026-11-06
 
 - `/diff-explainer` pages use thoughtbot's brand colors and type, per

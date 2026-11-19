@@ -105,10 +105,11 @@ If the thing doesn't exist yet, ask what they think it'll take, or what the app
 already does about it. "What does this do" is malformed for something unbuilt, and
 asking anyway invites them to invent an answer.
 
-No model at all ("never opened this file")? Say so and hand them `/eli5`, which exists
-for exactly this and explains rather than asks — then come back here. Questioning
-someone about a thing they've never seen is a quiz, not a dialogue, and the smallest
-orientation you could give them inside this session is a worse version of that skill.
+No model at all ("never opened this file")? Say so and hand them `/plain-english`,
+which exists for exactly this and explains rather than asks — then come back here.
+Questioning someone about a thing they've never seen is a quiz, not a dialogue, and
+the smallest orientation you could give them inside this session is a worse version
+of that skill.
 
 Model already sound? Say so and go to step 5. Manufacturing a gap so there's
 something to do wastes their evening.

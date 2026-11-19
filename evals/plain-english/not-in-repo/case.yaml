@@ -1,4 +1,4 @@
 schema_version: "1.1"
-name: eli5-whats-dunning
+name: plain-english-not-in-repo
 context:
   scaffold_script: scaffold.sh

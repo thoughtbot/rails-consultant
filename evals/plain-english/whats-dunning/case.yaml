@@ -1,4 +1,4 @@
 schema_version: "1.1"
-name: eli5-webhook-system
+name: plain-english-whats-dunning
 context:
   scaffold_script: scaffold.sh
