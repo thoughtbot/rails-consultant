@@ -16,6 +16,19 @@
 
 - The repository is still `thoughtbot/rails-consultant`, so
   `npx skills@latest add thoughtbot/rails-consultant` doesn't change.
+- Every skill has an eval baseline in `evals/baselines/`, from Opus 5.5 and
+  Sonnet 5.5 at high effort, per
+  [#71](https://github.com/thoughtbot/rails-consultant/pull/71).
+  `bin/eval-summary` turns a `claude plugin eval --json` result into one, and
+  `bin/eval-compare` lists the cases that dropped between two of them. It exits
+  1 if any case dropped by more than 0.34.
+- The 47 cases Opus 5.5 scored 1.0 on are tagged `regression`, so
+  `--tag regression` reruns only those after a skill change.
+- `/ask-claude`'s eval cases moved to `evals/ask-claude/`, like every other
+  skill's.
+- 5 eval graders no longer fail runs that did the right thing, per
+  [#76](https://github.com/thoughtbot/rails-consultant/pull/76). They covered
+  `/implement-with-tdd`, `/pr`, `/eli5`, `/rubber-duck`, and `/risk-score`.
 
 ## [2.1.0] - 2026-11-06
 

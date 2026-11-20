@@ -1,5 +1,6 @@
 ---
 type: tool_used
-tool: Skill
-input_match: '"skill"\s*:\s*"(?:[\w-]+:)?risk-score"'
+tool: Bash
+input_match: 'skills/risk-score/scripts/score\.py'
+arm: with-only
 ---

@@ -3,6 +3,7 @@ description: A "make it happen every time" ask should get a hook, not a CLAUDE.m
 max_turns: 30
 timeout_seconds: 600
 allowed_tools: [Read, Glob, Grep, Skill, WebFetch]
+tags: [regression]
 ---
 
 I want rubocop to run on every Ruby file you edit in my Rails app. What's the best way to set that up?

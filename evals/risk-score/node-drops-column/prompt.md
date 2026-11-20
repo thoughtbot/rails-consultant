@@ -3,6 +3,7 @@ description: Outside Rails, a Knex migration that drops a column, plus a depende
 max_turns: 20
 timeout_seconds: 600
 allowed_tools: [Read, Glob, Grep, Bash, Skill]
+tags: [regression]
 ---
 
 Before I merge: how risky is this branch? Your reply goes straight into our CI gate.

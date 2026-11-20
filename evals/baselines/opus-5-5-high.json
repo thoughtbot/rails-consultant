@@ -1,0 +1,428 @@
+{
+  "label": "opus-5-5-high",
+  "claudeVersion": "2.1.319",
+  "startedAt": "2026-11-06T22:07:02.183Z",
+  "costUsd": 107.76,
+  "cases": [
+    {
+      "name": "rubocop-every-edit",
+      "skill": "ask-claude",
+      "score": 1,
+      "delta": 0,
+      "costUsd": 4.1
+    },
+    {
+      "name": "unrelated-rails-question",
+      "skill": "ask-claude",
+      "score": 1,
+      "delta": 0,
+      "costUsd": 0.57
+    },
+    {
+      "name": "users-cant-sign-up",
+      "skill": "ask-claude",
+      "score": 1,
+      "delta": 0,
+      "costUsd": 1.17
+    },
+    {
+      "name": "commit-leaves-stray-files",
+      "skill": "commit",
+      "score": 1,
+      "delta": 0,
+      "costUsd": 0.94
+    },
+    {
+      "name": "commit-splits-unrelated-changes",
+      "skill": "commit",
+      "score": 1,
+      "delta": 0,
+      "costUsd": 1.34
+    },
+    {
+      "name": "commit-undo-question",
+      "skill": "commit",
+      "score": 1,
+      "delta": 0,
+      "costUsd": 0.59
+    },
+    {
+      "name": "diff-explainer-hunk-header-question",
+      "skill": "diff-explainer",
+      "score": 1,
+      "delta": 0,
+      "costUsd": 0.56
+    },
+    {
+      "name": "diff-explainer-named-lens",
+      "skill": "diff-explainer",
+      "score": 1,
+      "delta": 1,
+      "costUsd": 2.79
+    },
+    {
+      "name": "diff-explainer-no-analogy",
+      "skill": "diff-explainer",
+      "score": 1,
+      "delta": 1,
+      "costUsd": 2.36
+    },
+    {
+      "name": "diff-explainer-no-default-lens",
+      "skill": "diff-explainer",
+      "score": 0.9333,
+      "delta": 0.9333,
+      "costUsd": 2.54
+    },
+    {
+      "name": "diff-explainer-skips-version-bump",
+      "skill": "diff-explainer",
+      "score": 1,
+      "delta": 0.3333,
+      "costUsd": 1.03
+    },
+    {
+      "name": "diff-explainer-surfaces-commit-risks",
+      "skill": "diff-explainer",
+      "score": 1,
+      "delta": 1,
+      "costUsd": 2.41
+    },
+    {
+      "name": "domain-model-belay-checks-notes",
+      "skill": "domain-model",
+      "score": 1,
+      "delta": 0.8333,
+      "costUsd": 1.43
+    },
+    {
+      "name": "domain-model-gym-memberships",
+      "skill": "domain-model",
+      "score": 1,
+      "delta": 0.75,
+      "costUsd": 1.41
+    },
+    {
+      "name": "domain-model-sti-vs-polymorphic-question",
+      "skill": "domain-model",
+      "score": 0,
+      "delta": -1,
+      "costUsd": 0.81
+    },
+    {
+      "name": "eli5-dup-vs-clone-question",
+      "skill": "eli5",
+      "score": 1,
+      "delta": 0,
+      "costUsd": 0.6
+    },
+    {
+      "name": "eli5-no-analogy",
+      "skill": "eli5",
+      "score": 0.8889,
+      "delta": 0.1111,
+      "costUsd": 1.24
+    },
+    {
+      "name": "eli5-not-in-repo",
+      "skill": "eli5",
+      "score": 1,
+      "delta": 0.4,
+      "costUsd": 0.9
+    },
+    {
+      "name": "eli5-webhook-system",
+      "skill": "eli5",
+      "score": 1,
+      "delta": 0.5333,
+      "costUsd": 1.15
+    },
+    {
+      "name": "eli5-whats-dunning",
+      "skill": "eli5",
+      "score": 0.8519,
+      "delta": 0.4444,
+      "costUsd": 1.3
+    },
+    {
+      "name": "implement-with-tdd-invoice-due-dates",
+      "skill": "implement-with-tdd",
+      "score": 0.9333,
+      "delta": -0.0667,
+      "costUsd": 2.21
+    },
+    {
+      "name": "implement-with-tdd-ledgerly-api-key",
+      "skill": "implement-with-tdd",
+      "score": 1,
+      "delta": 0.6667,
+      "costUsd": 1.98
+    },
+    {
+      "name": "implement-with-tdd-mock-vs-stub-question",
+      "skill": "implement-with-tdd",
+      "score": 1,
+      "delta": 0,
+      "costUsd": 0.67
+    },
+    {
+      "name": "multi-lens-review-archive-projects",
+      "skill": "multi-lens-review",
+      "score": 1,
+      "delta": 0.1667,
+      "costUsd": 5.1
+    },
+    {
+      "name": "multi-lens-review-empty-diff",
+      "skill": "multi-lens-review",
+      "score": 0.8889,
+      "delta": 0.1111,
+      "costUsd": 1.11
+    },
+    {
+      "name": "multi-lens-review-includes-vs-joins-question",
+      "skill": "multi-lens-review",
+      "score": 1,
+      "delta": 0,
+      "costUsd": 0.6
+    },
+    {
+      "name": "pr-auto-eli5-notes",
+      "skill": "pr",
+      "score": 0.9583,
+      "delta": 0.6667,
+      "costUsd": 2.29
+    },
+    {
+      "name": "pr-auto-links-issue",
+      "skill": "pr",
+      "score": 1,
+      "delta": 0.5,
+      "costUsd": 2.2
+    },
+    {
+      "name": "pr-auto-pr-template",
+      "skill": "pr",
+      "score": 1,
+      "delta": 0.1667,
+      "costUsd": 2.55
+    },
+    {
+      "name": "pr-auto-screenshots",
+      "skill": "pr",
+      "score": 1,
+      "delta": 0.2222,
+      "costUsd": 2.26
+    },
+    {
+      "name": "pr-auto-shipping-emails",
+      "skill": "pr",
+      "score": 1,
+      "delta": 0.7436,
+      "costUsd": 2.36
+    },
+    {
+      "name": "pr-auto-voice",
+      "skill": "pr",
+      "score": 0.963,
+      "delta": 0.6296,
+      "costUsd": 2.59
+    },
+    {
+      "name": "pr-dirty-tree",
+      "skill": "pr",
+      "score": 1,
+      "delta": 0,
+      "costUsd": 1.05
+    },
+    {
+      "name": "pr-shipping-emails",
+      "skill": "pr",
+      "score": 0.9167,
+      "delta": 0.5,
+      "costUsd": 1.37
+    },
+    {
+      "name": "pr-squash-question",
+      "skill": "pr",
+      "score": 1,
+      "delta": 0,
+      "costUsd": 0.57
+    },
+    {
+      "name": "preparatory-refactor-discount-touches-three-totals",
+      "skill": "preparatory-refactor",
+      "score": 1,
+      "delta": 0.1667,
+      "costUsd": 3.45
+    },
+    {
+      "name": "preparatory-refactor-extract-method-question",
+      "skill": "preparatory-refactor",
+      "score": 1,
+      "delta": 0,
+      "costUsd": 0.55
+    },
+    {
+      "name": "preparatory-refactor-one-line-validation",
+      "skill": "preparatory-refactor",
+      "score": 1,
+      "delta": 0.1667,
+      "costUsd": 1.97
+    },
+    {
+      "name": "risk-score-destructive-migration",
+      "skill": "risk-score",
+      "score": 1,
+      "delta": 1,
+      "costUsd": 0.98
+    },
+    {
+      "name": "risk-score-docs-only",
+      "skill": "risk-score",
+      "score": 1,
+      "delta": 1,
+      "costUsd": 0.89
+    },
+    {
+      "name": "risk-score-explicit-base",
+      "skill": "risk-score",
+      "score": 1,
+      "delta": 0.5,
+      "costUsd": 0.89
+    },
+    {
+      "name": "risk-score-migration-question",
+      "skill": "risk-score",
+      "score": 1,
+      "delta": 0,
+      "costUsd": 0.81
+    },
+    {
+      "name": "risk-score-node-drops-column",
+      "skill": "risk-score",
+      "score": 1,
+      "delta": 1,
+      "costUsd": 0.91
+    },
+    {
+      "name": "rubber-duck-canceled-still-charged",
+      "skill": "rubber-duck",
+      "score": 0.9167,
+      "delta": 0.6667,
+      "costUsd": 0.84
+    },
+    {
+      "name": "rubber-duck-canceled-still-charged-question",
+      "skill": "rubber-duck",
+      "score": 1,
+      "delta": 0,
+      "costUsd": 0.83
+    },
+    {
+      "name": "rubber-duck-just-tell-me-if-its-ok",
+      "skill": "rubber-duck",
+      "score": 0.8333,
+      "delta": 0.8333,
+      "costUsd": 1.04
+    },
+    {
+      "name": "ship-invoice-due-dates",
+      "skill": "ship",
+      "score": 1,
+      "delta": 0.3571,
+      "costUsd": 9.99
+    },
+    {
+      "name": "ship-ledgerly-api-key",
+      "skill": "ship",
+      "score": 1,
+      "delta": 0.5,
+      "costUsd": 3.37
+    },
+    {
+      "name": "ship-release-phase-question",
+      "skill": "ship",
+      "score": 1,
+      "delta": 0,
+      "costUsd": 0.72
+    },
+    {
+      "name": "ship-untracked-spec",
+      "skill": "ship",
+      "score": 1,
+      "delta": 0.5,
+      "costUsd": 9.19
+    },
+    {
+      "name": "slice-auto-invoice-export-sprawl",
+      "skill": "slice",
+      "score": 1,
+      "delta": 0.6,
+      "costUsd": 2.07
+    },
+    {
+      "name": "slice-invoice-export-sprawl",
+      "skill": "slice",
+      "score": 1,
+      "delta": 0,
+      "costUsd": 1.28
+    },
+    {
+      "name": "slice-overdue-flag-already-slice",
+      "skill": "slice",
+      "score": 1,
+      "delta": 0.5,
+      "costUsd": 1.33
+    },
+    {
+      "name": "slice-vertical-vs-horizontal-question",
+      "skill": "slice",
+      "score": 1,
+      "delta": 0,
+      "costUsd": 0.58
+    },
+    {
+      "name": "trace-reset-stubs-database-drop",
+      "skill": "trace",
+      "score": 1,
+      "delta": 0.6667,
+      "costUsd": 1.98
+    },
+    {
+      "name": "trace-sql-logging-question",
+      "skill": "trace",
+      "score": 1,
+      "delta": 0,
+      "costUsd": 0.55
+    },
+    {
+      "name": "trace-user-signs-up",
+      "skill": "trace",
+      "score": 1,
+      "delta": 0.75,
+      "costUsd": 2.24
+    },
+    {
+      "name": "understand-receipt-before-save",
+      "skill": "understand",
+      "score": 0.7778,
+      "delta": 0.7778,
+      "costUsd": 1.28
+    },
+    {
+      "name": "understand-refunds-not-built",
+      "skill": "understand",
+      "score": 0.6667,
+      "delta": 0.1667,
+      "costUsd": 1.18
+    },
+    {
+      "name": "understand-send-receipt-question",
+      "skill": "understand",
+      "score": 1,
+      "delta": 0,
+      "costUsd": 0.68
+    }
+  ]
+}

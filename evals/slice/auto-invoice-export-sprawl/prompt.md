@@ -3,6 +3,7 @@ description: The same sprawling invoice export idea, run unattended from a GitHu
 max_turns: 80
 timeout_seconds: 1800
 allowed_tools: [Read, Glob, Grep, Skill, Agent, Bash, Write, AskUserQuestion]
+tags: [regression]
 ---
 
 Run /slice --auto on this GitHub issue. Your reply gets posted back to the issue as a comment.
