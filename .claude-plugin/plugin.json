@@ -1,7 +1,7 @@
 {
   "name": "the-process",
   "description": "A small set of skills for general-purpose software development across tech stacks",
-  "version": "3.0.0",
+  "version": "2.1.0",
   "author": {
     "name": "thoughtbot"
   },

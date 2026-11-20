@@ -1,7 +1,5 @@
 ## [Unreleased]
 
-## [3.0.0] - 2026-11-20
-
 - The plugin is now `the-process`, and the project is The Process. The skills
   stopped being Rails-specific in 2.0.0; the name catches up. Skills are invoked
   as `/the-process:<skill>`, so `/rails-consultant:slice` is now
