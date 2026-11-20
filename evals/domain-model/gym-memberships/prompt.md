@@ -3,6 +3,7 @@ description: The gym's process says "lapse" where the code says expire!, uses "c
 max_turns: 80
 timeout_seconds: 1800
 allowed_tools: [Read, Glob, Grep, Skill, Bash, Write]
+tags: [regression]
 ---
 
 This repo is the members app for our climbing gym. I want a domain model of how memberships actually work, so here's how it goes today.

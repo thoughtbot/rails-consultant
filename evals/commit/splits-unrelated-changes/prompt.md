@@ -3,6 +3,7 @@ description: A feature plus an unrelated typo fix should become two atomic commi
 max_turns: 30
 timeout_seconds: 600
 allowed_tools: [Read, Glob, Grep, Skill]
+tags: [regression]
 ---
 
 I added a slugify helper so post URLs stop breaking on titles with spaces, and fixed a typo in the README while I was in there. Commit my changes.

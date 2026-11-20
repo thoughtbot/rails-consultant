@@ -3,6 +3,7 @@ description: The process arrives as a path to messy call notes, so the skill rea
 max_turns: 80
 timeout_seconds: 1800
 allowed_tools: [Read, Glob, Grep, Skill, Bash, Write]
+tags: [regression]
 ---
 
 Can you build a domain model of how belay checks work? My notes from the call with floor staff are in docs/notes/floor-staff-call.md.

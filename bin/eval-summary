@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+
+# Shrink a `claude plugin eval --json` result to a committable baseline.
+#
+# Usage:
+#   bin/eval-summary evals/results/opus-5-5-high.json
+#
+# Writes evals/baselines/opus-5-5-high.json, named after the input file.
+
+set -euo pipefail
+
+if [ $# -ne 1 ]; then
+  echo "Usage: bin/eval-summary <results.json>" >&2
+  exit 1
+fi
+
+if ! command -v jq &> /dev/null; then
+  echo "Error: jq is required but not installed. Install it with: brew install jq" >&2
+  exit 1
+fi
+
+results="$1"
+label=$(basename "$results" .json)
+out="evals/baselines/$label.json"
+
+if [ "$(jq -r '.partial' "$results")" = "true" ]; then
+  echo "Error: $results is partial ($(jq -r '.partialReason' "$results")). Not summarizing it." >&2
+  exit 1
+fi
+
+mkdir -p evals/baselines
+
+jq --arg label "$label" '
+  def round(places): (. * pow(10; places) | round) / pow(10; places);
+  {
+    label: $label,
+    claudeVersion,
+    startedAt,
+    costUsd: (.costUsd | round(2)),
+    cases: [
+      .cases[] | {
+        name,
+        skill: (.dir | split("/")[1]),
+        score: (.aggregates.score | round(4)),
+        delta: (.aggregates.delta | if . == null then null else round(4) end),
+        costUsd: ([.arms[][] | .costUsd] | add | round(2))
+      }
+    ]
+  }
+' "$results" > "$out"
+
+echo "Wrote $out"
