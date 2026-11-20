@@ -6,11 +6,12 @@
   stopped being Rails-specific in 2.0.0; the name catches up. Skills are invoked
   as `/the-process:<skill>`, so `/rails-consultant:slice` is now
   `/the-process:slice`.
-- To switch an existing install, run:
+- The `skills` marketplace maps `rails-consultant` to `the-process`, so
+  Claude Code moves your settings to the new name. Until you install it once,
+  it reports `Plugin "the-process" not cached`. To switch, run:
 
   ```
   /plugin marketplace update skills
-  /plugin uninstall rails-consultant@skills
   /plugin install the-process@skills
   ```
 
