@@ -1,5 +1,20 @@
 ## [Unreleased]
 
+- The plugin is now `the-process`, and the project is The Process. The skills
+  stopped being Rails-specific in 2.0.0; the name catches up. Skills are invoked
+  as `/the-process:<skill>`, so `/rails-consultant:slice` is now
+  `/the-process:slice`.
+- The `skills` marketplace maps `rails-consultant` to `the-process`, so
+  Claude Code moves your settings to the new name. Until you install it once,
+  it reports `Plugin "the-process" not cached`. To switch, run:
+
+  ```
+  /plugin marketplace update skills
+  /plugin install the-process@skills
+  ```
+
+- The repository is still `thoughtbot/rails-consultant`, so
+  `npx skills@latest add thoughtbot/rails-consultant` doesn't change.
 - Every skill has an eval baseline in `evals/baselines/`, from Opus 5.5 and
   Sonnet 5.5 at high effort, per
   [#71](https://github.com/thoughtbot/rails-consultant/pull/71).
