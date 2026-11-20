@@ -1,4 +1,4 @@
-# Rails Consultant
+# The Process
 
 [![skills.sh](https://skills.sh/b/thoughtbot/rails-consultant)](https://skills.sh/thoughtbot/rails-consultant)
 
@@ -30,7 +30,7 @@ Add thoughtbot's marketplace:
 Install the plugin:
 
 ```
-/plugin install rails-consultant@skills
+/plugin install the-process@skills
 ```
 
 ### Codex, and other agents
@@ -321,7 +321,7 @@ Thank you, [contributors][]!
 
 ## License
 
-Rails Consultant is Copyright (c) thoughtbot, inc.
+The Process is Copyright (c) thoughtbot, inc.
 It is free software, and may be redistributed
 under the terms specified in the [LICENSE] file.
 

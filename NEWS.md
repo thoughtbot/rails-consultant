@@ -1,5 +1,22 @@
 ## [Unreleased]
 
+## [3.0.0] - 2026-11-20
+
+- The plugin is now `the-process`, and the project is The Process. The skills
+  stopped being Rails-specific in 2.0.0; the name catches up. Skills are invoked
+  as `/the-process:<skill>`, so `/rails-consultant:slice` is now
+  `/the-process:slice`.
+- To switch an existing install, run:
+
+  ```
+  /plugin marketplace update skills
+  /plugin uninstall rails-consultant@skills
+  /plugin install the-process@skills
+  ```
+
+- The repository is still `thoughtbot/rails-consultant`, so
+  `npx skills@latest add thoughtbot/rails-consultant` doesn't change.
+
 ## [2.1.0] - 2026-11-06
 
 - `/diff-explainer` pages use thoughtbot's brand colors and type, per

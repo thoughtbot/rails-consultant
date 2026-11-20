@@ -1,12 +1,12 @@
 {
-  "name": "rails-consultant",
-  "description": "A collection of skills for Rails development and consulting, with an emphasis on learning, communication, and client success",
-  "version": "2.1.0",
+  "name": "the-process",
+  "description": "A small set of skills for general-purpose software development across tech stacks",
+  "version": "3.0.0",
   "author": {
     "name": "thoughtbot"
   },
   "homepage": "https://github.com/thoughtbot/rails-consultant",
   "repository": "https://github.com/thoughtbot/rails-consultant",
   "license": "MIT",
-  "keywords": ["rails", "ruby", "consulting", "tdd", "code-review"]
+  "keywords": ["tdd", "code-review"]
 }
