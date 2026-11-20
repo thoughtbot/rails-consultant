@@ -1,5 +1,7 @@
 # The Process
 
+Trust the process
+
 [![skills.sh](https://skills.sh/b/thoughtbot/rails-consultant)](https://skills.sh/thoughtbot/rails-consultant)
 
 This is a simple set of skills optimized for general-purpose software
