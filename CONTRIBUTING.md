@@ -56,7 +56,7 @@ version only when we move that pin:
 ```json
 "source": {
   "source": "github",
-  "repo": "thoughtbot/rails-consultant",
+  "repo": "thoughtbot/the-process",
   "ref": "v2.1.0"
 }
 ```

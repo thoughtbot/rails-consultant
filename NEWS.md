@@ -13,8 +13,8 @@
   /plugin install the-process@skills
   ```
 
-- The repository is still `thoughtbot/rails-consultant`, so
-  `npx skills@latest add thoughtbot/rails-consultant` doesn't change.
+- The repository is now `thoughtbot/the-process`, so the install command is
+  `npx skills@latest add thoughtbot/the-process`. GitHub redirects the old URL.
 - Every skill has an eval baseline in `evals/baselines/`, from Opus 5.5 and
   Sonnet 5.5 at high effort, per
   [#71](https://github.com/thoughtbot/rails-consultant/pull/71).

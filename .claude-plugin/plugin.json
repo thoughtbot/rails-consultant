@@ -5,8 +5,8 @@
   "author": {
     "name": "thoughtbot"
   },
-  "homepage": "https://github.com/thoughtbot/rails-consultant",
-  "repository": "https://github.com/thoughtbot/rails-consultant",
+  "homepage": "https://github.com/thoughtbot/the-process",
+  "repository": "https://github.com/thoughtbot/the-process",
   "license": "MIT",
   "keywords": ["tdd", "code-review"]
 }
