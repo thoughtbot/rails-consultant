@@ -38,7 +38,7 @@ Install the plugin:
 ### Codex, and other agents
 
 ```
-npx skills@latest add thoughtbot/rails-consultant
+npx skills@latest add thoughtbot/the-process
 ```
 
 ## How to use these skills
@@ -348,7 +348,7 @@ We are [available for hire][hire].
 
 [CONTRIBUTING]: CONTRIBUTING.md
 [community]: https://thoughtbot.com/community?utm_source=github
-[contributors]: https://github.com/thoughtbot/rails-consultant/graphs/contributors
+[contributors]: https://github.com/thoughtbot/the-process/graphs/contributors
 [hire]: https://thoughtbot.com/hire-us?utm_source=github
 [full-stack-slices]: https://thoughtbot.com/blog/break-apart-your-features-into-full-stack-slices
 [job-stories]: https://thoughtbot.com/playbook/rapid-product-validation/jtbd#how-to-write-and-use-job-stories
