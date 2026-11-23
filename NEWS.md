@@ -13,6 +13,9 @@
 - 5 eval graders no longer fail runs that did the right thing, per
   [#76](https://github.com/thoughtbot/rails-consultant/pull/76). They covered
   `/implement-with-tdd`, `/pr`, `/eli5`, `/rubber-duck`, and `/risk-score`.
+- Merging to `main` no longer ships a release. Marketplaces pin this plugin to
+  a tag, and feature pull requests stop bumping the version.
+  [CONTRIBUTING.md](CONTRIBUTING.md#versioning) has the new release steps.
 
 ## [2.1.0] - 2026-11-06
 
