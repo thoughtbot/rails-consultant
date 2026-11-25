@@ -7,5 +7,8 @@ disable-model-invocation: true
 
 `/eli5` is now `/plain-english`. This stub goes away in the next release.
 
-Tell the user that in one line, then invoke the `plain-english` skill with
-`$ARGUMENTS` and follow it as if they had typed `/plain-english` themselves.
+Invoke the `plain-english` skill with `$ARGUMENTS` and follow it as if they
+had typed `/plain-english` themselves. Then open your final reply with this
+line, before the explanation, so it's still on screen when they read it:
+
+> `/eli5` is now `/plain-english`. `/eli5` goes away in the next release.
