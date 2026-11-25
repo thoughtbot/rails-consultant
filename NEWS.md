@@ -31,6 +31,8 @@
 - Merging to `main` no longer ships a release. Marketplaces pin this plugin to
   a tag, and feature pull requests stop bumping the version.
   [CONTRIBUTING.md](CONTRIBUTING.md#versioning) has the new release steps.
+- `/eli5` is now `/plain-english`. `/eli5` still works for this release and
+  points you to the new name; it goes away in the next one.
 
 ## [2.1.0] - 2026-11-06
 

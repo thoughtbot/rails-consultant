@@ -174,8 +174,9 @@ inventing rationale. Short beats thorough; a reviewer skims a long PR.
   `**Tradeoff:**`, or `**Open question:**`. One to two sentences, for the
   engineer. Most branches get two to four; a typo fix gets none.
 - **Then say each note plainly.** A short paragraph under it for someone
-  who's never read code, written the way `/eli5` explains (steps 3 and 4 of
-  `../eli5/SKILL.md`): what happens to a person, then one everyday analogy.
+  who's never read code, written the way `/plain-english` explains (steps 3
+  and 4 of `../plain-english/SKILL.md`): what happens to a person, then one
+  everyday analogy.
   No code names or programmer words like job or callback. When order or
   flow is the point, add a small drawing in a code block, under 60
   characters wide, since GitHub's comment column is narrow. Real values

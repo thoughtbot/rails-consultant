@@ -110,36 +110,36 @@
       "costUsd": 0.17
     },
     {
-      "name": "eli5-dup-vs-clone-question",
-      "skill": "eli5",
+      "name": "plain-english-dup-vs-clone-question",
+      "skill": "plain-english",
       "score": 1,
       "delta": null,
       "costUsd": 0.16
     },
     {
-      "name": "eli5-no-analogy",
-      "skill": "eli5",
+      "name": "plain-english-no-analogy",
+      "skill": "plain-english",
       "score": 1,
       "delta": null,
       "costUsd": 0.38
     },
     {
-      "name": "eli5-not-in-repo",
-      "skill": "eli5",
+      "name": "plain-english-not-in-repo",
+      "skill": "plain-english",
       "score": 0.9444,
       "delta": null,
       "costUsd": 0.23
     },
     {
-      "name": "eli5-webhook-system",
-      "skill": "eli5",
+      "name": "plain-english-webhook-system",
+      "skill": "plain-english",
       "score": 0.8889,
       "delta": null,
       "costUsd": 0.33
     },
     {
-      "name": "eli5-whats-dunning",
-      "skill": "eli5",
+      "name": "plain-english-whats-dunning",
+      "skill": "plain-english",
       "score": 0.9,
       "delta": null,
       "costUsd": 0.36
@@ -187,7 +187,7 @@
       "costUsd": 0.15
     },
     {
-      "name": "pr-auto-eli5-notes",
+      "name": "pr-auto-plain-english-notes",
       "skill": "pr",
       "score": 0.6667,
       "delta": null,

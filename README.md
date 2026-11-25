@@ -54,13 +54,13 @@ of **new sessions** when building out a feature from start to finish.
 
 0. Optionally, use [`/domain-model`][26] on new projects or features to capture
    business logic.
-   - Use [`/understand`][25] and/or [`/eli5`][28] to reinforce your
+   - Use [`/understand`][25] and/or [`/plain-english`][28] to reinforce your
      understanding of the business logic.
    - Use [`/trace`][36] to see what an existing flow actually does before you
      change it.
 1. First, use [`/slice`][2] to come up with the simplest possible thing to ship
    that adds value.
-   - Use [`/understand`][25] and/or [`/eli5`][28] to reinforce your
+   - Use [`/understand`][25] and/or [`/plain-english`][28] to reinforce your
      understanding of the generated SPEC.
    - Use [`/rubber-duck`][24] to slow down and scrutinize the generated SPEC.
 
@@ -81,7 +81,7 @@ of **new sessions** when building out a feature from start to finish.
    help you understand the changeset.
    - After reviewing the artifact, use [`/rubber-duck`][24] to slow down and
      scrutinize generated code, or [`/understand`][25] to reinforce your
-     understanding. If you need more help, start with [`/eli5`][28].
+     understanding. If you need more help, start with [`/plain-english`][28].
 7. Finally, run [`/pr`][34] to open a PR with a description you write
    yourself. The feature is your responsibility, and writing about it helps it
    stick.
@@ -183,11 +183,11 @@ small stylesheet, so every walkthrough looks the same.
 extracts the domain. Useful for new projects and features, but can be run at
 any time.
 
-### ELI5
+### Plain English
 
-[`/eli5`][29] explains code or a concept as simply as possible. Opens with a
-simple everyday analogy unless you ask it not to, then uses real values from
-the codebase when possible to help create simple, concrete demonstrations.
+[`/plain-english`][29] explains code or a concept as simply as possible. Opens
+with a simple everyday analogy unless you ask it not to, then uses real values
+from the codebase when possible to help create simple, concrete demonstrations.
 
 Use [`/understand`][23] to help you reinforce what you've learned.
 
@@ -233,7 +233,7 @@ after you sign off on the exact text.
 in plain English, what changed for the people using the product and why. No
 file paths or commit SHAs. Risks, tradeoffs, and open questions go up as inline
 comments on the lines they're about, each with a plain-English version in the
-style of `/eli5`: an everyday analogy, and an ASCII drawing when the order of
+style of `/plain-english`: an everyday analogy, and an ASCII drawing when the order of
 events is the point. You rewrite the description before
 marking it ready. Off GitHub, it replies with the title, body, and notes
 instead.
@@ -310,7 +310,7 @@ reply can be posted as a comment on the issue.
 development environment and records what actually happened, in order. Anything destructive, like killing a process or dropping a database, is
 stubbed. The trace is saved to `docs/traces/`.
 
-Useful during discovery and planning, and pairs well with `/eli5` and `/slice`.
+Useful during discovery and planning, and pairs well with `/plain-english` and `/slice`.
 
 ### Understand
 
@@ -320,7 +320,7 @@ method][20] instead of explaining it to you.
 Pairs well with `/diff-explainer`, `/domain-model`, and `/slice` since it'll
 help reinforce your understanding.
 
-Use [`/eli5`][29] if you have no familiarity with the subject matter.
+Use [`/plain-english`][29] if you have no familiarity with the subject matter.
 
 ## Contributing
 
@@ -380,8 +380,8 @@ We are [available for hire][hire].
 [25]: #understand
 [26]: #domain-model
 [27]: skills/domain-model/SKILL.md
-[28]: #eli5
-[29]: skills/eli5/SKILL.md
+[28]: #plain-english
+[29]: skills/plain-english/SKILL.md
 [30]: https://code.claude.com/docs/en/skills#run-and-verify-your-app
 [31]: skills/ship/SKILL.md
 [32]: #commit

@@ -1,5 +1,5 @@
 ---
-name: eli5-no-analogy
+name: plain-english-no-analogy
 description: Someone who asks for no analogies gets the straight explanation, from the repo's own code, with no everyday comparison.
 max_turns: 40
 timeout_seconds: 900
